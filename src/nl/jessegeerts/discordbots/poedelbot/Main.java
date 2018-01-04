@@ -57,8 +57,6 @@ addCommands();
     public static void addCommands(){
         commandHandler.commands.put("clear", new Clear());
         commandHandler.commands.put("help", new Help());
-        commandHandler.commands.put("imdone", new ImDone());
-        commandHandler.commands.put("i'mdone", new ImDone());
         commandHandler.commands.put("done", new ImDone());
         commandHandler.commands.put("lenny", new Lenny());
         commandHandler.commands.put("len", new Lenny());
@@ -66,8 +64,8 @@ addCommands();
         commandHandler.commands.put("dog", new Dog());
         commandHandler.commands.put("dogs", new Dog());
         commandHandler.commands.put("doge", new Dog());
-        commandHandler.commands.put("hurray", new Hurray());
         commandHandler.commands.put("tut", new Tutorial());
+        commandHandler.commands.put("tutorial", new Tutorial());
         commandHandler.commands.put("poedel", new Poedel());
         commandHandler.commands.put("poedels", new Poedel());
         commandHandler.commands.put("vis", new Vis());

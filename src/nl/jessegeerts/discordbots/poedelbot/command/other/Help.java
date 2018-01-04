@@ -22,7 +22,7 @@ public class Help implements Command {
         }
         if (args.length == 1) {
             event.getMessage().delete().queue();
-            if (event.getMessage().getContent().equalsIgnoreCase(STATIC.PREFIX +"help shutdown")) {
+            if(event.getMessage().getContentDisplay().equalsIgnoreCase(STATIC.PREFIX +"help shutdown")) {
                 event.getTextChannel().sendMessage("Attempting to shutdown").queue();
                 new Timer().schedule(new TimerTask() {
                     @Override
@@ -52,14 +52,14 @@ public class Help implements Command {
                 event.getChannel().sendMessage(event.getGuild().getMembers().toString()).queue();
             }
 
-            if(event.getMessage().getContent().equalsIgnoreCase(STATIC.PREFIX + "help owner")){
+            if(event.getMessage().getContentDisplay().equalsIgnoreCase(STATIC.PREFIX + "help owner")){
                     event.getTextChannel().sendMessage("The server owner: " + event.getGuild().getOwner().getAsMention()).queue();
             }
 
-            if(event.getMessage().getContent().equalsIgnoreCase(STATIC.PREFIX + "help image")){
+            if(event.getMessage().getContentDisplay().equalsIgnoreCase(STATIC.PREFIX + "help image")){
                 event.getTextChannel().sendMessage(event.getAuthor().getAvatarUrl()).queue();
             }
-            if(event.getMessage().getContent().equalsIgnoreCase("%pref%help ping".replace("%pref%", STATIC.PREFIX))){
+            if(event.getMessage().getContentDisplay().equalsIgnoreCase("%pref%help ping".replace("%pref%", STATIC.PREFIX))){
                 event.getTextChannel().sendTyping().queue();
                 new Timer().schedule(new TimerTask() {
                     @Override

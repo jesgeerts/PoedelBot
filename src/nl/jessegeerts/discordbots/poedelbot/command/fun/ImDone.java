@@ -1,6 +1,7 @@
 package nl.jessegeerts.discordbots.poedelbot.command.fun;
 
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
+import nl.jessegeerts.discordbots.poedelbot.command.Command;
 
 public class ImDone implements Command {
     @Override
