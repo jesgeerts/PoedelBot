@@ -1,8 +1,8 @@
-package nl.jessegeerts.discordbots.poedelbot.command;
+package nl.jessegeerts.discordbots.poedelbot.command.fun;
 
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 
-public class Wat implements Command {
+public class ImDone implements Command {
     @Override
     public boolean called(String[] args, MessageReceivedEvent event) {
         return false;
@@ -10,10 +10,8 @@ public class Wat implements Command {
 
     @Override
     public void action(String[] args, MessageReceivedEvent event) {
-
-        event.getChannel().sendMessage("WAT").queue();
-        event.getChannel().sendMessage("https://giphy.com/gifs/wat-CtLMCCLylm3o4").queue();
-
+        event.getTextChannel().sendTyping().queue();
+       event.getTextChannel().sendMessage(event.getAuthor().getAsMention() + " : https://giphy.com/gifs/disney-dog-no-3XiQswSmbjBiU").queue();
     }
 
     @Override

@@ -1,8 +1,8 @@
-package nl.jessegeerts.discordbots.poedelbot.command;
+package nl.jessegeerts.discordbots.poedelbot.command.fun;
 
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 
-public class Website  implements Command {
+public class Lenny implements Command {
     @Override
     public boolean called(String[] args, MessageReceivedEvent event) {
         return false;
@@ -10,8 +10,8 @@ public class Website  implements Command {
 
     @Override
     public void action(String[] args, MessageReceivedEvent event) {
-        event.getMessage().delete().queue();
-        event.getChannel().sendMessage(event.getAuthor().getAsMention() + " https://poedelhost.nl of https://poedelhosting.nl").queue();
+        event.getTextChannel().sendTyping().queue();
+        event.getTextChannel().sendMessage("( ͡° ͜ʖ ͡°)").queue();
 
     }
 

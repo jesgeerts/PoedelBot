@@ -1,8 +1,9 @@
-package nl.jessegeerts.discordbots.poedelbot.command;
+package nl.jessegeerts.discordbots.poedelbot.command.hostrelated;
 
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
+import nl.jessegeerts.discordbots.poedelbot.command.Command;
 
-public class ImDone implements Command {
+public class Website  implements Command {
     @Override
     public boolean called(String[] args, MessageReceivedEvent event) {
         return false;
@@ -10,8 +11,9 @@ public class ImDone implements Command {
 
     @Override
     public void action(String[] args, MessageReceivedEvent event) {
-        event.getTextChannel().sendTyping().queue();
-       event.getTextChannel().sendMessage(event.getAuthor().getAsMention() + " : https://giphy.com/gifs/disney-dog-no-3XiQswSmbjBiU").queue();
+        event.getMessage().delete().queue();
+        event.getChannel().sendMessage(event.getAuthor().getAsMention() + " https://poedelhost.nl of https://poedelhosting.nl").queue();
+
     }
 
     @Override

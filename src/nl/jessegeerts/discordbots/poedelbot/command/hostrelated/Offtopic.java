@@ -1,6 +1,8 @@
-package nl.jessegeerts.discordbots.poedelbot.command;
+package nl.jessegeerts.discordbots.poedelbot.command.hostrelated;
 
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
+import nl.jessegeerts.discordbots.poedelbot.command.Command;
+import nl.jessegeerts.discordbots.poedelbot.util.STATIC;
 
 public class Offtopic implements Command {
     @Override
@@ -11,8 +13,7 @@ public class Offtopic implements Command {
     @Override
     public void action(String[] args, MessageReceivedEvent event) {
 
-        event.getChannel().sendMessage("").queue();
-        event.getChannel().sendMessage(":poodle: GROTE POEDELS :open_mouth: :poodle:").queue();
+        event.getChannel().sendMessage(":poodle: De staff verzoekt jullie om het gesprek verder te voeren in: "+event.getGuild().getTextChannelById(STATIC.CHANNEL_OFFTOPIC_ID).getAsMention() + " :poodle:").queue();
     }
 
     @Override

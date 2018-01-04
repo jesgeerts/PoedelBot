@@ -1,14 +1,15 @@
-package nl.jessegeerts.discordbots.poedelbot.command;
+package nl.jessegeerts.discordbots.poedelbot.command.other;
 
 import net.dv8tion.jda.core.OnlineStatus;
 import net.dv8tion.jda.core.entities.Game;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
+import nl.jessegeerts.discordbots.poedelbot.command.Command;
 import nl.jessegeerts.discordbots.poedelbot.util.STATIC;
 
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class Help implements Command{
+public class Help implements Command {
     @Override
     public boolean called(String[] args, MessageReceivedEvent event) {
         return false;

@@ -1,8 +1,8 @@
-package nl.jessegeerts.discordbots.poedelbot.command;
+package nl.jessegeerts.discordbots.poedelbot.command.fun;
 
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 
-public class Vis implements Command {
+public class Shrug implements Command {
     @Override
     public boolean called(String[] args, MessageReceivedEvent event) {
         return false;
@@ -10,9 +10,8 @@ public class Vis implements Command {
 
     @Override
     public void action(String[] args, MessageReceivedEvent event) {
-
-        event.getChannel().sendMessage("https://giphy.com/gifs/sZuOTyAtf5IxG").queue();
-        event.getChannel().sendMessage(":fish: Vissen zijn lekker mmhmmhmhm :fish: ").queue();
+        event.getTextChannel().sendTyping().queue();
+        event.getTextChannel().sendMessage(event.getAuthor().getAsMention() + ": ¯\\_(ツ)_/¯").queue();
     }
 
     @Override

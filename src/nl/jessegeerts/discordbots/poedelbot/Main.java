@@ -6,9 +6,20 @@ import net.dv8tion.jda.core.JDABuilder;
 import net.dv8tion.jda.core.OnlineStatus;
 import net.dv8tion.jda.core.entities.Game;
 import net.dv8tion.jda.core.exceptions.RateLimitedException;
-import nl.jessegeerts.discordbots.poedelbot.command.*;
+import nl.jessegeerts.discordbots.poedelbot.command.fun.*;
+import nl.jessegeerts.discordbots.poedelbot.command.hostrelated.Offtopic;
+import nl.jessegeerts.discordbots.poedelbot.command.hostrelated.Prijzen;
+import nl.jessegeerts.discordbots.poedelbot.command.hostrelated.Tutorial;
+import nl.jessegeerts.discordbots.poedelbot.command.hostrelated.Website;
+import nl.jessegeerts.discordbots.poedelbot.command.moderation.Clear;
+import nl.jessegeerts.discordbots.poedelbot.command.moderation.Kick;
+import nl.jessegeerts.discordbots.poedelbot.command.other.Help;
 import nl.jessegeerts.discordbots.poedelbot.core.commandHandler;
 import nl.jessegeerts.discordbots.poedelbot.listeners.*;
+import nl.jessegeerts.discordbots.poedelbot.listeners.events.Ban;
+import nl.jessegeerts.discordbots.poedelbot.listeners.events.BanRemoved;
+import nl.jessegeerts.discordbots.poedelbot.listeners.events.Join;
+import nl.jessegeerts.discordbots.poedelbot.listeners.events.Leave;
 import nl.jessegeerts.discordbots.poedelbot.util.SECRETS;
 
 import javax.security.auth.login.LoginException;
@@ -64,13 +75,26 @@ addCommands();
         commandHandler.commands.put("gofuckyourself", new GFY());
         commandHandler.commands.put("wat", new Wat());
         commandHandler.commands.put("website", new Website());
+        commandHandler.commands.put("offtopic", new Offtopic());
+        commandHandler.commands.put("roll", new Roll());
+        commandHandler.commands.put("rol", new Roll());
+        commandHandler.commands.put("kick", new Kick());
+        commandHandler.commands.put("schop", new Kick());
+        commandHandler.commands.put("ban", new nl.jessegeerts.discordbots.poedelbot.command.moderation.Ban());
+        commandHandler.commands.put("banhamer", new nl.jessegeerts.discordbots.poedelbot.command.moderation.Ban());
+        commandHandler.commands.put("prijzen", new Prijzen());
+        commandHandler.commands.put("pricing", new Prijzen());
+        commandHandler.commands.put("eightball", new Eightball());
+        commandHandler.commands.put("8ball", new Eightball());
     }
 
     public static void addListeners(){
         builder.addEventListener(new commandListener());
         builder.addEventListener(new readyListener());
         builder.addEventListener(new messageListener());
-        builder.addEventListener(new Spam());
-        builder.addEventListener(new Events());
+        builder.addEventListener(new Join());
+        builder.addEventListener(new Leave());
+        builder.addEventListener(new Ban());
+        builder.addEventListener(new BanRemoved());
     }
 }

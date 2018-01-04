@@ -1,11 +1,8 @@
-package nl.jessegeerts.discordbots.poedelbot.command;
+package nl.jessegeerts.discordbots.poedelbot.command.fun;
 
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 
-import java.util.Timer;
-import java.util.TimerTask;
-
-public class Hurray implements Command {
+public class GFY implements Command {
     @Override
     public boolean called(String[] args, MessageReceivedEvent event) {
         return false;
@@ -13,13 +10,8 @@ public class Hurray implements Command {
 
     @Override
     public void action(String[] args, MessageReceivedEvent event) {
-        event.getTextChannel().sendTyping().queue();
-        new Timer().schedule(new TimerTask() {
-            @Override
-            public void run() {
-                event.getTextChannel().sendMessage("ヽ(^o^)ノ").queue();
-            }
-        },1000);
+   event.getChannel().sendMessage("GO FUCK YOUSELF").queue();
+        event.getChannel().sendMessage("https://giphy.com/gifs/fuck-you-go-yourself-D7cIragSKMn8k").queue();
     }
 
     @Override

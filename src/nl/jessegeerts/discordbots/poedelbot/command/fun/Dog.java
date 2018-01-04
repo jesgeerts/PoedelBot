@@ -1,6 +1,7 @@
-package nl.jessegeerts.discordbots.poedelbot.command;
+package nl.jessegeerts.discordbots.poedelbot.command.fun;
 
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
+import nl.jessegeerts.discordbots.poedelbot.command.Command;
 
 import java.util.Timer;
 import java.util.TimerTask;
