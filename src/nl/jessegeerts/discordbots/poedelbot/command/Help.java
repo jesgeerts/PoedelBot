@@ -1,5 +1,7 @@
 package nl.jessegeerts.discordbots.poedelbot.command;
 
+import net.dv8tion.jda.core.OnlineStatus;
+import net.dv8tion.jda.core.entities.Game;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import nl.jessegeerts.discordbots.poedelbot.util.STATIC;
 
@@ -15,23 +17,38 @@ public class Help implements Command{
     @Override
     public void action(String[] args, MessageReceivedEvent event) {
         if (args.length == 0) {
-            event.getTextChannel().sendMessage("This bot was created by Jesse Geerts @jessegeerts#0330").queue();
+            event.getTextChannel().sendMessage("Deze bot is voor PoedelHost(ing) gemaakt. Mede mogelijk gemaakt door onze poedel 1e klas: @jessegeerts#0330").queue();
         }
         if (args.length == 1) {
+            event.getMessage().delete().queue();
             if (event.getMessage().getContent().equalsIgnoreCase(STATIC.PREFIX +"help shutdown")) {
                 event.getTextChannel().sendMessage("Attempting to shutdown").queue();
-                 new Timer().schedule(new TimerTask() {
-                     @Override
-                     public void run() {
-                         event.getTextChannel().sendMessage("Shutdowned").queue();
-                     }
-                 },2500);
                 new Timer().schedule(new TimerTask() {
                     @Override
                     public void run() {
-                        event.getJDA().shutdown();
+                       event.getJDA().getPresence().setPresence(OnlineStatus.INVISIBLE, Game.listening("Blaffende poedels"));
                     }
-                }, 3000);
+                }, 1500);
+            }
+            if(event.getMessage().getContentDisplay().equalsIgnoreCase(STATIC.PREFIX + "help start")){
+                event.getChannel().sendMessage("Attempting to going back online").queue();
+                new Timer().schedule(new TimerTask() {
+                    @Override
+                    public void run() {
+                        event.getJDA().getPresence().setPresence(OnlineStatus.ONLINE, Game.listening("Blaffende poedels"));
+
+                    }
+                }, 1500);
+            }
+
+            if(event.getMessage().getContentDisplay().equalsIgnoreCase(STATIC.PREFIX + "help channels")){
+                event.getChannel().sendMessage(event.getGuild().getTextChannels().toString()).queue();
+            }
+            if(event.getMessage().getContentDisplay().equalsIgnoreCase(STATIC.PREFIX + "help roles")){
+                event.getChannel().sendMessage(event.getGuild().getRoles().toString()).queue();
+            }
+            if(event.getMessage().getContentDisplay().equalsIgnoreCase(STATIC.PREFIX + "help users")){
+                event.getChannel().sendMessage(event.getGuild().getMembers().toString()).queue();
             }
 
             if(event.getMessage().getContent().equalsIgnoreCase(STATIC.PREFIX + "help owner")){

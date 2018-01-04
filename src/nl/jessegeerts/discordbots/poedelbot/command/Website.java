@@ -10,9 +10,8 @@ public class Website  implements Command {
 
     @Override
     public void action(String[] args, MessageReceivedEvent event) {
-
-        event.getChannel().sendMessage("WAT").queue();
-        event.getChannel().sendMessage("https://giphy.com/gifs/wat-CtLMCCLylm3o4").queue();
+        event.getMessage().delete().queue();
+        event.getChannel().sendMessage(event.getAuthor().getAsMention() + " https://poedelhost.nl of https://poedelhosting.nl").queue();
 
     }
 
