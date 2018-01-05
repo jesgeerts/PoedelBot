@@ -11,6 +11,7 @@ public class STATIC {
 
 
     public static final String JORDY_DISCORD_TOKEN = "300153354842013696";
+    public static final String JESSE_DISCORD_TOKEN = "264697177736085507";
 
 
     public static final String CHANNEL_BAN_LOG_ID = "398448517653463041";

@@ -2,6 +2,7 @@ package nl.jessegeerts.discordbots.poedelbot.command.fun.poedels;
 
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import nl.jessegeerts.discordbots.poedelbot.command.Command;
+import nl.jessegeerts.discordbots.poedelbot.util.STATIC;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -18,7 +19,7 @@ public class DeDikkePoedel implements Command {
         new Timer().schedule(new TimerTask() {
             @Override
             public void run() {
-                event.getChannel().sendMessage(event.getGuild().getMemberById("300153354842013696").getAsMention() + " is de **DIKSTE POEDEL** van deze discord server.").queue();
+                event.getChannel().sendMessage(event.getGuild().getMemberById(STATIC.JORDY_DISCORD_TOKEN).getAsMention() + " is de **DIKSTE POEDEL** van deze discord server.").queue();
             }
         }, 1500);
     }

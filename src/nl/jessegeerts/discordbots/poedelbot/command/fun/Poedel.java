@@ -14,7 +14,6 @@ public class Poedel implements Command {
 
         event.getChannel().sendMessage("https://giphy.com/gifs/dog-weird-exercising-fhQDRJCRCgOwU").queue();
         event.getChannel().sendMessage(":poodle: GROTE POEDELS :open_mouth: :poodle:").queue();
-        event.getChannel().sendMessage(event.getGuild().getMemberById("300153354842013696").getAsMention() + " is een **DIKKE POEDEL**").queue();
     }
 
     @Override

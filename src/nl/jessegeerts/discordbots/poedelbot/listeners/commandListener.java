@@ -20,7 +20,7 @@ public class commandListener extends ListenerAdapter {
         if (event.isFromType(ChannelType.TEXT))
         {
             System.out.printf("[%s][%s] %#s: %s%n", event.getGuild().getName(),
-                    event.getChannel().getName(), event.getAuthor(), event.getMessage().getContent());
+                    event.getChannel().getName(), event.getAuthor(), event.getMessage().getContentDisplay());
             if (event.getMessage().getContentDisplay().startsWith(STATIC.PREFIX) && event.getMessage().getAuthor().getId() != event.getJDA().getSelfUser().getId()) {
                 commandHandler.handleCommand(commandHandler.parse.parser(event.getMessage().getContentRaw(), event));
             }
@@ -31,7 +31,7 @@ public class commandListener extends ListenerAdapter {
 
     public void onPrivateMessageReceived(PrivateMessageReceivedEvent event) {
         if (event.getAuthor().isBot()) return;
-        System.out.println("{PRIVATE} " + event.getAuthor().getName().toString() + " : " + event.getMessage().getContent().toString());
+        System.out.println("{PRIVATE} " + event.getAuthor().getName().toString() + " : " + event.getMessage().getContentDisplay().toString());
         event.getChannel().sendMessage(
                 new EmbedBuilder().setColor(Color.RED).setDescription("Hallo,\n" +
                         "Je kunt mij alleen gebruiken op de discord van PoedelHost. Je kunt de server joinen met: https://poedelhost.nl/discord\nMet vriendelijke groet,\nJesse")
