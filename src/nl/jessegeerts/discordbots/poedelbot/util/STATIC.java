@@ -13,6 +13,7 @@ public class STATIC {
     public static final String CHANNEL_JOIN_LOG_ID = "398468381373628416";
     public static final String CHANNEL_LEAVE_LOG_ID = "398468392127954944";
     public static final String CHANNEL_OFFTOPIC_ID = "398419813577261060";
+    public static final String CHANNEL_BOTCOMMANDS_ID = "398421115925561354";
 
     public static final String ROLE_CEO_ID = "398405360190488577";
     public static final String ROLE_STAFF_ID = "";

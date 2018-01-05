@@ -7,17 +7,15 @@ import net.dv8tion.jda.core.OnlineStatus;
 import net.dv8tion.jda.core.entities.Game;
 import net.dv8tion.jda.core.exceptions.RateLimitedException;
 import nl.jessegeerts.discordbots.poedelbot.command.fun.*;
-import nl.jessegeerts.discordbots.poedelbot.command.hostrelated.Offtopic;
-import nl.jessegeerts.discordbots.poedelbot.command.hostrelated.Prijzen;
-import nl.jessegeerts.discordbots.poedelbot.command.hostrelated.Tutorial;
-import nl.jessegeerts.discordbots.poedelbot.command.hostrelated.Website;
+import nl.jessegeerts.discordbots.poedelbot.command.hostrelated.*;
+import nl.jessegeerts.discordbots.poedelbot.command.moderation.Ban;
 import nl.jessegeerts.discordbots.poedelbot.command.moderation.Clear;
 import nl.jessegeerts.discordbots.poedelbot.command.moderation.Kick;
 import nl.jessegeerts.discordbots.poedelbot.command.other.Help;
 import nl.jessegeerts.discordbots.poedelbot.core.commandHandler;
 import nl.jessegeerts.discordbots.poedelbot.listeners.*;
-import nl.jessegeerts.discordbots.poedelbot.listeners.events.Ban;
-import nl.jessegeerts.discordbots.poedelbot.listeners.events.BanRemoved;
+import nl.jessegeerts.discordbots.poedelbot.listeners.events.BannedListener;
+import nl.jessegeerts.discordbots.poedelbot.listeners.events.Unban;
 import nl.jessegeerts.discordbots.poedelbot.listeners.events.Join;
 import nl.jessegeerts.discordbots.poedelbot.listeners.events.Leave;
 import nl.jessegeerts.discordbots.poedelbot.util.SECRETS;
@@ -39,7 +37,7 @@ public class Main {
         builder.setStatus(OnlineStatus.ONLINE);
 
 
-        builder.setGame(Game.listening("Blaffende Poedels"));
+        builder.setGame(Game.watching("Slapende poedels"));
 
 addListeners();
 addCommands();
@@ -78,12 +76,18 @@ addCommands();
         commandHandler.commands.put("rol", new Roll());
         commandHandler.commands.put("kick", new Kick());
         commandHandler.commands.put("schop", new Kick());
-        commandHandler.commands.put("ban", new nl.jessegeerts.discordbots.poedelbot.command.moderation.Ban());
-        commandHandler.commands.put("banhamer", new nl.jessegeerts.discordbots.poedelbot.command.moderation.Ban());
+        commandHandler.commands.put("ban", new Ban());
+        commandHandler.commands.put("banhamer", new Ban());
         commandHandler.commands.put("prijzen", new Prijzen());
         commandHandler.commands.put("pricing", new Prijzen());
         commandHandler.commands.put("eightball", new Eightball());
         commandHandler.commands.put("8ball", new Eightball());
+        commandHandler.commands.put("pikvis", new Pikvis());
+        commandHandler.commands.put("pingpong", new Tennis());
+        commandHandler.commands.put("tennis", new Tennis());
+        commandHandler.commands.put("botcommands", new BotCommands());
+        commandHandler.commands.put("shrek", new Shrek());
+        commandHandler.commands.put("shrekt", new Shrek());
     }
 
     public static void addListeners(){
@@ -92,7 +96,7 @@ addCommands();
         builder.addEventListener(new messageListener());
         builder.addEventListener(new Join());
         builder.addEventListener(new Leave());
-        builder.addEventListener(new Ban());
-        builder.addEventListener(new BanRemoved());
+        builder.addEventListener(new BannedListener());
+        builder.addEventListener(new Unban());
     }
 }

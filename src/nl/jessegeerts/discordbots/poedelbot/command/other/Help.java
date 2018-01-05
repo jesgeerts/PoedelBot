@@ -18,7 +18,7 @@ public class Help implements Command {
     @Override
     public void action(String[] args, MessageReceivedEvent event) {
         if (args.length == 0) {
-            event.getTextChannel().sendMessage("Deze bot is voor PoedelHost(ing) gemaakt. Mede mogelijk gemaakt door onze poedel 1e klas: @jessegeerts#0330").queue();
+            event.getTextChannel().sendMessage("Deze bot is voor PoedelHost(ing) gemaakt. Mede mogelijk gemaakt door onze poedel 1e klas: @jessegeerts#0330 en de dikste poedel: @Jordy | Developer | FTW#9157").queue();
         }
         if (args.length == 1) {
             event.getMessage().delete().queue();
@@ -27,7 +27,7 @@ public class Help implements Command {
                 new Timer().schedule(new TimerTask() {
                     @Override
                     public void run() {
-                       event.getJDA().getPresence().setPresence(OnlineStatus.INVISIBLE, Game.listening("Blaffende poedels"));
+                       event.getJDA().getPresence().setPresence(OnlineStatus.INVISIBLE, Game.watching("Slapende poedels"));
                     }
                 }, 1500);
             }
@@ -36,7 +36,7 @@ public class Help implements Command {
                 new Timer().schedule(new TimerTask() {
                     @Override
                     public void run() {
-                        event.getJDA().getPresence().setPresence(OnlineStatus.ONLINE, Game.listening("Blaffende poedels"));
+                        event.getJDA().getPresence().setPresence(OnlineStatus.ONLINE, Game.watching("Slapende poedels"));
 
                     }
                 }, 1500);
