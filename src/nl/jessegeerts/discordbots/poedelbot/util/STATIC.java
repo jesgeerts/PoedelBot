@@ -8,6 +8,11 @@ public class STATIC {
 
 
 
+
+
+    public static final String JORDY_DISCORD_TOKEN = "300153354842013696";
+
+
     public static final String CHANNEL_BAN_LOG_ID = "398448517653463041";
     public static final String CHANNEL_NIEUWS_ID = "398442005451112449";
     public static final String CHANNEL_JOIN_LOG_ID = "398468381373628416";

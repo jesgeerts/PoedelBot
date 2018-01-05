@@ -7,6 +7,8 @@ import net.dv8tion.jda.core.OnlineStatus;
 import net.dv8tion.jda.core.entities.Game;
 import net.dv8tion.jda.core.exceptions.RateLimitedException;
 import nl.jessegeerts.discordbots.poedelbot.command.fun.*;
+import nl.jessegeerts.discordbots.poedelbot.command.fun.poedels.DeDikkePoedel;
+import nl.jessegeerts.discordbots.poedelbot.command.fun.poedels.PoedelEersteKlas;
 import nl.jessegeerts.discordbots.poedelbot.command.hostrelated.*;
 import nl.jessegeerts.discordbots.poedelbot.command.moderation.Ban;
 import nl.jessegeerts.discordbots.poedelbot.command.moderation.Clear;
@@ -58,7 +60,6 @@ addCommands();
         commandHandler.commands.put("done", new ImDone());
         commandHandler.commands.put("lenny", new Lenny());
         commandHandler.commands.put("len", new Lenny());
-        commandHandler.commands.put("shrug", new Shrug());
         commandHandler.commands.put("dog", new Dog());
         commandHandler.commands.put("dogs", new Dog());
         commandHandler.commands.put("doge", new Dog());
@@ -88,6 +89,10 @@ addCommands();
         commandHandler.commands.put("botcommands", new BotCommands());
         commandHandler.commands.put("shrek", new Shrek());
         commandHandler.commands.put("shrekt", new Shrek());
+        commandHandler.commands.put("dedikkepoedel", new DeDikkePoedel());
+        commandHandler.commands.put("dedikkstepoedel", new DeDikkePoedel());
+        commandHandler.commands.put("poedeleersteklas", new PoedelEersteKlas());
+        commandHandler.commands.put("poedel1eklas", new PoedelEersteKlas());
     }
 
     public static void addListeners(){
