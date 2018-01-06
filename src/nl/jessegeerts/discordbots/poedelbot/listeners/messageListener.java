@@ -60,6 +60,9 @@ public class messageListener extends ListenerAdapter{
                 channel.sendMessage("https://i.jessegeerts.nl/noot_noot.gif").queue();
                 channel.sendMessage(":fish: :fish: **NOOT NOOT** :fish: :fish:").queue();
             }
+            if(msg.getContentDisplay().contains("carrothost") || msg.getContentDisplay().contains("CARROTHOST") || msg.getContentDisplay().contains("CarrotHost") || msg.getContentDisplay().contains("CARROTHOSTING")){
+                channel.sendMessage(event.getAuthor().getAsMention() + " Flikker op met je klote carrot host.. Die staff heeft PoedelHost en AreaHosting regelmatig geddost en hun staff scheld met een k woord (ziekte). Vermijd die host ten alle tijden!\n#ANTI CARROTGAY").queue();
+            }
         }
 
         //end of channel text
