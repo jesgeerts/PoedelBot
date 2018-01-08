@@ -23,7 +23,13 @@ public class Kick implements Command {
         event.getMessage().delete().queue();
 
 
+
+
+
+
         for(Role role : user2.getJDA().getGuildById(STATIC.DISCORD_SERVER_ID).getMember(user2).getRoles()) {
+
+
 
             if (role.getId().equalsIgnoreCase(STATIC.ROLE_CEO_ID) || role.getId().equalsIgnoreCase(STATIC.ROLE_STAFF_ID)) {
                 if (message.isFromType(ChannelType.TEXT)) {
@@ -60,7 +66,7 @@ public class Kick implements Command {
                             //Remember, due to the fact that we're using queue we will never have to deal with RateLimits.
                             // JDA will do it all for you so long as you are using queue!
                             guild.getController().kick(member).queue(
-                                    success -> channel.sendMessage("D(i)e poedel(s) ").append(member.getEffectiveName()).append(" zijn eruit gegooid..").queue(),
+                                    success -> channel.sendMessage("D(i)e poedel(s) ").append(member.getAsMention()).append(" zijn eruit gegooid..").queue(),
                                     error ->
                                     {
                                         //The failure consumer provides a throwable. In this case we want to check for a PermissionException.

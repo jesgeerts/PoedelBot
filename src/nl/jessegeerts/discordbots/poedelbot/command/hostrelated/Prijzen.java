@@ -15,28 +15,34 @@ public class Prijzen implements Command {
 
     @Override
     public void action(String[] args, MessageReceivedEvent event) {
+        EmbedBuilder minecraft = new EmbedBuilder().setColor(Color.GREEN);
+        EmbedBuilder webhosting = new EmbedBuilder().setColor(Color.RED);
+
 
         MessageChannel channel = event.getChannel();
-        channel.sendMessage(new EmbedBuilder().setTitle("Prijzen/Pricing").setColor(Color.GREEN)
-                .setDescription("***Minecraft pakketten/packages***" +
-                        "\n1GB SSD only: €0,75" +
-                        "\n3GB SSD only: €1,75" +
-                        "\n4GB SSD only: €2,25" +
-                        "\n6GB SSD only: €3,50" +
-                        "\n8GB SSD only: €5,50" +
-                        "\n10GB SSD only: €6,50" +
-                        "\n\n" +
-                        "***Alle pakketten vanaf 6GB zijn opdeelbaar in meerdere servers. Geef dit aan bij het bestellen./All packages from 6GB are splittable into multiple servers. Notice that whilst ordering the server.***" +
-                        "\n***Minecraft Netwerk/Network***" +
-                        "\n16GB RAM, ddos protection, HDD €30" +
-                        "\n24GB RAM, no DDoS protection, SSD €18/mo" +
-                        "\n32GB RAM, DDoS protection, SSD €50" +
-                        "\n\n***Webhosting met/with SSD***" +
-                        "\n5GB: €2/mo, €5/3 months, €9/6 months or €12/yr" +
+        channel.sendMessage(event.getAuthor().getAsMention()).queue();
+        channel.sendMessage(minecraft.setDescription(
+                "1GB RAM, SSD only: €0,75" +
+                "\n3GB RAM, SSD only: €1,75" +
+                "\n4GB RAM, SSD only: €2,25" +
+                "\n6GB RAM, SSD only: €3,50" +
+                "\n8GB RAM, SSD only: €5,50" +
+                "\n10GB RAM, SSD only: €6,50" +
+                "\n\n" +
+                "***Alle pakketten vanaf 6GB zijn opdeelbaar in meerdere servers. Geef dit aan bij het bestellen./All packages from 6GB are splittable into multiple servers. Notice that whilst ordering the server.***")
+                .setTitle("Minecraft Shared Hosting").build()).queue();
+        channel.sendMessage(minecraft.setTitle("Minecraft Netwerk/Network").setDescription(
+                "16GB RAM, DDoS protection, HDD €30/mo" +
+                "\n24GB RAM, no DDoS protection, SSD €18/mo" +
+                "\n32GB RAM, DDoS protection, SSD €50" +
+                "\n***Je krijgt je eigen controle paneel en je krijgt volledige shell toegang./You get your own control panel and shell access onto it.***").build()).queue();
+
+
+        channel.sendMessage(webhosting.setTitle("Web Hosting").setDescription(
+                        "5GB: €2/mo, €5/3 months, €9/6 months or €12/yr" +
                         "\n25GB storage: €8/mo, €20/6 months or €32/yr" +
                         "\n50GB storage: €15/mo, €35/6 months or €45/yr" +
-                        "\n"+
-                        "\nAlle webhosting pakketten komen met DDoS bescherming, onbeperkt bandbreedte etc./All packages are coming with DDoS protection, unlimited bandwith etc.").build()).queue();
+                        "\n***Alle webhosting pakketten komen met DDoS bescherming, onbeperkt bandbreedte etc./All packages are coming with DDoS protection, unlimited bandwith etc.***").build()).queue();
     }
 
     @Override

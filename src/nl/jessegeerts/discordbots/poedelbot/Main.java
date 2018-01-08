@@ -98,6 +98,7 @@ addCommands();
         commandHandler.commands.put("micdrop", new MicDrop());
         commandHandler.commands.put("sponsor", new Sponsor());
         commandHandler.commands.put("dora", new Dora());
+        commandHandler.commands.put("welkomchannelcommand", new Welkomchannelcommand());
     }
 
     public static void addListeners(){
