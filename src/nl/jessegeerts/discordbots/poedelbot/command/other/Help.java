@@ -1,7 +1,10 @@
 package nl.jessegeerts.discordbots.poedelbot.command.other;
 
+import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.OnlineStatus;
 import net.dv8tion.jda.core.entities.Game;
+import net.dv8tion.jda.core.entities.Message;
+import net.dv8tion.jda.core.entities.MessageChannel;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import nl.jessegeerts.discordbots.poedelbot.command.Command;
 import nl.jessegeerts.discordbots.poedelbot.util.STATIC;
@@ -17,13 +20,19 @@ public class Help implements Command {
 
     @Override
     public void action(String[] args, MessageReceivedEvent event) {
+
+        Message msg = event.getMessage();
+        MessageChannel channel = event.getChannel();
+
         if (args.length == 0) {
-            event.getTextChannel().sendMessage("Deze bot is voor PoedelHost(ing) gemaakt. Mede mogelijk gemaakt door onze poedel 1e klas: @jessegeerts#0330 en de dikste poedel: @Jordy | Developer | FTW#9157").queue();
+            channel.sendMessage(new EmbedBuilder().setTitle("Help").setDescription("**Basis commands**\n%pref%website\n%pref%").build()).queue();
+
+            channel.sendMessage("//Even iets minder serieusDeze bot is voor PoedelHost(ing) gemaakt. Mede mogelijk gemaakt door onze poedel 1e klas: @jessegeerts#0330 en de dikste poedel: @Jordy | Developer | FTW#9157").queue();
         }
         if (args.length == 1) {
-            event.getMessage().delete().queue();
-            if(event.getMessage().getContentDisplay().equalsIgnoreCase(STATIC.PREFIX +"help shutdown")) {
-                event.getTextChannel().sendMessage("Attempting to shutdown").queue();
+            msg.delete().queue();
+            if(msg.getContentDisplay().equalsIgnoreCase(STATIC.PREFIX +"help shutdown")) {
+                channel.sendMessage("Attempting to shutdown").queue();
                 new Timer().schedule(new TimerTask() {
                     @Override
                     public void run() {
@@ -31,8 +40,8 @@ public class Help implements Command {
                     }
                 }, 1500);
             }
-            if(event.getMessage().getContentDisplay().equalsIgnoreCase(STATIC.PREFIX + "help start")){
-                event.getChannel().sendMessage("Attempting to going back online").queue();
+            if(msg.getContentDisplay().equalsIgnoreCase(STATIC.PREFIX + "help start")){
+                channel.sendMessage("Attempting to going back online").queue();
                 new Timer().schedule(new TimerTask() {
                     @Override
                     public void run() {
@@ -42,29 +51,29 @@ public class Help implements Command {
                 }, 1500);
             }
 
-            if(event.getMessage().getContentDisplay().equalsIgnoreCase(STATIC.PREFIX + "help channels")){
-                event.getChannel().sendMessage(event.getGuild().getTextChannels().toString()).queue();
+            if(msg.getContentDisplay().equalsIgnoreCase(STATIC.PREFIX + "help channels")){
+                channel.sendMessage(event.getGuild().getTextChannels().toString()).queue();
             }
-            if(event.getMessage().getContentDisplay().equalsIgnoreCase(STATIC.PREFIX + "help roles")){
-                event.getChannel().sendMessage(event.getGuild().getRoles().toString()).queue();
+            if(msg.getContentDisplay().equalsIgnoreCase(STATIC.PREFIX + "help roles")){
+                channel.sendMessage(event.getGuild().getRoles().toString()).queue();
             }
-            if(event.getMessage().getContentDisplay().equalsIgnoreCase(STATIC.PREFIX + "help users")){
-                event.getChannel().sendMessage(event.getGuild().getMembers().toString()).queue();
-            }
-
-            if(event.getMessage().getContentDisplay().equalsIgnoreCase(STATIC.PREFIX + "help owner")){
-                    event.getTextChannel().sendMessage("The server owner: " + event.getGuild().getOwner().getAsMention()).queue();
+            if(msg.getContentDisplay().equalsIgnoreCase(STATIC.PREFIX + "help users")){
+                channel.sendMessage(event.getGuild().getMembers().toString()).queue();
             }
 
-            if(event.getMessage().getContentDisplay().equalsIgnoreCase(STATIC.PREFIX + "help image")){
-                event.getTextChannel().sendMessage(event.getAuthor().getAvatarUrl()).queue();
+            if(msg.getContentDisplay().equalsIgnoreCase(STATIC.PREFIX + "help owner")){
+                channel.sendMessage("The server owner: " + event.getGuild().getOwner().getAsMention()).queue();
             }
-            if(event.getMessage().getContentDisplay().equalsIgnoreCase("%pref%help ping".replace("%pref%", STATIC.PREFIX))){
-                event.getTextChannel().sendTyping().queue();
+
+            if(msg.getContentDisplay().equalsIgnoreCase(STATIC.PREFIX + "help image")){
+                channel.sendMessage(event.getAuthor().getAvatarUrl()).queue();
+            }
+            if(msg.getContentDisplay().equalsIgnoreCase("%pref%help ping".replace("%pref%", STATIC.PREFIX))){
+                channel.sendTyping().queue();
                 new Timer().schedule(new TimerTask() {
                     @Override
                     public void run() {
-                      event.getTextChannel().sendMessage(String.valueOf(event.getJDA().getPing())).queue();
+                        channel.sendMessage(String.valueOf(event.getJDA().getPing())).queue();
                     }
                 },2000);
             }
