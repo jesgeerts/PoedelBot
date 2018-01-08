@@ -6,6 +6,7 @@ import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.core.exceptions.PermissionException;
 import nl.jessegeerts.discordbots.poedelbot.command.Command;
 import nl.jessegeerts.discordbots.poedelbot.util.STATIC;
+import sun.management.StackTraceElementCompositeData;
 
 import java.util.List;
 
@@ -90,7 +91,7 @@ User user2 = event.getAuthor();
                     channel.sendMessage(tagsender + " This is a Guild-Only command!").queue();
                 }
             }else{
-
+                channel.sendMessage("Je hebt geen permissie om dit uit te voeren.").queue();
             }
         }
 

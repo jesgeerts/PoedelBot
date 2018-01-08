@@ -23,7 +23,7 @@ public class Tutorial implements Command {
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         event.getTextChannel().sendTyping().queue();
         event.getTextChannel().sendMessage(kek.setAuthor(event.getJDA().getSelfUser().getName(), "https://poedelhost.nl", event.getJDA().getSelfUser().getAvatarUrl())
-                .setDescription("****\n**Hoe upload je een plugin**\n<https://youtu.be/sbZB3AouOlQ>\n\n\n\nCopyright PoedelHost "+ sdf.format(timestamp))
+                .setDescription("****\n**Hoe krijg je kanker 101**\nGa lekker naar de zonnebank\n\n\n\nCopyright PoedelHost "+ sdf.format(timestamp))
                 .setTitle("**Tutorials**").build()).queue();
     }
 

@@ -36,13 +36,13 @@ public class Clear implements Command {
 
     @Override
     public void action(String[] args, MessageReceivedEvent event) {
-        int numb = getInt(args[0]);
+
         User user2 = event.getAuthor();
 
 
         for (Role role : user2.getJDA().getGuildById(STATIC.DISCORD_SERVER_ID).getMember(user2).getRoles()) {
             if (role.getId().equalsIgnoreCase(STATIC.ROLE_CEO_ID) || role.getId().equalsIgnoreCase(STATIC.ROLE_STAFF_ID)) {
-
+                int numb = getInt(args[0]);
                 if (args.length == 0) {
                     event.getTextChannel().sendTyping().queue();
                     event.getTextChannel().sendMessage(

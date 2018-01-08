@@ -1,12 +1,9 @@
-package nl.jessegeerts.discordbots.poedelbot.command.hostrelated;
+package nl.jessegeerts.discordbots.poedelbot.command.fun;
 
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import nl.jessegeerts.discordbots.poedelbot.command.Command;
 
-import java.util.Timer;
-import java.util.TimerTask;
-
-public class Website implements Command {
+public class MicDrop implements Command {
     @Override
     public boolean called(String[] args, MessageReceivedEvent event) {
         return false;
@@ -14,14 +11,8 @@ public class Website implements Command {
 
     @Override
     public void action(String[] args, MessageReceivedEvent event) {
-        event.getMessage().delete().queue();
-
-        new Timer().schedule(new TimerTask() {
-            @Override
-            public void run() {
-                event.getChannel().sendMessage(event.getAuthor().getAsMention() + " https://poedelhost.nl of https://poedelhosting.nl").queue();
-            }
-        },1500);
+event.getMessage().delete().queue();
+        event.getChannel().sendMessage("https://giphy.com/gifs/mic-drop-peace-out-obama-3o7qDEq2bMbcbPRQ2c").queue();
 
     }
 

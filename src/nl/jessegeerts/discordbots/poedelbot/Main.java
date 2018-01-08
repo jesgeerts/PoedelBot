@@ -15,11 +15,13 @@ import nl.jessegeerts.discordbots.poedelbot.command.moderation.Clear;
 import nl.jessegeerts.discordbots.poedelbot.command.moderation.Kick;
 import nl.jessegeerts.discordbots.poedelbot.command.other.Help;
 import nl.jessegeerts.discordbots.poedelbot.core.commandHandler;
-import nl.jessegeerts.discordbots.poedelbot.listeners.*;
+import nl.jessegeerts.discordbots.poedelbot.listeners.commandListener;
 import nl.jessegeerts.discordbots.poedelbot.listeners.events.BannedListener;
-import nl.jessegeerts.discordbots.poedelbot.listeners.events.Unban;
 import nl.jessegeerts.discordbots.poedelbot.listeners.events.Join;
 import nl.jessegeerts.discordbots.poedelbot.listeners.events.Leave;
+import nl.jessegeerts.discordbots.poedelbot.listeners.events.Unban;
+import nl.jessegeerts.discordbots.poedelbot.listeners.messageListener;
+import nl.jessegeerts.discordbots.poedelbot.listeners.readyListener;
 import nl.jessegeerts.discordbots.poedelbot.util.SECRETS;
 
 import javax.security.auth.login.LoginException;
@@ -93,6 +95,9 @@ addCommands();
         commandHandler.commands.put("dedikkstepoedel", new DeDikkePoedel());
         commandHandler.commands.put("poedeleersteklas", new PoedelEersteKlas());
         commandHandler.commands.put("poedel1eklas", new PoedelEersteKlas());
+        commandHandler.commands.put("micdrop", new MicDrop());
+        commandHandler.commands.put("sponsor", new Sponsor());
+        commandHandler.commands.put("dora", new Dora());
     }
 
     public static void addListeners(){
@@ -104,4 +109,6 @@ addCommands();
         builder.addEventListener(new BannedListener());
         builder.addEventListener(new Unban());
     }
+
+
 }

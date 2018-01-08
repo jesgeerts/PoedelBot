@@ -5,6 +5,7 @@ import net.dv8tion.jda.core.entities.Message;
 import net.dv8tion.jda.core.entities.MessageChannel;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
+import nl.jessegeerts.discordbots.poedelbot.util.STATIC;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -28,15 +29,7 @@ public class messageListener extends ListenerAdapter{
                 }, 1000);
             }
             if (msg.getContentDisplay().contains("┬─┬\uFEFF ノ( ゜-゜ノ)")) {
-                channel.sendTyping().queue();
-
-                new Timer().schedule(new TimerTask() {
-                    @Override
-                    public void run() {
-                        channel.sendMessage(event.getAuthor().getAsMention() + " Waarom zou je de tafel terug omdraaien terwijl ik dat al heb gedaan?").queue();
-                    }
-                }, 1000);
-                channel.sendMessage(event.getGuild().getMemberById("264697177736085507").getAsMention() + " is een Poedel 1e klas.").queue();
+                channel.sendMessage(event.getAuthor().getAsMention() + " Waarom zou je de tafel terug omdraaien terwijl ik dat al heb gedaan?").queue();
             }
 
 
@@ -50,18 +43,37 @@ public class messageListener extends ListenerAdapter{
                 }, 500);
             }
 
+            if(msg.getContentDisplay().startsWith("clap") || msg.getContentDisplay().startsWith("claps") || msg.getContentDisplay().startsWith("CLAPS") || msg.getContentDisplay().startsWith("CLAP")){
+                msg.delete().queue();
+                channel.sendMessage("https://giphy.com/gifs/happy-yes-P0RWkdsRpK7ss").queue();
+            }
+
+            if(msg.getContentDisplay().startsWith(STATIC.PREFIX + "poedel")){
+            return;
+            }
+
+            if(msg.getContentDisplay().startsWith("thinking") || msg.getContentDisplay().startsWith("think") || msg.getContentDisplay().startsWith(":thinking:") || msg.getContentDisplay().startsWith("\uD83E\uDD14")){
+                channel.sendMessage("https://giphy.com/gifs/problem-exam-uzZh2psw4J3ri ").queue();
+            }
+            if(msg.getContentDisplay().contains("gay") || msg.getContentDisplay().contains("GAY")){
+                channel.sendMessage("https://giphy.com/gifs/quote-gay-class-fiUYFctPsxGUMwe").queue();
+            }
+            if(msg.getContentDisplay().contains("\uD83D\uDC4B")){
+                channel.sendMessage("https://giphy.com/gifs/bye-goodbye-the-little-rascals-GB0lKzzxIv1te").queue();
+            }
+
             if(msg.getContentDisplay().contains("poedel") || msg.getContentDisplay().contains("POEDEL") || msg.getContentDisplay().contains("poodle") || msg.getContentDisplay().contains("POODLE")){
                 channel.sendMessage(":poodle: :poodle: :poodle: :poodle: :poodle: :poodle: :poodle: :poodle: :poodle: :poodle: :poodle: :poodle: :poodle: :poodle:").queue();
                 channel.sendMessage("https://giphy.com/gifs/poodle-XdihmyBs3QNRm").queue();
+            }
+            if(msg.getContentDisplay().contains("bruh") || msg.getContentDisplay().contains("Bruh") || msg.getContentDisplay().contains("BRUH")){
+                channel.sendMessage("https://giphy.com/gifs/NrqabhEpXWsGA").queue();
             }
 
             if(msg.getContentDisplay().contains("noot") || msg.getContentDisplay().contains("NOOT") || msg.getContentDisplay().contains("NOOT NOOT") || msg.getContentDisplay().contains("noot noot")){
                 channel.sendMessage(":fish: :fish: **NOOT NOOT** :fish: :fish:").queue();
                 channel.sendMessage("https://i.jessegeerts.nl/noot_noot.gif").queue();
                 channel.sendMessage(":fish: :fish: **NOOT NOOT** :fish: :fish:").queue();
-            }
-            if(msg.getContentDisplay().contains("carrothost") || msg.getContentDisplay().contains("CARROTHOST") || msg.getContentDisplay().contains("CarrotHost") || msg.getContentDisplay().contains("CARROTHOSTING")){
-                channel.sendMessage(event.getAuthor().getAsMention() + " Flikker op met je klote carrot host.. Die staff heeft PoedelHost en AreaHosting regelmatig geddost en hun staff scheld met een k woord (ziekte). Vermijd die host ten alle tijden!\n#ANTI CARROTGAY").queue();
             }
         }
 

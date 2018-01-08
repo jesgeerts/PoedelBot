@@ -1,7 +1,6 @@
 package nl.jessegeerts.discordbots.poedelbot.command.hostrelated;
 
 import net.dv8tion.jda.core.EmbedBuilder;
-import net.dv8tion.jda.core.entities.Channel;
 import net.dv8tion.jda.core.entities.MessageChannel;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import nl.jessegeerts.discordbots.poedelbot.command.Command;
@@ -18,7 +17,7 @@ public class Prijzen implements Command {
     public void action(String[] args, MessageReceivedEvent event) {
 
         MessageChannel channel = event.getChannel();
-        event.getChannel().sendMessage(new EmbedBuilder().setTitle("Prijzen/Pricing").setColor(Color.GREEN)
+        channel.sendMessage(new EmbedBuilder().setTitle("Prijzen/Pricing").setColor(Color.GREEN)
                 .setDescription("***Minecraft pakketten/packages***" +
                         "\n1GB SSD only: €0,75" +
                         "\n3GB SSD only: €1,75" +
@@ -28,11 +27,14 @@ public class Prijzen implements Command {
                         "\n10GB SSD only: €6,50" +
                         "\n\n" +
                         "***Alle pakketten vanaf 6GB zijn opdeelbaar in meerdere servers. Geef dit aan bij het bestellen./All packages from 6GB are splittable into multiple servers. Notice that whilst ordering the server.***" +
-                        "\n***Minecraft Netwerk/Network" +
-                        "\n" +
-                        "\n***Webhosting met/with SSD***" +
+                        "\n***Minecraft Netwerk/Network***" +
+                        "\n16GB RAM, ddos protection, HDD €30" +
+                        "\n24GB RAM, no DDoS protection, SSD €18/mo" +
+                        "\n32GB RAM, DDoS protection, SSD €50" +
+                        "\n\n***Webhosting met/with SSD***" +
                         "\n5GB: €2/mo, €5/3 months, €9/6 months or €12/yr" +
-                        "\n25GB storage: €8/mo, 20/6 months or €32/yr" +
+                        "\n25GB storage: €8/mo, €20/6 months or €32/yr" +
+                        "\n50GB storage: €15/mo, €35/6 months or €45/yr" +
                         "\n"+
                         "\nAlle webhosting pakketten komen met DDoS bescherming, onbeperkt bandbreedte etc./All packages are coming with DDoS protection, unlimited bandwith etc.").build()).queue();
     }
