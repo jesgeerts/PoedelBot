@@ -26,6 +26,7 @@ public static final String RULES = "1. Spammen is verboden\n2. Schelden is niet 
     public static final String ROLE_SUPPORT_ID = "398411061436481538";
     public static final String ROLE_PSUPPORT_ID = "398411312972955648";
     public static final String ROLE_CUSTOMER_ID = "399529694606655488";
+    public static final String ROLE_MEMBER_ID = "399915466824613888";
     public static final String ROLE_STAFF_ID = "399870938167902209";
 
 

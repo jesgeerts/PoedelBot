@@ -22,8 +22,9 @@ event.getMessage().delete().queue();
 
 
         channel.sendMessage(new EmbedBuilder().setColor(Color.YELLOW).setTitle("**Welkom**").setDescription("Hallo! En welkom op de discord server van PoedelHost. We vragen aan je om eerst de onderstaande informatie even door te nemen zodat het voor iedereen leuk blifjt.\nHet doel van deze discord server is dat alle klanten en medewerkers van PoedelHost samen komen voor een hele community. Op deze manier is er meer tijd voor de staff om de hosting te verbeteren en dan kunnen wij elkaar zo snel mogelijk helpen. Ben je al nieuwsgierig geworden naar de prijzen? Klik hier dan voor het kanaal %prijzen%".replace("%prijzen%", event.getJDA().getTextChannelById("399880740680237067").getAsMention())).build()).queue();
-        channel.sendMessage(new EmbedBuilder().setColor(Color.magenta).setTitle("**Ranks**").setDescription("Al onze staff heeft haar eigen rank binnen de server\nCEO (Eigenaar) hebben %ceo%\nSupport: %support%\nProef-Support: %psupport%\n***Ben je klant bij ons?*** Neem dan contact op met een van de %ceo% zodat je de %klanten% rank krijgt"
-        .replace("%ceo%", event.getJDA().getRoleById(STATIC.ROLE_CEO_ID).getAsMention()).replace("%support%", event.getJDA().getRoleById(STATIC.ROLE_SUPPORT_ID).getAsMention()).replace("%psupport%", event.getJDA().getRoleById(STATIC.ROLE_PSUPPORT_ID).getAsMention()).replace("%klanten%", event.getJDA().getRoleById(STATIC.ROLE_CUSTOMER_ID).getAsMention())).build()).queue();
+        channel.sendMessage(new EmbedBuilder().setColor(Color.magenta).setTitle("**Ranks**").setDescription("Al onze staff heeft haar eigen rank binnen de server\nCEO (Eigenaar) hebben %ceo%\nSupport: %support%\nProef-Support: %psupport%\n***Ben je klant bij ons?*** Neem dan contact op met een van de %ceo% zodat je de %klanten% rank krijgt.\nJe hebt als het goed is heb je nu de %member% rank."
+        .replace("%ceo%", event.getJDA().getRoleById(STATIC.ROLE_CEO_ID).getAsMention()).replace("%support%", event.getJDA().getRoleById(STATIC.ROLE_SUPPORT_ID).getAsMention()).replace("%psupport%", event.getJDA().getRoleById(STATIC.ROLE_PSUPPORT_ID).getAsMention()).replace("%klanten%", event.getJDA().getRoleById(STATIC.ROLE_CUSTOMER_ID).getAsMention())
+        .replace("%member%", event.getJDA().getRoleById(STATIC.ROLE_MEMBER_ID).getAsMention())).build()).queue();
 
 
 
