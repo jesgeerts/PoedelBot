@@ -99,6 +99,9 @@ addCommands();
         commandHandler.commands.put("sponsor", new Sponsor());
         commandHandler.commands.put("dora", new Dora());
         commandHandler.commands.put("welkomchannelcommand", new Welkomchannelcommand());
+        commandHandler.commands.put("givecustomer", new GiveCustomer());
+        commandHandler.commands.put("takecustomer", new TakeCustomer());
+        commandHandler.commands.put("addmember", new AddMember());
     }
 
     public static void addListeners(){

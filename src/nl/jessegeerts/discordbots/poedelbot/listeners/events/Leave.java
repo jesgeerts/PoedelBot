@@ -13,7 +13,7 @@ public class Leave extends ListenerAdapter {
 
 
         String user = event.getUser().getName();
-        EmbedBuilder kek = new EmbedBuilder().setColor(Color.RED).setDescription("De poedel %user% heeft de server verlaten.".replace("%user%", user)).setTitle("**VAARWEL**").setAuthor(user, event.getUser().getEffectiveAvatarUrl());
+        EmbedBuilder kek = new EmbedBuilder().setColor(Color.RED).setDescription("%user% heeft de server verlaten :sob:.".replace("%user%", user)).setTitle("**VAARWEL**").setAuthor(user, event.getUser().getEffectiveAvatarUrl());
         event.getJDA().getGuildById(STATIC.DISCORD_SERVER_ID).getTextChannelById(STATIC.CHANNEL_LEAVE_LOG_ID).sendMessage(kek.build()).queue();
 
 

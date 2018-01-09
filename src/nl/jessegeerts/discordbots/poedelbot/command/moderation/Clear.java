@@ -113,8 +113,6 @@ public class Clear implements Command {
                         }
                     }, 1000);
                 }
-            }else{
-                event.getChannel().sendMessage("Je hebt geen permsissie").queue();
             }
         }
     }

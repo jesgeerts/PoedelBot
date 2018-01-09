@@ -75,6 +75,12 @@ public class messageListener extends ListenerAdapter{
                 channel.sendMessage("https://i.jessegeerts.nl/noot_noot.gif").queue();
                 channel.sendMessage(":fish: :fish: **NOOT NOOT** :fish: :fish:").queue();
             }
+
+            if(msg.getContentDisplay().contains("Kan iemand me helpen")||msg.getContentDisplay().contains("Kan iemand mij helpen") ||msg.getContentDisplay().contains("kan iemand me helpen")||msg.getContentDisplay().contains("kan iemand mij helpen")){
+                channel.sendMessage(event.getAuthor().getAsMention() + " Met wat kunnen we je helpen? Ik haal eventjes " + event.getGuild().getRoleById(STATIC.ROLE_SUPPORT_ID).getAsMention() + " en " + event.getGuild().getRoleById(STATIC.ROLE_PSUPPORT_ID).getAsMention() + " erbij.").queue();
+
+
+            }
         }
 
         //end of channel text
