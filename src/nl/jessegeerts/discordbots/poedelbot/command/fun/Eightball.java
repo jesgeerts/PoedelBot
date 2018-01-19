@@ -42,7 +42,7 @@ public class Eightball implements Command {
         new Timer().schedule(new TimerTask() {
             @Override
             public void run() {
-                event.getTextChannel().sendMessage(":crystal_ball: " + a[(int) (Math.random() * a.length)]).queue();
+                event.getTextChannel().sendMessage(event.getAuthor().getAsMention() + " :crystal_ball: " + a[(int) (Math.random() * a.length)]).queue();
             }
         }, 1000);
     }

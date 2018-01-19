@@ -56,7 +56,7 @@ public class messageListener extends ListenerAdapter{
                 channel.sendMessage("https://giphy.com/gifs/problem-exam-uzZh2psw4J3ri ").queue();
             }
             if(msg.getContentDisplay().contains("gay") || msg.getContentDisplay().contains("GAY")){
-                channel.sendMessage("https://giphy.com/gifs/quote-gay-class-fiUYFctPsxGUMwe").queue();
+                channel.sendMessage("https://giphy.com/gifs/quote-gay-class-fiUYFctPsxGUM").queue();
             }
             if(msg.getContentDisplay().contains("\uD83D\uDC4B")){
                 channel.sendMessage("https://giphy.com/gifs/bye-goodbye-the-little-rascals-GB0lKzzxIv1te").queue();
@@ -78,8 +78,15 @@ public class messageListener extends ListenerAdapter{
 
             if(msg.getContentDisplay().contains("Kan iemand me helpen")||msg.getContentDisplay().contains("Kan iemand mij helpen") ||msg.getContentDisplay().contains("kan iemand me helpen")||msg.getContentDisplay().contains("kan iemand mij helpen")){
                 channel.sendMessage(event.getAuthor().getAsMention() + " Met wat kunnen we je helpen? Ik haal eventjes " + event.getGuild().getRoleById(STATIC.ROLE_SUPPORT_ID).getAsMention() + " en " + event.getGuild().getRoleById(STATIC.ROLE_PSUPPORT_ID).getAsMention() + " erbij.").queue();
-
-
+            }
+            if(msg.getContentDisplay().contains("spam") || msg.getContentDisplay().contains("spammer") || msg.getContentDisplay().contains("Spam") || msg.getContentDisplay().contains("SPAMMER")){
+            channel.sendMessage("Dat is Hilary Clinton en jij bent een: https://i.jessegeerts.nl/SPAMMER.jpg").queue();
+            }
+            if(msg.getContentDisplay().contains("ok") || msg.getContentDisplay().contains("okeh")|| msg.getContentDisplay().contains("Ok") || msg.getContentDisplay().contains("Okeh")){
+                if(msg.getContentDisplay().contains("ook") ||msg.getContentDisplay().contains("Ook")){
+                    return;
+                }
+                channel.sendMessage("https://giphy.com/gifs/hollywoodsuite-80s-eddie-murphy-beverly-hills-cop-3oEjI5VtIhHvK37WYo").queue();
             }
         }
 

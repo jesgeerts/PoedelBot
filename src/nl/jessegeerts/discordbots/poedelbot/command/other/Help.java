@@ -25,9 +25,9 @@ public class Help implements Command {
         MessageChannel channel = event.getChannel();
 
         if (args.length == 0) {
-            channel.sendMessage(new EmbedBuilder().setTitle("Help").setDescription("**Basis commands**\n%pref%website\n%pref%").build()).queue();
+            channel.sendMessage(new EmbedBuilder().setTitle("Help").setDescription("**Basis commands**\n%pref%website\n%pref%".replace("%pref%", STATIC.PREFIX)).build()).queue();
 
-            channel.sendMessage("//Even iets minder serieusDeze bot is voor PoedelHost(ing) gemaakt. Mede mogelijk gemaakt door onze poedel 1e klas: @jessegeerts#0330 en de dikste poedel: @Jordy | Developer | FTW#9157").queue();
+            channel.sendMessage("//Even iets minder serieus Deze bot is voor PoedelHost(ing) gemaakt. Mede mogelijk gemaakt door onze poedel 1e klas: @jessegeerts#0330 en de dikste poedel: @Jordy | Developer | FTW#9157").queue();
         }
         if (args.length == 1) {
             msg.delete().queue();

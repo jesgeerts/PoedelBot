@@ -1,10 +1,12 @@
 package nl.jessegeerts.discordbots.poedelbot.command.hostrelated;
 
+import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import nl.jessegeerts.discordbots.poedelbot.command.Command;
-import nl.jessegeerts.discordbots.poedelbot.util.STATIC;
 
-public class BotCommands implements Command {
+import java.awt.*;
+
+public class AanbiedingenStartCmd implements Command {
     @Override
     public boolean called(String[] args, MessageReceivedEvent event) {
         return false;
@@ -12,7 +14,9 @@ public class BotCommands implements Command {
 
     @Override
     public void action(String[] args, MessageReceivedEvent event) {
-        event.getChannel().sendMessage(":poodle: De staff verzoekt jullie om de bot commands in : "+event.getGuild().getTextChannelById(STATIC.CHANNEL_BOTCOMMANDS_ID).getAsMention() + " uit te voeren :poodle:").queue();
+        event.getMessage().delete().queue();
+        event.getChannel().sendMessage(new EmbedBuilder().setColor(Color.BLUE).setTitle("Aanbiedingen").setDescription("Hey hallo!, We zullen hier met enige regelmaat prachtige aanbiedingen plaatsen. Heb je een idee voor een aanbieding? Laat onze CEO's het weten!").build()).queue();
+
     }
 
     @Override
