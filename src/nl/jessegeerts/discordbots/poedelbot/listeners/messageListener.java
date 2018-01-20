@@ -62,7 +62,7 @@ public class messageListener extends ListenerAdapter{
                 channel.sendMessage("https://giphy.com/gifs/bye-goodbye-the-little-rascals-GB0lKzzxIv1te").queue();
             }
 
-            if(msg.getContentDisplay().contains("poedel") || msg.getContentDisplay().contains("POEDEL") || msg.getContentDisplay().contains("poodle") || msg.getContentDisplay().contains("POODLE")){
+            if(msg.getContentDisplay().contains("Poedel")||msg.getContentDisplay().contains("Poodle")||msg.getContentDisplay().contains("poedel") || msg.getContentDisplay().contains("POEDEL") || msg.getContentDisplay().contains("poodle") || msg.getContentDisplay().contains("POODLE")){
                 channel.sendMessage(":poodle: :poodle: :poodle: :poodle: :poodle: :poodle: :poodle: :poodle: :poodle: :poodle: :poodle: :poodle: :poodle: :poodle:").queue();
                 channel.sendMessage("https://giphy.com/gifs/poodle-XdihmyBs3QNRm").queue();
             }
