@@ -2,7 +2,9 @@ package nl.jessegeerts.discordbots.poedelbot.command.moderation;
 
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.Permission;
+import net.dv8tion.jda.core.entities.Member;
 import net.dv8tion.jda.core.entities.Message;
+import net.dv8tion.jda.core.entities.MessageChannel;
 import net.dv8tion.jda.core.entities.MessageHistory;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import nl.jessegeerts.discordbots.poedelbot.command.Command;
@@ -33,35 +35,62 @@ public class Clear implements Command {
 
     @Override
     public void action(String[] args, MessageReceivedEvent event) {
+Member selfMember = event.getGuild().getSelfMember();
+MessageChannel channel = event.getChannel();
+Member member3 =event.getMember();
 
 
 
-        int numb = getInt(args[0]);
-        if (args.length == 0) {
-            event.getTextChannel().sendTyping().queue();
-            event.getTextChannel().sendMessage(
-                    error.setDescription("Hoeveel berichten moet ik voor je verwijderen? Het kan vanaf 2 tot 100").build()
-            ).queue();
-        }
+        if(member3.hasPermission(Permission.ADMINISTRATOR) || member3.hasPermission(Permission.MESSAGE_MANAGE)){
+            if (args.length == 0) {
+                channel.sendMessage(
+                        error.setDescription("Hoeveel berichten moet ik voor je verwijderen? Het kan vanaf 2 tot 100").build()
+                ).queue();
+            }
+
+            int numb = getInt(args[0]);
+            if (numb > 1 && numb <= 100) {
+
+                try {
 
 
-        if (numb > 1 && numb <= 100) {
+                    if (selfMember.hasPermission(Permission.MESSAGE_MANAGE) || selfMember.hasPermission(Permission.ADMINISTRATOR)) {
+                        MessageHistory history = new MessageHistory(event.getTextChannel());
+                        List<Message> msgs;
 
-            try {
+                        event.getMessage().delete().queue();
 
+                        msgs = history.retrievePast(numb).complete();
 
-                if (event.getGuild().getSelfMember().hasPermission(Permission.MESSAGE_MANAGE) || event.getGuild().getSelfMember().hasPermission(Permission.ADMINISTRATOR)) {
-                    MessageHistory history = new MessageHistory(event.getTextChannel());
-                    List<Message> msgs;
+                        event.getTextChannel().deleteMessages(msgs).queue();
 
-                    event.getMessage().delete().queue();
+                        Message msg = channel.sendMessage(
+                                new EmbedBuilder().setColor(Color.GREEN).setDescription("%msgs% berichten zijn verwijderd".replace("%msgs%", args[0])).build()
+                        ).complete();
 
-                    msgs = history.retrievePast(numb).complete();
+                        new Timer().schedule(new TimerTask() {
+                            @Override
+                            public void run() {
+                                msg.delete().queue();
+                            }
+                        }, 3000);
+                    } else {
 
-                    event.getTextChannel().deleteMessages(msgs).queue();
+                        channel.sendTyping().queue();
 
-                    Message msg = event.getTextChannel().sendMessage(
-                            new EmbedBuilder().setColor(Color.GREEN).setDescription("Deleted " + args[0] + " messages!").build()
+                        new Timer().schedule(new TimerTask() {
+                            @Override
+                            public void run() {
+                                channel.sendMessage(event.getAuthor().getAsMention()).queue();
+                                channel.sendMessage(new EmbedBuilder().setDescription("Ik heb geen permissie om berichten te verwijderen. (MESSAGE_MANAGE) of (ADMINISTRATOR)").setColor(Color.RED).build()).queue();
+                            }
+                        }, 2000);
+                    }
+
+                } catch (Exception e) {
+
+                    Message msg = channel.sendMessage(
+                            new EmbedBuilder().setColor(Color.RED).setDescription("Er is iets fout gegaan tijdens het zoeken van berichten. Wellicht zijn het berichten die ouder zijn dan 2 weken.\nProbeer iets minder dan %arg%".replace("%arg%", args[0])).build()
                     ).complete();
 
                     new Timer().schedule(new TimerTask() {
@@ -69,53 +98,38 @@ public class Clear implements Command {
                         public void run() {
                             msg.delete().queue();
                         }
-                    }, 3000);
-                } else {
-
-                    event.getTextChannel().sendTyping().queue();
-
-                    new Timer().schedule(new TimerTask() {
-                        @Override
-                        public void run() {
-                            event.getTextChannel().sendMessage(event.getAuthor().getAsMention()).queue();
-                            event.getTextChannel().sendMessage(new EmbedBuilder().setDescription("I don't have permission to remove messages. (MESSAGE_MANAGE) OR (ADMINISTRATOR)").setColor(Color.RED).build()).queue();
-                        }
-                    }, 2000);
+                    },500);
                 }
 
-            } catch (Exception e) {
-
-                Message msg = event.getTextChannel().sendMessage(
-                        new EmbedBuilder().setColor(Color.RED).setDescription("There was an error occured whilst searching for messages. Probably messages which are older then 2 weeks.\nPlease try an lower value then " + args[0]).build()
-                ).complete();
-
+            } else {
+                channel.sendTyping().queue();
                 new Timer().schedule(new TimerTask() {
                     @Override
                     public void run() {
-                     msg.delete().queue();
+
+                        Message msg = channel.sendMessage(
+                                new EmbedBuilder().setColor(Color.RED).setDescription("Please enter a number of messages between 2 and 100!").build()
+                        ).complete();
+
+
+                        new Timer().schedule(new TimerTask() {
+                            @Override
+                            public void run() {
+                                msg.delete().queue();
+                            }
+                        },500);
                     }
-                },500);
+                }, 1000);
             }
+        }else{
+            event.getMessage().delete().queue();
+            if(!event.getAuthor().hasPrivateChannel()){
+                event.getAuthor().openPrivateChannel().queue((privateChannel) ->
+                {
+                    privateChannel.sendMessage(new EmbedBuilder().setColor(Color.RED).setTitle("Geen permissie").setDescription("**TOEGANG GEWEIGERD**\nJe toegang tot dit command is geweigerd.").build()).queue();
+                });
 
-        } else {
-            event.getTextChannel().sendTyping().queue();
-            new Timer().schedule(new TimerTask() {
-                @Override
-                public void run() {
-
-                    Message msg = event.getTextChannel().sendMessage(
-                            new EmbedBuilder().setColor(Color.RED).setDescription("Please enter a number of messages between 2 and 100!").build()
-                    ).complete();
-
-
-                    new Timer().schedule(new TimerTask() {
-                        @Override
-                        public void run() {
-                         msg.delete().queue();
-                        }
-                    },500);
-                }
-            }, 1000);
+            }
         }
     }
 

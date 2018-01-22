@@ -12,7 +12,14 @@ public class BotCommands implements Command {
 
     @Override
     public void action(String[] args, MessageReceivedEvent event) {
-        event.getChannel().sendMessage(":poodle: De staff verzoekt jullie om de bot commands in : "+event.getGuild().getTextChannelById(STATIC.CHANNEL_BOTCOMMANDS_ID).getAsMention() + " uit te voeren :poodle:").queue();
+        if (event.getGuild().getName().equalsIgnoreCase("Poedel Host")) {
+            event.getChannel().sendMessage(":poodle: De staff verzoekt jullie om de bot commands in : " + event.getGuild().getTextChannelById(STATIC.CHANNEL_BOTCOMMANDS_ID).getAsMention() + " uit te voeren :poodle:").queue();
+        }else if(event.getGuild().getName().equalsIgnoreCase("Poedel Fans")){
+            event.getChannel().sendMessage(":poodle: De staff verzoekt jullie om de bot commands in : " + event.getGuild().getTextChannelById("404705649231003649").getAsMention() + " uit te voeren :poodle:").queue();
+
+        }else{
+            return;
+        }
     }
 
     @Override

@@ -36,4 +36,9 @@ public static final String RULES = "1. Spammen is verboden\n2. Schelden is niet 
 
 
     public static  final String ADMIN_USERS_URL = "https://static.poedelhost.nl/discordbot/admin_users.json";
+
+
+
+
+
 }

@@ -12,10 +12,17 @@ public class Leave extends ListenerAdapter {
     public void onGuildMemberLeave(GuildMemberLeaveEvent event){
 
 
-        String user = event.getUser().getName();
-        EmbedBuilder kek = new EmbedBuilder().setColor(Color.RED).setDescription("%user% heeft de server verlaten :sob:.".replace("%user%", user)).setTitle("**VAARWEL**").setAuthor(user, event.getUser().getEffectiveAvatarUrl());
-        event.getJDA().getGuildById(STATIC.DISCORD_SERVER_ID).getTextChannelById(STATIC.CHANNEL_LEAVE_LOG_ID).sendMessage(kek.build()).queue();
 
+
+
+        if (event.getGuild().getName().equalsIgnoreCase("Poedel Host")) {
+            String user = event.getUser().getName();
+            EmbedBuilder kek = new EmbedBuilder().setColor(Color.RED).setDescription("%user% heeft de server verlaten :sob:.".replace("%user%", user)).setTitle("**VAARWEL**").setAuthor(user, event.getUser().getEffectiveAvatarUrl());
+            event.getJDA().getGuildById(STATIC.DISCORD_SERVER_ID).getTextChannelById(STATIC.CHANNEL_LEAVE_LOG_ID).sendMessage(kek.build()).queue();
+
+        } else {
+            return;
+        }
 
     }
 }

@@ -41,9 +41,9 @@ if(args.length==0){
                     .setTitle("Minecraft Shared Hosting").build()).queue();
             channel.sendMessage(minecraft.setTitle("Minecraft Netwerk/Network").setDescription(
                     "16GB RAM, DDoS protection, HDD €30/mo" +
-                            "\n24GB RAM, **GEEN** DDoS protection, SSD €18/mo" +
+                            "\n24GB RAM, **GEEN** DDoS protection, SSD €15,50/mo" +
                             "\n32GB RAM, DDoS protection, SSD €50" +
-                            "\n***Je krijgt je eigen controle paneel en je krijgt volledige shell toegang.***").build()).queue();
+                            "\n***Je krijgt je eigen controle paneel (Pterodactyl) en je krijgt volledige shell toegang!.***\n**Wil je een andere panel? Neem dan contact op met %ceo% voor de prijzen**\n\n!Je dient een SSH sleutel te gebruiken en je mag onze toegang nooit verwijderen.".replace("%ceo%", event.getGuild().getRoleById(STATIC.ROLE_CEO_ID).getAsMention())).build()).queue();
 
 
             channel.sendMessage(webhosting.setTitle("Web Hosting").setDescription(

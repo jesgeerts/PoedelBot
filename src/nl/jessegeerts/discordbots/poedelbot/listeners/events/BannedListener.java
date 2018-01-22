@@ -11,11 +11,16 @@ public class BannedListener extends ListenerAdapter {
 
     @Override
     public void onGuildBan(GuildBanEvent event){
+
         String user = event.getUser().getName();
         EmbedBuilder kek = new EmbedBuilder().setColor(Color.RED).setDescription("De gebruiker **%user%** is verbannen van de discord server.\nWat een poedel zeg..".replace("%user%", user)).setTitle("**BANNED**").setAuthor(user, event.getUser().getEffectiveAvatarUrl());
-        event.getJDA().getGuildById(STATIC.DISCORD_SERVER_ID).getTextChannelById(STATIC.CHANNEL_BAN_LOG_ID).sendMessage(kek.build()).queue();
-
-
+        if (event.getGuild().getName().equalsIgnoreCase("Poedel Host")) {
+            event.getGuild().getTextChannelById(STATIC.CHANNEL_BAN_LOG_ID).sendMessage(kek.build()).queue();
+        } else if(event.getGuild().getName().equalsIgnoreCase("Poedel Fans")){
+            event.getGuild().getTextChannelById("404713558065152001").sendMessage(kek.build()).queue();
+        }else{
+            return;
+        }
 
     }
 }

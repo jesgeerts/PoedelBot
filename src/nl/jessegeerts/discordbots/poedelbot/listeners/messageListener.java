@@ -28,6 +28,10 @@ public class messageListener extends ListenerAdapter{
                     }
                 }, 1000);
             }
+
+            if(msg.getContentDisplay().contains(event.getGuild().getSelfMember().getAsMention()) || msg.getContentDisplay().contains("@PoedelBot")){
+                channel.sendMessage(event.getAuthor().getAsMention() + " Ja wat is er?").queue();
+            }
             if (msg.getContentDisplay().contains("┬─┬\uFEFF ノ( ゜-゜ノ)")) {
                 channel.sendMessage(event.getAuthor().getAsMention() + " Waarom zou je de tafel terug omdraaien terwijl ik dat al heb gedaan?").queue();
             }
@@ -59,12 +63,18 @@ public class messageListener extends ListenerAdapter{
                 channel.sendMessage("https://giphy.com/gifs/quote-gay-class-fiUYFctPsxGUM").queue();
             }
             if(msg.getContentDisplay().contains("\uD83D\uDC4B")){
-                channel.sendMessage("https://giphy.com/gifs/bye-goodbye-the-little-rascals-GB0lKzzxIv1te").queue();
+                channel.sendMessage("https://giphy.com/gifs/fashion-blog-UrcXN0zTfzTPi ").queue();
             }
 
             if(msg.getContentDisplay().contains("Poedel")||msg.getContentDisplay().contains("Poodle")||msg.getContentDisplay().contains("poedel") || msg.getContentDisplay().contains("POEDEL") || msg.getContentDisplay().contains("poodle") || msg.getContentDisplay().contains("POODLE")){
+               if(msg.getContentDisplay().contains("PoedelBot") || msg.getContentDisplay().contains("poedelbot") || msg.getContentDisplay().contains(STATIC.PREFIX + "dedikkepoedel") || msg.getContentDisplay().contains(STATIC.PREFIX + "poedel1eklas") || msg.getContentDisplay().contains("poedelhost.nl") || msg.getContentDisplay().contains("poedelhosting.nl") || msg.getContentDisplay().contains("poedelhost")){
+                   return;
+               }
                 channel.sendMessage(":poodle: :poodle: :poodle: :poodle: :poodle: :poodle: :poodle: :poodle: :poodle: :poodle: :poodle: :poodle: :poodle: :poodle:").queue();
                 channel.sendMessage("https://giphy.com/gifs/poodle-XdihmyBs3QNRm").queue();
+            }
+            if(msg.getContentDisplay().startsWith("welkom") || msg.getContentDisplay().startsWith("Welkom")){
+                channel.sendMessage(":star: :star: **WELKOM** bij PoedelHost :star: :star:").queue();
             }
             if(msg.getContentDisplay().contains("bruh") || msg.getContentDisplay().contains("Bruh") || msg.getContentDisplay().contains("BRUH")){
                 channel.sendMessage("https://giphy.com/gifs/NrqabhEpXWsGA").queue();
@@ -80,13 +90,16 @@ public class messageListener extends ListenerAdapter{
                 channel.sendMessage(event.getAuthor().getAsMention() + " Met wat kunnen we je helpen? Ik haal eventjes " + event.getGuild().getRoleById(STATIC.ROLE_SUPPORT_ID).getAsMention() + " en " + event.getGuild().getRoleById(STATIC.ROLE_PSUPPORT_ID).getAsMention() + " erbij.").queue();
             }
             if(msg.getContentDisplay().contains("spam") || msg.getContentDisplay().contains("spammer") || msg.getContentDisplay().contains("Spam") || msg.getContentDisplay().contains("SPAMMER")){
-            channel.sendMessage("Dat is Hilary Clinton en jij bent een: https://i.jessegeerts.nl/SPAMMER.jpg").queue();
+                if(msg.getContentDisplay().contains("spammen") || msg.getContentDisplay().contains("Spammen")){
+                    return;
+                }
+            channel.sendMessage("%user% Hilary Clinton vindt dat je een spammer bent https://i.jessegeerts.nl/SPAMMER.jpg".replace("%user%", event.getAuthor().getAsMention())).queue();
             }
             if(msg.getContentDisplay().contains("ok") || msg.getContentDisplay().contains("okeh")|| msg.getContentDisplay().contains("Ok") || msg.getContentDisplay().contains("Okeh")){
                 if(msg.getContentDisplay().contains("ook") ||msg.getContentDisplay().contains("Ook")){
                     return;
                 }
-                channel.sendMessage("https://giphy.com/gifs/hollywoodsuite-80s-eddie-murphy-beverly-hills-cop-3oEjI5VtIhHvK37WYo").queue();
+                channel.sendMessage("https://giphy.com/gifs/reaction-yes-dykJfX4dbM0Vy ").queue();
             }
         }
 

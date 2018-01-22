@@ -103,6 +103,7 @@ addCommands();
         commandHandler.commands.put("takecustomer", new TakeCustomer());
         commandHandler.commands.put("addmember", new AddMember());
         commandHandler.commands.put("aanbiedingenchannel", new AanbiedingenStartCmd());
+        commandHandler.commands.put("poedelfanadvertentie", new Poedelfanadvertentie());
     }
 
     public static void addListeners(){
