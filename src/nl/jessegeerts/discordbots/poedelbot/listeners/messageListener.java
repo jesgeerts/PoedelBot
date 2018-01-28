@@ -36,6 +36,21 @@ public class messageListener extends ListenerAdapter{
                 channel.sendMessage(event.getAuthor().getAsMention() + " Waarom zou je de tafel terug omdraaien terwijl ik dat al heb gedaan?").queue();
             }
 
+            if(msg.getContentDisplay().contains("lol") || msg.getContentDisplay().contains("Lol") || msg.getContentDisplay().contains("LOL")){
+                channel.sendMessage("https://giphy.com/gifs/mrw-school-loans-6xfVplkfJ8QkE").queue();
+            }
+
+            if(msg.getContentDisplay().contains("\uD83E\uDD26")){
+                channel.sendMessage("https://giphy.com/gifs/reactionseditor-classic-facepalm-3og0INyCmHlNylks9O").queue();
+            }
+
+            if(msg.getContentDisplay().contains("¯\\_(ツ)_/¯") || msg.getContentDisplay().contains("\uD83E\uDD37")){
+                channel.sendMessage("https://giphy.com/gifs/idk-shrug-power-rangers-y65VoOlimZaus").queue();
+            }
+
+            if(msg.getContentDisplay().equalsIgnoreCase("youtu.be") || msg.getContentDisplay().equalsIgnoreCase("youtube.com")){
+                channel.sendMessage("O leuk! Een YouTube video :D").queue();
+            }
 
             if (msg.getContentDisplay().contains("SHOTS FIRED") || msg.getContentDisplay().contains("shots fired") || msg.getContentDisplay().contains("shots")) {
                 channel.sendTyping().queue();
@@ -57,13 +72,20 @@ public class messageListener extends ListenerAdapter{
             }
 
             if(msg.getContentDisplay().startsWith("thinking") || msg.getContentDisplay().startsWith("think") || msg.getContentDisplay().startsWith(":thinking:") || msg.getContentDisplay().startsWith("\uD83E\uDD14")){
-                channel.sendMessage("https://giphy.com/gifs/problem-exam-uzZh2psw4J3ri ").queue();
+                channel.sendMessage(":thinking:").queue();
             }
             if(msg.getContentDisplay().contains("gay") || msg.getContentDisplay().contains("GAY")){
                 channel.sendMessage("https://giphy.com/gifs/quote-gay-class-fiUYFctPsxGUM").queue();
             }
             if(msg.getContentDisplay().contains("\uD83D\uDC4B")){
-                channel.sendMessage("https://giphy.com/gifs/fashion-blog-UrcXN0zTfzTPi ").queue();
+                channel.sendMessage("https://giphy.com/gifs/fashion-blog-UrcXN0zTfzTPi").queue();
+            }
+            if(msg.getContentDisplay().equalsIgnoreCase("rip") || msg.getContentDisplay().equalsIgnoreCase("RIP") || msg.getContentDisplay().equalsIgnoreCase("Rip")){
+                channel.sendMessage("https://giphy.com/gifs/dying-TqZZf1OihxJHq").queue();
+            }
+
+            if(msg.getContentDisplay().contains("slut") || msg.getContentDisplay().contains("Slut") || msg.getContentDisplay().contains("SLUT") || msg.getContentDisplay().contains("slet") || msg.getContentDisplay().contains("Slet") || msg.getContentDisplay().contains("SLET")){
+                channel.sendMessage("https://giphy.com/gifs/realitytvgifs-real-housewives-rhobh-8afd0CpJnrChi").queue();
             }
 
             if(msg.getContentDisplay().contains("Poedel")||msg.getContentDisplay().contains("Poodle")||msg.getContentDisplay().contains("poedel") || msg.getContentDisplay().contains("POEDEL") || msg.getContentDisplay().contains("poodle") || msg.getContentDisplay().contains("POODLE")){
@@ -71,7 +93,7 @@ public class messageListener extends ListenerAdapter{
                    return;
                }
                 channel.sendMessage(":poodle: :poodle: :poodle: :poodle: :poodle: :poodle: :poodle: :poodle: :poodle: :poodle: :poodle: :poodle: :poodle: :poodle:").queue();
-                channel.sendMessage("https://giphy.com/gifs/poodle-XdihmyBs3QNRm").queue();
+                channel.sendMessage("https://giphy.com/gifs/dog-what-confused-h2JpSEKZRbYtO").queue();
             }
             if(msg.getContentDisplay().startsWith("welkom") || msg.getContentDisplay().startsWith("Welkom")){
                 channel.sendMessage(":star: :star: **WELKOM** bij PoedelHost :star: :star:").queue();

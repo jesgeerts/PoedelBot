@@ -10,6 +10,8 @@ import nl.jessegeerts.discordbots.poedelbot.command.fun.*;
 import nl.jessegeerts.discordbots.poedelbot.command.fun.poedels.DeDikkePoedel;
 import nl.jessegeerts.discordbots.poedelbot.command.fun.poedels.PoedelEersteKlas;
 import nl.jessegeerts.discordbots.poedelbot.command.hostrelated.*;
+import nl.jessegeerts.discordbots.poedelbot.command.hostrelated.movechat.BotCommands;
+import nl.jessegeerts.discordbots.poedelbot.command.hostrelated.movechat.Offtopic;
 import nl.jessegeerts.discordbots.poedelbot.command.moderation.Ban;
 import nl.jessegeerts.discordbots.poedelbot.command.moderation.Clear;
 import nl.jessegeerts.discordbots.poedelbot.command.moderation.Kick;

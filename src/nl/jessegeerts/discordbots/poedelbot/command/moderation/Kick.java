@@ -93,13 +93,14 @@ public class Kick implements Command {
             }else{
                 event.getMessage().delete().queue();
                 if(!event.getAuthor().hasPrivateChannel()){
-                    event.getAuthor().openPrivateChannel().queue((privateChannel) ->
-                    {
-                        privateChannel.sendMessage(new EmbedBuilder().setColor(Color.RED).setTitle("Geen permissie").setDescription("**TOEGANG GEWEIGERD**\nJe toegang tot dit command is geweigerd.").build()).queue();
-                    });
+                    event.getAuthor().openPrivateChannel().queue();
 
                 }
 
+                event.getAuthor().openPrivateChannel().queue((privateChannel) ->
+                {
+                    privateChannel.sendMessage(new EmbedBuilder().setColor(Color.RED).setTitle("Geen permissie").setDescription("**TOEGANG GEWEIGERD**\nJe toegang tot dit command is geweigerd.\n\nHet commando wat je deed was: %msg%\nIn de discord server: %server%".replace("%msg%", event.getMessage().getContentDisplay()).replace("%server%",event.getGuild().getName())).build()).queue();
+                });
             }
         }
 

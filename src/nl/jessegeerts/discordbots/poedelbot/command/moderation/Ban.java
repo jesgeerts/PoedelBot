@@ -28,6 +28,7 @@ public class Ban implements Command {
         MessageChannel channel = event.getChannel();
 
 
+
         String tagsender = event.getAuthor().getAsMention();
 Member member3 = event.getMember();
 
@@ -66,11 +67,15 @@ if(member3.hasPermission(Permission.ADMINISTRATOR) || member3.hasPermission(Perm
 if(!member.getUser().hasPrivateChannel()){
                     member.getUser().openPrivateChannel().queue();
 }
+    if(!event.getAuthor().hasPrivateChannel()){
+                    event.getAuthor().openPrivateChannel().queue();
+    }
                 guild.getController().ban(member, 7).queue(
 
                         success -> member.getUser().openPrivateChannel().queue((privateChannel) ->
                         {
                             privateChannel.sendMessage("Je bent verbannen van de Discord server: %server%".replace("%server%", event.getGuild().getName())).queue();
+
                         }),
 
                         error ->
@@ -91,7 +96,6 @@ if(!member.getUser().hasPrivateChannel()){
                                         .append(error.getMessage()).queue();
                             }
                         });
-                guild.getController().ban(member,7 ).queue(success -> channel.sendMessage("De poedel: %poedel% is verbannen".replace("%poedel%", member.getEffectiveName())));
             }
         }
     } else {
@@ -100,12 +104,12 @@ if(!member.getUser().hasPrivateChannel()){
 }else{
     event.getMessage().delete().queue();
     if(!event.getAuthor().hasPrivateChannel()){
-        event.getAuthor().openPrivateChannel().queue((privateChannel) ->
-        {
-            privateChannel.sendMessage(new EmbedBuilder().setColor(Color.RED).setTitle("Geen permissie").setDescription("**TOEGANG GEWEIGERD**\nJe toegang tot dit command is geweigerd.").build()).queue();
-        });
-
+        event.getAuthor().openPrivateChannel().queue();
     }
+    event.getAuthor().openPrivateChannel().queue((privateChannel) ->
+    {
+        privateChannel.sendMessage(new EmbedBuilder().setColor(Color.RED).setTitle("Geen permissie").setDescription("**TOEGANG GEWEIGERD**\nJe toegang tot dit command is geweigerd.\n\nHet commando wat je deed was: %msg%\nIn de discord server: %server%".replace("%msg%", event.getMessage().getContentDisplay()).replace("%server%",event.getGuild().getName())).build()).queue();
+    });
 }
 
 
