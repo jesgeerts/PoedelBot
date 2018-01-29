@@ -48,8 +48,22 @@ public class messageListener extends ListenerAdapter{
                 channel.sendMessage("https://giphy.com/gifs/idk-shrug-power-rangers-y65VoOlimZaus").queue();
             }
 
-            if(msg.getContentDisplay().equalsIgnoreCase("youtu.be") || msg.getContentDisplay().equalsIgnoreCase("youtube.com")){
-                channel.sendMessage("O leuk! Een YouTube video :D").queue();
+            if(msg.getContentDisplay().contains("skid") || msg.getContentDisplay().contains("Skid")){
+                channel.sendMessage("https://i.jessegeerts.nl/skid.gif").queue();
+            }
+
+            if(msg.getContentDisplay().contains("legend") || msg.getContentDisplay().contains("Legend")){
+                Message msg2 = channel.sendMessage("https://giphy.com/gifs/david-bowie-davidbowie-starman-7bVRxNQHN34Va").complete();
+                msg2.addReaction("\uD83C\uDDF1").queue();
+                msg2.addReaction("\uD83C\uDDF2").queue();
+                msg2.addReaction("\uD83C\uDDE6").queue();
+                msg2.addReaction("\uD83C\uDDF4").queue();
+            }
+
+            if(msg.getContentDisplay().equalsIgnoreCase("youtu.be") || msg.getContentDisplay().equalsIgnoreCase("youtube.com") || msg.getContentDisplay().contains("https://www.youtube.com") || msg.getContentDisplay().contains("https://youtu.be")||msg.getContentDisplay().contains("https://www.youtu.be") || msg.getContentDisplay().contains("https://youtube.com")){
+                Message msg2 = channel.sendMessage("O leuk! Een YouTube video :D").complete();
+                msg2.addReaction("\uD83D\uDE04").queue();
+                msg2.addReaction("\uD83D\uDC29").queue();
             }
 
             if (msg.getContentDisplay().contains("SHOTS FIRED") || msg.getContentDisplay().contains("shots fired") || msg.getContentDisplay().contains("shots")) {
@@ -88,7 +102,7 @@ public class messageListener extends ListenerAdapter{
                 channel.sendMessage("https://giphy.com/gifs/realitytvgifs-real-housewives-rhobh-8afd0CpJnrChi").queue();
             }
 
-            if(msg.getContentDisplay().contains("Poedel")||msg.getContentDisplay().contains("Poodle")||msg.getContentDisplay().contains("poedel") || msg.getContentDisplay().contains("POEDEL") || msg.getContentDisplay().contains("poodle") || msg.getContentDisplay().contains("POODLE")){
+            if(msg.getContentDisplay().contains("Poedel")||msg.getContentDisplay().contains("Poodle")||msg.getContentDisplay().contains("poedel") || msg.getContentDisplay().contains("POEDEL") || msg.getContentDisplay().contains("poodle") || msg.getContentDisplay().contains("POODLE") || msg.getContentDisplay().contains("\uD83D\uDC29")){
                if(msg.getContentDisplay().contains("PoedelBot") || msg.getContentDisplay().contains("poedelbot") || msg.getContentDisplay().contains(STATIC.PREFIX + "dedikkepoedel") || msg.getContentDisplay().contains(STATIC.PREFIX + "poedel1eklas") || msg.getContentDisplay().contains("poedelhost.nl") || msg.getContentDisplay().contains("poedelhosting.nl") || msg.getContentDisplay().contains("poedelhost")){
                    return;
                }

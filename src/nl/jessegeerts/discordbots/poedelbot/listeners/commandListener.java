@@ -31,11 +31,11 @@ public class commandListener extends ListenerAdapter {
 
     public void onPrivateMessageReceived(PrivateMessageReceivedEvent event) {
         if (event.getAuthor().isBot()) return;
-        System.out.println("{PRIVATE} " + event.getAuthor().getName().toString() + " : " + event.getMessage().getContentDisplay().toString());
+        System.out.println("{PRIVATE} " + event.getAuthor().getName() + " : " + event.getMessage().getContentDisplay());
         event.getChannel().sendMessage(
                 new EmbedBuilder().setColor(Color.RED).setDescription("Hallo,\n" +
                         "Je kunt mij alleen gebruiken op de discord van PoedelHost. Je kunt de server joinen met: https://poedelhost.nl/discord\nMet vriendelijke groet,\nJesse")
-                        .setTitle("Error 500").setAuthor("jessegeerts#0330", "https://www.jessegeerts.nl", "https://cdn.discordapp.com/avatars/264697177736085507/86f2c9ab66e111df60bc1dc091e67134.png").build()
+                        .setTitle("Error 500").setAuthor("Jesse#1459", "https://www.jessegeerts.nl", "https://cdn.discordapp.com/avatars/264697177736085507/86f2c9ab66e111df60bc1dc091e67134.png").build()
         ).complete();
     }
 }

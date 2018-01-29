@@ -28,6 +28,7 @@ public class Help implements Command {
             channel.sendMessage(new EmbedBuilder().setTitle("Help").setDescription("**Basis commands**\n%pref%website\n%pref%tutorial\n**Leuke en gezellige commands**\n%pref%dog\n%pref%dora\n%pref%eightball\n%pref%micdrop\n%pref%pikvis\n%pref%roll\n%pref%shrek\n%pref%tennis\n%pref%vis\n%pref%wat".replace("%pref%", STATIC.PREFIX)).build()).queue();
             if(event.getGuild().getName().equalsIgnoreCase("Poedel Host")){
                 channel.sendMessage("//Even iets minder serieus Deze bot is voor PoedelHost(ing) gemaakt. Mede mogelijk gemaakt door onze poedel 1e klas: %jesse% en de dikste poedel: %jordy%".replace("%jesse%", event.getGuild().getMemberById(STATIC.JESSE_DISCORD_TOKEN).getAsMention()).replace("%jordy%", event.getGuild().getMemberById(STATIC.JORDY_DISCORD_TOKEN).getAsMention())).queue();
+                return;
             }else{
                 return;
             }
@@ -43,6 +44,9 @@ public class Help implements Command {
                     event.getJDA().getPresence().setPresence(OnlineStatus.INVISIBLE, Game.watching("Slapende poedels"));
                 }
             }, 1500);
+        }
+        if(msg.getContentDisplay().equalsIgnoreCase(STATIC.PREFIX + "help emojis")){
+            channel.sendMessage(String.valueOf(event.getGuild().getEmotes())).complete();
         }
         if (msg.getContentDisplay().equalsIgnoreCase(STATIC.PREFIX + "help start")) {
             channel.sendMessage("Attempting to going back online").queue();

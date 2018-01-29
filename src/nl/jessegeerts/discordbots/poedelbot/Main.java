@@ -16,6 +16,8 @@ import nl.jessegeerts.discordbots.poedelbot.command.moderation.Ban;
 import nl.jessegeerts.discordbots.poedelbot.command.moderation.Clear;
 import nl.jessegeerts.discordbots.poedelbot.command.moderation.Kick;
 import nl.jessegeerts.discordbots.poedelbot.command.other.Help;
+import nl.jessegeerts.discordbots.poedelbot.command.other.PBSay;
+import nl.jessegeerts.discordbots.poedelbot.command.other.Say;
 import nl.jessegeerts.discordbots.poedelbot.core.commandHandler;
 import nl.jessegeerts.discordbots.poedelbot.listeners.commandListener;
 import nl.jessegeerts.discordbots.poedelbot.listeners.events.BannedListener;
@@ -106,6 +108,11 @@ addCommands();
         commandHandler.commands.put("addmember", new AddMember());
         commandHandler.commands.put("aanbiedingenchannel", new AanbiedingenStartCmd());
         commandHandler.commands.put("poedelfanadvertentie", new Poedelfanadvertentie());
+        commandHandler.commands.put("say", new Say());
+        commandHandler.commands.put("dikkiedik", new DikkieDik());
+        commandHandler.commands.put("dikkie", new DikkieDik());
+        commandHandler.commands.put("dik", new DikkieDik());
+        commandHandler.commands.put("pbsay", new PBSay());
     }
 
     public static void addListeners(){
