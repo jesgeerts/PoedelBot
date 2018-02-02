@@ -2,7 +2,7 @@ package nl.jessegeerts.discordbots.poedelbot.util;
 
 
 public class STATIC {
-    public static final String VERSION = "0.3-BETA";
+    public static final String VERSION = "0.5-BETA";
 
     public static final String PREFIX = ".";
 
@@ -36,6 +36,8 @@ public static final String RULES = "1. Spammen is verboden\n2. Schelden is niet 
 
 
     public static final String sorry_maar = "Sorry maar dit commando werkt niet in deze discord server. Dit commando werkt wel in de Discord van PoedelHost: <https://poedelhost.nl/discord>";
+
+    public static final String bot_Log_server = "407920941121929217";
 
 
 

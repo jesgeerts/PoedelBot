@@ -1,16 +1,16 @@
 package nl.jessegeerts.discordbots.poedelbot.command.fun;
 
-import net.dv8tion.jda.core.entities.*;
+import net.dv8tion.jda.core.entities.Message;
+import net.dv8tion.jda.core.entities.MessageChannel;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.core.exceptions.PermissionException;
 import nl.jessegeerts.discordbots.poedelbot.command.Command;
 import nl.jessegeerts.discordbots.poedelbot.util.LeMojis;
 
-import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class DikkieDik implements Command {
+public class Dikname implements Command {
     @Override
     public boolean called(String[] args, MessageReceivedEvent event) {
         return false;
@@ -26,25 +26,20 @@ public class DikkieDik implements Command {
             new Timer().schedule(new TimerTask() {
                 @Override
                 public void run() {
-                    channel.sendMessage(event.getAuthor().getAsMention() + " is Dikkie Dik " + LeMojis.dikkiedik).queue();
+                    channel.sendMessage(event.getAuthor().getAsMention() + " is Dikkie Dik " + LeMojis.dikkiedik + " " + LeMojis.lol).queue();
                 }
             }, 1000);
         }
 
-        if (args.length>=1){
-            Guild guild = event.getGuild();
-            List<User> mentionedUsers = message.getMentionedUsers();
-            try{
-                message.delete().queue();
-            }catch (PermissionException e){
-                channel.sendMessage("Er werkt helaas iets niet..").queue();
-                return;
-            }
-            for (User user : mentionedUsers) {
-                Member member = guild.getMember(user);
+        if (args.length==1){
+                            try{
+                    message.delete().queue();
+                }catch (PermissionException e){
+                    channel.sendMessage("Er werkt helaas iets niet..").queue();
+                    return;
+                }
+                channel.sendMessage("Wist je dat %arg% Dikkie Dik is? %dikkie% %lol%".replace("%dikkie%", LeMojis.dikkiedik).replace("%lol%", LeMojis.lol).replace("%arg%", args[0])).queue();
 
-                channel.sendMessage("Wist je dat ").append(member.getAsMention()).append(" Dikkie Dik is? " + LeMojis.dikkiedik + "\n\n" + LeMojis.lol).queue();
-            }
 
         }
 

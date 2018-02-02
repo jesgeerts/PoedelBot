@@ -5,7 +5,6 @@ import net.dv8tion.jda.core.JDA;
 import net.dv8tion.jda.core.JDABuilder;
 import net.dv8tion.jda.core.OnlineStatus;
 import net.dv8tion.jda.core.entities.Game;
-import net.dv8tion.jda.core.exceptions.RateLimitedException;
 import nl.jessegeerts.discordbots.poedelbot.command.fun.*;
 import nl.jessegeerts.discordbots.poedelbot.command.fun.poedels.DeDikkePoedel;
 import nl.jessegeerts.discordbots.poedelbot.command.fun.poedels.PoedelEersteKlas;
@@ -15,9 +14,7 @@ import nl.jessegeerts.discordbots.poedelbot.command.hostrelated.movechat.Offtopi
 import nl.jessegeerts.discordbots.poedelbot.command.moderation.Ban;
 import nl.jessegeerts.discordbots.poedelbot.command.moderation.Clear;
 import nl.jessegeerts.discordbots.poedelbot.command.moderation.Kick;
-import nl.jessegeerts.discordbots.poedelbot.command.other.Help;
-import nl.jessegeerts.discordbots.poedelbot.command.other.PBSay;
-import nl.jessegeerts.discordbots.poedelbot.command.other.Say;
+import nl.jessegeerts.discordbots.poedelbot.command.other.*;
 import nl.jessegeerts.discordbots.poedelbot.core.commandHandler;
 import nl.jessegeerts.discordbots.poedelbot.listeners.commandListener;
 import nl.jessegeerts.discordbots.poedelbot.listeners.events.BannedListener;
@@ -54,8 +51,6 @@ addCommands();
         } catch (LoginException e) {
             e.printStackTrace();
         } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (RateLimitedException e) {
             e.printStackTrace();
         }
     }
@@ -113,6 +108,11 @@ addCommands();
         commandHandler.commands.put("dikkie", new DikkieDik());
         commandHandler.commands.put("dik", new DikkieDik());
         commandHandler.commands.put("pbsay", new PBSay());
+        commandHandler.commands.put("lol", new Lol());
+        commandHandler.commands.put("happy", new Happy());
+        commandHandler.commands.put("dikname", new Dikname());
+        commandHandler.commands.put("broadcast", new Broadcast());
+        commandHandler.commands.put("bottalk", new Talk());
     }
 
     public static void addListeners(){

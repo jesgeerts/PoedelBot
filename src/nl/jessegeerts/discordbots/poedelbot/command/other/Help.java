@@ -72,6 +72,9 @@ public class Help implements Command {
         if (msg.getContentDisplay().equalsIgnoreCase(STATIC.PREFIX + "help owner")) {
             channel.sendMessage("De guild/discord server eigenaar: " + event.getGuild().getOwner().getAsMention()).queue();
         }
+        if(msg.getContentDisplay().equalsIgnoreCase(STATIC.PREFIX + "help members")){
+            channel.sendMessage(String.valueOf(event.getGuild().getMembers())).queue();
+        }
 
         if (msg.getContentDisplay().equalsIgnoreCase(STATIC.PREFIX + "help image")) {
             channel.sendMessage(event.getAuthor().getAvatarUrl()).queue();

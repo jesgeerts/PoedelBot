@@ -5,6 +5,7 @@ import net.dv8tion.jda.core.entities.Message;
 import net.dv8tion.jda.core.entities.MessageChannel;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
+import nl.jessegeerts.discordbots.poedelbot.util.LeMojis;
 import nl.jessegeerts.discordbots.poedelbot.util.STATIC;
 
 import java.util.Timer;
@@ -37,8 +38,19 @@ public class messageListener extends ListenerAdapter{
             }
 
             if(msg.getContentDisplay().contains("lol") || msg.getContentDisplay().contains("Lol") || msg.getContentDisplay().contains("LOL")){
-                channel.sendMessage("https://giphy.com/gifs/mrw-school-loans-6xfVplkfJ8QkE").queue();
+                if(msg.getContentDisplay().contains(STATIC.PREFIX + "lol")){
+                    return;
+                }
+                channel.sendMessage(LeMojis.lol).queue();
             }
+
+            if(msg.getContentDisplay().contains("happy") || msg.getContentDisplay().contains("Happy")){
+                if(msg.getContentDisplay().contains(STATIC.PREFIX + "happy")){
+                    return;
+                }
+                channel.sendMessage(LeMojis.happy).queue();
+            }
+
 
             if(msg.getContentDisplay().contains("\uD83E\uDD26")){
                 channel.sendMessage("https://giphy.com/gifs/reactionseditor-classic-facepalm-3og0INyCmHlNylks9O").queue();
@@ -66,16 +78,6 @@ public class messageListener extends ListenerAdapter{
                 msg2.addReaction("\uD83D\uDC29").queue();
             }
 
-            if (msg.getContentDisplay().contains("SHOTS FIRED") || msg.getContentDisplay().contains("shots fired") || msg.getContentDisplay().contains("shots")) {
-                channel.sendTyping().queue();
-                new Timer().schedule(new TimerTask() {
-                    @Override
-                    public void run() {
-                        channel.sendMessage("SHOTS FIRED https://giphy.com/gifs/kpop-k-pop-k-pop-3o84sBvfGL9sXgKDIc").queue();
-                    }
-                }, 500);
-            }
-
             if(msg.getContentDisplay().startsWith("clap") || msg.getContentDisplay().startsWith("claps") || msg.getContentDisplay().startsWith("CLAPS") || msg.getContentDisplay().startsWith("CLAP")){
                 msg.delete().queue();
                 channel.sendMessage("https://giphy.com/gifs/happy-yes-P0RWkdsRpK7ss").queue();
@@ -88,6 +90,19 @@ public class messageListener extends ListenerAdapter{
             if(msg.getContentDisplay().startsWith("thinking") || msg.getContentDisplay().startsWith("think") || msg.getContentDisplay().startsWith(":thinking:") || msg.getContentDisplay().startsWith("\uD83E\uDD14")){
                 channel.sendMessage(":thinking:").queue();
             }
+            if(msg.getContentDisplay().contains("pepsi") || msg.getContentDisplay().contains("Pepsi")){
+                Message msg2 = channel.sendMessage("<:pepsi:407929729899954206>").complete();
+                msg2.addReaction("<:pepsi:407929729899954206>").queue();
+                msg2.addReaction("\uD83C\uDDF5").queue();
+                msg2.addReaction("\uD83C\uDDEA").queue();
+                msg2.addReaction("\uD83C\uDD7F").queue();
+                msg2.addReaction("\uD83C\uDDF8").queue();
+                msg2.addReaction("\uD83C\uDDEE").queue();
+
+            }
+            if(msg.getContentDisplay().contains("Zwanger") || msg.getContentDisplay().contains("zwanger") || msg.getContentDisplay().contains("pregnant") || msg.getContentDisplay().contains("Pregnant")){
+                channel.sendMessage(":pregnant_woman: Don't make women pregnant :pregnant_woman: ").queue();
+            }
             if(msg.getContentDisplay().contains("gay") || msg.getContentDisplay().contains("GAY")){
                 channel.sendMessage("https://giphy.com/gifs/quote-gay-class-fiUYFctPsxGUM").queue();
             }
@@ -98,16 +113,13 @@ public class messageListener extends ListenerAdapter{
                 channel.sendMessage("https://giphy.com/gifs/dying-TqZZf1OihxJHq").queue();
             }
 
-            if(msg.getContentDisplay().contains("slut") || msg.getContentDisplay().contains("Slut") || msg.getContentDisplay().contains("SLUT") || msg.getContentDisplay().contains("slet") || msg.getContentDisplay().contains("Slet") || msg.getContentDisplay().contains("SLET")){
-                channel.sendMessage("https://giphy.com/gifs/realitytvgifs-real-housewives-rhobh-8afd0CpJnrChi").queue();
-            }
 
             if(msg.getContentDisplay().contains("Poedel")||msg.getContentDisplay().contains("Poodle")||msg.getContentDisplay().contains("poedel") || msg.getContentDisplay().contains("POEDEL") || msg.getContentDisplay().contains("poodle") || msg.getContentDisplay().contains("POODLE") || msg.getContentDisplay().contains("\uD83D\uDC29")){
                if(msg.getContentDisplay().contains("PoedelBot") || msg.getContentDisplay().contains("poedelbot") || msg.getContentDisplay().contains(STATIC.PREFIX + "dedikkepoedel") || msg.getContentDisplay().contains(STATIC.PREFIX + "poedel1eklas") || msg.getContentDisplay().contains("poedelhost.nl") || msg.getContentDisplay().contains("poedelhosting.nl") || msg.getContentDisplay().contains("poedelhost")){
                    return;
                }
                 channel.sendMessage(":poodle: :poodle: :poodle: :poodle: :poodle: :poodle: :poodle: :poodle: :poodle: :poodle: :poodle: :poodle: :poodle: :poodle:").queue();
-                channel.sendMessage("https://giphy.com/gifs/dog-what-confused-h2JpSEKZRbYtO").queue();
+                channel.sendMessage("https://i.jessegeerts.nl/1LS.gif").queue();
             }
             if(msg.getContentDisplay().startsWith("welkom") || msg.getContentDisplay().startsWith("Welkom")){
                 channel.sendMessage(":star: :star: **WELKOM** bij PoedelHost :star: :star:").queue();

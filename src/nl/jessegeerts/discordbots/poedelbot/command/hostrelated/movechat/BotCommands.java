@@ -20,7 +20,7 @@ public class BotCommands implements Command {
     public void action(String[] args, MessageReceivedEvent event) {
         if(event.getGuild().getName().equalsIgnoreCase("Poedel Host")){
             if(event.getGuild().getMember(event.getAuthor()).hasPermission(Permission.ADMINISTRATOR) || event.getGuild().getMember(event.getAuthor()).hasPermission(Permission.MESSAGE_MANAGE)){
-                event.getChannel().sendMessage(":poodle: De staff verzoekt jullie om het gesprek verder te voeren in: "+event.getGuild().getTextChannelById(STATIC.CHANNEL_OFFTOPIC_ID).getAsMention() + " :poodle:").queue();
+                    event.getChannel().sendMessage(":poodle: De staff verzoekt jullie om het gesprek verder te voeren in: "+event.getGuild().getTextChannelById(STATIC.CHANNEL_BOTCOMMANDS_ID).getAsMention() + " :poodle:").queue();
             }else{
                 Message msg = event.getChannel().sendMessage(event.getAuthor().getAsMention() + " Je bent hiervoor niet gemachtigd").complete();
                 new Timer().schedule(new TimerTask() {
