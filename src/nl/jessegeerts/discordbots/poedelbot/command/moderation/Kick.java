@@ -6,9 +6,12 @@ import net.dv8tion.jda.core.entities.*;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.core.exceptions.PermissionException;
 import nl.jessegeerts.discordbots.poedelbot.command.Command;
+import nl.jessegeerts.discordbots.poedelbot.util.STATIC;
 
 import java.awt.*;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class Kick implements Command {
     @Override
@@ -29,7 +32,15 @@ public class Kick implements Command {
                 if (message.isFromType(ChannelType.TEXT)) {
                     //If no users are provided, we can't kick anyone!
                     if (message.getMentionedUsers().isEmpty()) {
-                        channel.sendMessage(user2.getAsMention() + " :poodle: Je moet een of meerdere poedels taggen om te kunnen kicken. :poodle:").queue();
+                            Message msg = channel.sendMessage(event.getAuthor().getAsMention()).complete();
+                            Message msg2 = channel.sendMessage(STATIC.shit.build()).complete();
+                                new Timer().schedule(new TimerTask() {
+                                @Override
+                                public void run() {
+                                msg.delete().queue();
+                                    msg2.delete().queue();
+                                }
+                                }, 1000);
                     } else {
                         Guild guild = event.getGuild();
                         Member selfMember = guild.getSelfMember();  //This is the currently logged in account's Member object.

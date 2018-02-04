@@ -1,11 +1,15 @@
 package nl.jessegeerts.discordbots.poedelbot.command.other;
 
 import net.dv8tion.jda.core.EmbedBuilder;
+import net.dv8tion.jda.core.entities.Message;
 import net.dv8tion.jda.core.entities.MessageChannel;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import nl.jessegeerts.discordbots.poedelbot.command.Command;
+import nl.jessegeerts.discordbots.poedelbot.util.MSGS;
 
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Quote  implements Command {
 
@@ -22,9 +26,42 @@ public class Quote  implements Command {
         MessageChannel channel = event.getChannel();
         if(args.length==0){
 
-            channel.sendMessage(kek.setAuthor(event.getJDA().getSelfUser().getName(), "https://jessegeerts.nl", event.getJDA().getSelfUser().getEffectiveAvatarUrl()).setDescription("").build()).queue();
+            channel.sendMessage(kek.setAuthor(event.getJDA().getSelfUser().getName(), "https://jessegeerts.nl", event.getJDA().getSelfUser().getEffectiveAvatarUrl()).setDescription("Vul een message ID in").build()).queue();
             return;
         }
+        event.getMessage().delete().queue();
+
+        Message chanMSG = event.getTextChannel().sendMessage(new EmbedBuilder().setDescription("Searching for message in text channels...").build()).complete();
+
+        List<Message> msg = new ArrayList<>();
+        event.getGuild().getTextChannels().forEach(c -> {
+            try {
+                msg.add(c.getMessageById(args[0]).complete());
+            } catch (Exception e) {}
+        });
+
+        if (msg.size() < 1) {
+            chanMSG.editMessage(MSGS.error().setDescription(
+                    "There is no message in any chat on this guild with the ID `" + args[0] + "`."
+            ).build()).queue();
+            return;
+        }
+
+        chanMSG.editMessage(new EmbedBuilder()
+                .setAuthor(msg.get(0).getAuthor().getName(), null, msg.get(0).getAuthor().getAvatarUrl())
+                .setDescription(msg.get(0).getContentDisplay())
+                .setFooter(
+                        msg.get(0).getCreationTime().getDayOfMonth() + ". " +
+                                msg.get(0).getCreationTime().getMonth()  + " " +
+                                msg.get(0).getCreationTime().getYear() +
+                                " om " + msg.get(0).getCreationTime().getHour() + ":" +
+                                msg.get(0).getCreationTime().getMinute() + ":" +
+                                msg.get(0).getCreationTime().getSecond() +
+                                " in kanaal #" + msg.get(0).getTextChannel().getName(),
+                        null)
+                .build()
+        ).queue();
+
     }
 
     @Override

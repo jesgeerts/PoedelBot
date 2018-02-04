@@ -1,6 +1,10 @@
 package nl.jessegeerts.discordbots.poedelbot.util;
 
 
+import net.dv8tion.jda.core.EmbedBuilder;
+
+import java.awt.*;
+
 public class STATIC {
     public static final String VERSION = "0.5-BETA";
 
@@ -42,5 +46,5 @@ public static final String RULES = "1. Spammen is verboden\n2. Schelden is niet 
 
 
 
-
+public static EmbedBuilder shit = new EmbedBuilder().setTitle("FOUT").setColor(Color.RED).setDescription("%lol% Tag een of meerdere personen om deze actie uit te voeren %lol%".replace("%lol%", LeMojis.lol).replace("%happy%", LeMojis.happy));
 }

@@ -6,9 +6,12 @@ import net.dv8tion.jda.core.entities.*;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.core.exceptions.PermissionException;
 import nl.jessegeerts.discordbots.poedelbot.command.Command;
+import nl.jessegeerts.discordbots.poedelbot.util.STATIC;
 
 import java.awt.*;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class Ban implements Command {
 
@@ -36,7 +39,15 @@ if(member3.hasPermission(Permission.ADMINISTRATOR) || member3.hasPermission(Perm
     if (message.isFromType(ChannelType.TEXT)) {
         //If no users are provided, we can't kick anyone!
         if (message.getMentionedUsers().isEmpty()) {
-            channel.sendMessage(tagsender + " :poodle: Je moet een of meerdere poedels taggen om te kunnen bannen. :poodle:").queue();
+            Message msg = channel.sendMessage(event.getAuthor().getAsMention()).complete();
+            Message msg2 = channel.sendMessage(STATIC.shit.build()).complete();
+            new Timer().schedule(new TimerTask() {
+                @Override
+                public void run() {
+                    msg.delete().queue();
+                    msg2.delete().queue();
+                }
+            }, 1000);
         } else {
             Guild guild = event.getGuild();
             Member selfMember = guild.getSelfMember();  //This is the currently logged in account's Member object.

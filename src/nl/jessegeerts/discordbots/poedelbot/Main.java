@@ -113,6 +113,8 @@ addCommands();
         commandHandler.commands.put("dikname", new Dikname());
         commandHandler.commands.put("broadcast", new Broadcast());
         commandHandler.commands.put("bottalk", new Talk());
+        commandHandler.commands.put("quote", new Quote());
+        commandHandler.commands.put("joke", new Joke());
     }
 
     public static void addListeners(){
