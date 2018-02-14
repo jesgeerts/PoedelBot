@@ -6,6 +6,7 @@ import net.dv8tion.jda.core.entities.Message;
 import net.dv8tion.jda.core.entities.MessageChannel;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import nl.jessegeerts.discordbots.poedelbot.command.Command;
+import nl.jessegeerts.discordbots.poedelbot.util.LeMojis;
 
 import java.awt.*;
 import java.util.Timer;
@@ -37,10 +38,10 @@ public boolean called(String[] args, MessageReceivedEvent event) {
                     msg = msg + " " + a;
                 }
                 channel.sendMessage("@everyone").queue();
-                channel.sendMessage(new EmbedBuilder().setColor(Color.GREEN).setAuthor(event.getAuthor().getName(), "https://poedelhost.nl", event.getAuthor().getEffectiveAvatarUrl())
+                channel.sendMessage(new EmbedBuilder().setColor(Color.GREEN).setAuthor(event.getAuthor().getName(), null, event.getAuthor().getEffectiveAvatarUrl())
                         .setDescription(msg).build()).queue();
             }else{
-                Message msg = channel.sendMessage(event.getAuthor().getAsMention() +" NEE HOER").complete();
+                Message msg = channel.sendMessage(event.getAuthor().getAsMention() +" NEE " + LeMojis.happy).complete();
                 new Timer().schedule(new TimerTask() {
                     @Override
                     public void run() {

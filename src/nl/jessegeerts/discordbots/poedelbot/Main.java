@@ -21,7 +21,6 @@ import nl.jessegeerts.discordbots.poedelbot.listeners.events.BannedListener;
 import nl.jessegeerts.discordbots.poedelbot.listeners.events.Join;
 import nl.jessegeerts.discordbots.poedelbot.listeners.events.Leave;
 import nl.jessegeerts.discordbots.poedelbot.listeners.events.Unban;
-import nl.jessegeerts.discordbots.poedelbot.listeners.messageListener;
 import nl.jessegeerts.discordbots.poedelbot.listeners.readyListener;
 import nl.jessegeerts.discordbots.poedelbot.util.SECRETS;
 
@@ -116,12 +115,12 @@ addCommands();
         commandHandler.commands.put("quote", new Quote());
         commandHandler.commands.put("joke", new Joke());
         commandHandler.commands.put("gas", new Gas());
+        commandHandler.commands.put("talk", new Talk());
     }
 
     public static void addListeners(){
         builder.addEventListener(new commandListener());
         builder.addEventListener(new readyListener());
-        builder.addEventListener(new messageListener());
         builder.addEventListener(new Join());
         builder.addEventListener(new Leave());
         builder.addEventListener(new BannedListener());

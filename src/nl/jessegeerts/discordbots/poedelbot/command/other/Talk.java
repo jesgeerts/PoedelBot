@@ -4,7 +4,9 @@ import net.dv8tion.jda.core.Permission;
 import net.dv8tion.jda.core.entities.Message;
 import net.dv8tion.jda.core.entities.MessageChannel;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
+import net.dv8tion.jda.core.exceptions.PermissionException;
 import nl.jessegeerts.discordbots.poedelbot.command.Command;
+import nl.jessegeerts.discordbots.poedelbot.util.LeMojis;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -19,11 +21,16 @@ public class Talk implements Command {
     @Override
     public void action(String[] args, MessageReceivedEvent event) {
 
-        event.getMessage().delete().queue();
+
         MessageChannel channel = event.getChannel();
         if(event.getGuild().getMember(event.getAuthor()).hasPermission(Permission.ADMINISTRATOR) || event.getGuild().getMember(event.getAuthor()).hasPermission(Permission.MESSAGE_MANAGE)){
             if(args.length==0){
-                channel.sendMessage("Ik doe maar ff niks :stuck_out_tongue: ").complete();
+                channel.sendMessage("Ik doe maar ff niks :stuck_out_tongue: " + LeMojis.lol).complete();
+                try{
+                    event.getMessage().delete().queue();
+                }catch (PermissionException e){
+
+                }
                 return;
             }
 
@@ -36,8 +43,13 @@ public class Talk implements Command {
                 msg = msg + " " + a;
             }
             channel.sendMessage(msg).queue();
+            try{
+                event.getMessage().delete().queue();
+            }catch (PermissionException e){
+
+            }
         }else{
-            Message msg = channel.sendMessage(event.getAuthor().getAsMention() +" NEE HOER").complete();
+            Message msg = channel.sendMessage(event.getAuthor().getAsMention() +" NEE " + LeMojis.lol).complete();
             new Timer().schedule(new TimerTask() {
                 @Override
                 public void run() {
