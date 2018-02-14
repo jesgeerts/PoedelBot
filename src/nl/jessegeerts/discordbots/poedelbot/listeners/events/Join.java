@@ -16,7 +16,7 @@ public class Join extends ListenerAdapter {
     @Override
     public void onGuildMemberJoin(GuildMemberJoinEvent event) {
 
-        if (event.getGuild().getName().equalsIgnoreCase("Poedel Host")) {
+        if (event.getGuild().getId().equals(STATIC.DISCORD_SERVER_ID)) {
             MessageChannel channel = event.getGuild().getTextChannelById(STATIC.CHANNEL_JOIN_LOG_ID);
             int currentMembers = event.getGuild().getMembers().size();
             if (currentMembers % 100 == 0) {

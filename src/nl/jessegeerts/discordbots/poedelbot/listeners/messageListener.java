@@ -29,10 +29,6 @@ public class messageListener extends ListenerAdapter{
                     }
                 }, 1000);
             }
-
-            if(msg.getContentDisplay().contains(event.getGuild().getSelfMember().getAsMention()) || msg.getContentDisplay().contains("@PoedelBot")){
-                channel.sendMessage(event.getAuthor().getAsMention() + " Ja wat is er?").queue();
-            }
             if (msg.getContentDisplay().contains("┬─┬\uFEFF ノ( ゜-゜ノ)")) {
                 channel.sendMessage(event.getAuthor().getAsMention() + " Waarom zou je de tafel terug omdraaien terwijl ik dat al heb gedaan?").queue();
             }
@@ -83,9 +79,6 @@ public class messageListener extends ListenerAdapter{
                 channel.sendMessage("https://giphy.com/gifs/happy-yes-P0RWkdsRpK7ss").queue();
             }
 
-            if(msg.getContentDisplay().startsWith(STATIC.PREFIX + "poedel")){
-            return;
-            }
 
             if(msg.getContentDisplay().startsWith("thinking") || msg.getContentDisplay().startsWith("think") || msg.getContentDisplay().startsWith(":thinking:") || msg.getContentDisplay().startsWith("\uD83E\uDD14")){
                 channel.sendMessage(":thinking:").queue();
@@ -100,26 +93,11 @@ public class messageListener extends ListenerAdapter{
                 msg2.addReaction("\uD83C\uDDEE").queue();
 
             }
-            if(msg.getContentDisplay().contains("Zwanger") || msg.getContentDisplay().contains("zwanger") || msg.getContentDisplay().contains("pregnant") || msg.getContentDisplay().contains("Pregnant")){
-                channel.sendMessage(":pregnant_woman: Don't make women pregnant :pregnant_woman: ").queue();
-            }
-            if(msg.getContentDisplay().contains("gay") || msg.getContentDisplay().contains("GAY")){
-                channel.sendMessage("https://giphy.com/gifs/quote-gay-class-fiUYFctPsxGUM").queue();
-            }
             if(msg.getContentDisplay().contains("\uD83D\uDC4B")){
                 channel.sendMessage("https://giphy.com/gifs/fashion-blog-UrcXN0zTfzTPi").queue();
             }
             if(msg.getContentDisplay().equalsIgnoreCase("rip") || msg.getContentDisplay().equalsIgnoreCase("RIP") || msg.getContentDisplay().equalsIgnoreCase("Rip")){
                 channel.sendMessage("https://giphy.com/gifs/dying-TqZZf1OihxJHq").queue();
-            }
-
-
-            if(msg.getContentDisplay().contains("Poedel")||msg.getContentDisplay().contains("Poodle")||msg.getContentDisplay().contains("poedel") || msg.getContentDisplay().contains("POEDEL") || msg.getContentDisplay().contains("poodle") || msg.getContentDisplay().contains("POODLE") || msg.getContentDisplay().contains("\uD83D\uDC29")){
-               if(msg.getContentDisplay().contains("PoedelBot") || msg.getContentDisplay().contains("poedelbot") || msg.getContentDisplay().contains(STATIC.PREFIX + "dedikkepoedel") || msg.getContentDisplay().contains(STATIC.PREFIX + "poedel1eklas") || msg.getContentDisplay().contains("poedelhost.nl") || msg.getContentDisplay().contains("poedelhosting.nl") || msg.getContentDisplay().contains("poedelhost")){
-                   return;
-               }
-                channel.sendMessage(":poodle: :poodle: :poodle: :poodle: :poodle: :poodle: :poodle: :poodle: :poodle: :poodle: :poodle: :poodle: :poodle: :poodle:").queue();
-                channel.sendMessage("https://i.jessegeerts.nl/1LS.gif").queue();
             }
             if(msg.getContentDisplay().startsWith("welkom") || msg.getContentDisplay().startsWith("Welkom")){
                 channel.sendMessage(":star: :star: **WELKOM** bij PoedelHost :star: :star:").queue();
