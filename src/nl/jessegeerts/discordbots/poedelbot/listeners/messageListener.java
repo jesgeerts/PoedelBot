@@ -143,6 +143,16 @@ public class messageListener extends ListenerAdapter{
                 }
             channel.sendMessage("%user% Hilary Clinton vindt dat je een spammer bent https://i.jessegeerts.nl/SPAMMER.jpg".replace("%user%", event.getAuthor().getAsMention())).queue();
             }
+
+            if(msg.getContentDisplay().contains("Aziaat") || msg.getContentDisplay().contains("aziaat")){
+                channel.sendMessage("OMG EEN AZIAAT :open_mouth: https://i.jessegeerts.nl/26dd81a5-8ab5-4523-bcad-81f196797299.jpeg").queue();
+            }
+
+            if(msg.getContentDisplay().contains("dikzak") || msg.getContentDisplay().contains("dik zak")){
+
+                channel.sendMessage("https://giphy.com/gifs/southparkgifs-l2Sqj4rramMGBy1Fe ").queue();
+            }
+
             if(msg.getContentDisplay().contains("ok") || msg.getContentDisplay().contains("okeh")|| msg.getContentDisplay().contains("Ok") || msg.getContentDisplay().contains("Okeh")){
                 if(msg.getContentDisplay().contains("ook") ||msg.getContentDisplay().contains("Ook") || msg.getContentDisplay().equalsIgnoreCase(STATIC.PREFIX + "joke") || msg.getContentDisplay().contains("joke") || msg.getContentDisplay().contains("Joke")){
                     return;

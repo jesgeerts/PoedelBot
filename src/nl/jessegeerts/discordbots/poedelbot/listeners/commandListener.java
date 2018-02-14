@@ -19,20 +19,24 @@ public class commandListener extends ListenerAdapter {
 
         if (event.isFromType(ChannelType.TEXT))
         {
+/**
+            EmbedBuilder embed = new EmbedBuilder().setColor(Color.CYAN).setAuthor(event.getAuthor().getName()).setDescription(event.getMessage().getContentDisplay()).setFooter("[%server%] [%channel%]".replace("%server%", event.getAuthor().getName() + "#"+event.getAuthor().getDiscriminator()).replace("%channel%", event.getChannel().getName()), event.getAuthor().getEffectiveAvatarUrl());
             if(event.getGuild().getId().equalsIgnoreCase("397505603179905035")){
-                event.getJDA().getGuildById(STATIC.bot_Log_server).getTextChannelById("407983272325414922").sendMessage(new EmbedBuilder().setColor(Color.CYAN).setAuthor(event.getAuthor().getName()).setDescription(event.getMessage().getContentDisplay()).setFooter("[%server%] [%channel%]".replace("%server%", event.getAuthor().getName() + "#"+event.getAuthor().getDiscriminator()).replace("%channel%", event.getChannel().getName()), event.getAuthor().getEffectiveAvatarUrl()).build()).queue();
+                event.getJDA().getGuildById(STATIC.bot_Log_server).getTextChannelById("407983272325414922").sendMessage(embed.build()).queue();
             }else if(event.getGuild().getId().equalsIgnoreCase("398389558099836939")){
-                event.getJDA().getGuildById(STATIC.bot_Log_server).getTextChannelById("407986032177446912").sendMessage(new EmbedBuilder().setColor(Color.CYAN).setAuthor(event.getAuthor().getName()).setDescription(event.getMessage().getContentDisplay()).setFooter("[%server%] [%channel%]".replace("%server%", event.getAuthor().getName() + "#"+event.getAuthor().getDiscriminator()).replace("%channel%", event.getChannel().getName()), event.getAuthor().getEffectiveAvatarUrl()).build()).queue();
+                event.getJDA().getGuildById(STATIC.bot_Log_server).getTextChannelById("407986032177446912").sendMessage(embed.build()).queue();
             } else if(event.getGuild().getId().equalsIgnoreCase("404619891698827265")){
-                event.getJDA().getGuildById(STATIC.bot_Log_server).getTextChannelById("407986422553903104").sendMessage(new EmbedBuilder().setColor(Color.CYAN).setAuthor(event.getAuthor().getName()).setDescription(event.getMessage().getContentDisplay()).setFooter("[%server%] [%channel%]".replace("%server%", event.getAuthor().getName() + "#"+event.getAuthor().getDiscriminator()).replace("%channel%", event.getChannel().getName()), event.getAuthor().getEffectiveAvatarUrl()).build()).queue();
+                event.getJDA().getGuildById(STATIC.bot_Log_server).getTextChannelById("407986422553903104").sendMessage(embed.build()).queue();
+            } else if(event.getGuild().getId().equals("409780291142680577")){
+                event.getJDA().getGuildById(STATIC.bot_Log_server).getTextChannelById("409782280396210187").sendMessage(embed.build()).queue();
             }
                 else{
-                event.getJDA().getGuildById(STATIC.bot_Log_server).getTextChannelById("407921159833780234").sendMessage(new EmbedBuilder().setColor(Color.CYAN).setAuthor(event.getAuthor().getName()).setDescription(event.getMessage().getContentDisplay()).setFooter("[%server%] [%channel%]".replace("%server%", event.getAuthor().getName() + "#"+event.getAuthor().getDiscriminator()).replace("%channel%", event.getChannel().getName()), event.getAuthor().getEffectiveAvatarUrl()).build()).queue();
+                event.getJDA().getGuildById(STATIC.bot_Log_server).getTextChannelById("407921159833780234").sendMessage(embed.build()).queue();
             }
 
             System.out.printf("[%s][%s] %#s: %s%n", event.getGuild().getName(),
                     event.getChannel().getName(), event.getAuthor(), event.getMessage().getContentDisplay());
-
+*/
 
             if (event.getMessage().getContentDisplay().startsWith(STATIC.PREFIX) && event.getMessage().getAuthor().getId() != event.getJDA().getSelfUser().getId()) {
                 commandHandler.handleCommand(commandHandler.parse.parser(event.getMessage().getContentRaw(), event));
@@ -50,7 +54,7 @@ public class commandListener extends ListenerAdapter {
         event.getChannel().sendMessage(
                 new EmbedBuilder().setColor(Color.RED).setDescription("Hallo,\n" +
                         "Je kunt mij alleen gebruiken op de discord van PoedelHost. Je kunt de server joinen met: https://poedelhost.nl/discord\nMet vriendelijke groet,\nJesse")
-                        .setTitle("Error 500").setAuthor("Jesse#1337", "https://www.jessegeerts.nl", "https://cdn.discordapp.com/avatars/264697177736085507/86f2c9ab66e111df60bc1dc091e67134.png").build()
+                        .setTitle("Error 500").setAuthor("Jesse ツ#1337", null, "https://cdn.discordapp.com/avatars/264697177736085507/86f2c9ab66e111df60bc1dc091e67134.png").build()
         ).complete();
     }
 }

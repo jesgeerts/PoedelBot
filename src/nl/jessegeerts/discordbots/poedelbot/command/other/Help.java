@@ -25,8 +25,8 @@ public class Help implements Command {
         MessageChannel channel = event.getChannel();
 
         if (args.length == 0) {
-            channel.sendMessage(new EmbedBuilder().setTitle("Help").setDescription("**Basis commands**\n%pref%website\n%pref%tutorial\n**Leuke en gezellige commands**\n%pref%dog\n%pref%dora\n%pref%eightball\n%pref%micdrop\n%pref%pikvis\n%pref%roll\n%pref%shrek\n%pref%tennis\n%pref%vis\n%pref%wat".replace("%pref%", STATIC.PREFIX)).build()).queue();
-            if(event.getGuild().getName().equalsIgnoreCase("Poedel Host")){
+            channel.sendMessage(new EmbedBuilder().setTitle("Help").setDescription("**Leuke en gezellige commands**\n%pref%dog\n%pref%dora\n%pref%eightball\n%pref%micdrop\n%pref%pikvis\n%pref%roll\n%pref%shrek\n%pref%tennis\n%pref%vis\n%pref%wat\n%pref%gas".replace("%pref%", STATIC.PREFIX)).build()).queue();
+                if(event.getGuild().getName().equalsIgnoreCase("Poedel Host")){
                 channel.sendMessage("//Even iets minder serieus Deze bot is voor PoedelHost(ing) gemaakt. Mede mogelijk gemaakt door onze poedel 1e klas: %jesse% en de dikste poedel: %jordy%".replace("%jesse%", event.getGuild().getMemberById(STATIC.JESSE_DISCORD_TOKEN).getAsMention()).replace("%jordy%", event.getGuild().getMemberById(STATIC.JORDY_DISCORD_TOKEN).getAsMention())).queue();
                 return;
             }else{

@@ -115,6 +115,7 @@ addCommands();
         commandHandler.commands.put("bottalk", new Talk());
         commandHandler.commands.put("quote", new Quote());
         commandHandler.commands.put("joke", new Joke());
+        commandHandler.commands.put("gas", new Gas());
     }
 
     public static void addListeners(){
