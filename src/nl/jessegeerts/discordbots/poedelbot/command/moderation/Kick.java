@@ -40,7 +40,7 @@ public class Kick implements Command {
                                 msg.delete().queue();
                                     msg2.delete().queue();
                                 }
-                                }, 1000);
+                                }, 2000);
                     } else {
                         Guild guild = event.getGuild();
                         Member selfMember = guild.getSelfMember();  //This is the currently logged in account's Member object.
