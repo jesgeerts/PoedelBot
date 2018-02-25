@@ -85,7 +85,7 @@ if(!member.getUser().hasPrivateChannel()){
 
                         success -> member.getUser().openPrivateChannel().queue((privateChannel) ->
                         {
-                            privateChannel.sendMessage("Je bent verbannen van de Discord server: %server%".replace("%server%", event.getGuild().getName())).queue();
+                            privateChannel.sendMessage("Je bent verbannen van de Discord server: %server%\nStuur de server eigenaar %eigenaar% een bericht om te vragen waarom je bent verbannen.".replace("%server%", event.getGuild().getName()).replace("%eigenaar%", event.getGuild().getOwner().getAsMention())).queue();
 
                         }),
 

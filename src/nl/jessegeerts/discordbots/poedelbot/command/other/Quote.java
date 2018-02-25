@@ -26,12 +26,12 @@ public class Quote  implements Command {
         MessageChannel channel = event.getChannel();
         if(args.length==0){
 
-            channel.sendMessage(kek.setAuthor(event.getJDA().getSelfUser().getName(), "https://jessegeerts.nl", event.getJDA().getSelfUser().getEffectiveAvatarUrl()).setDescription("Vul een message ID in").build()).queue();
+            channel.sendMessage(kek.setAuthor(event.getJDA().getSelfUser().getName(), "https://poedelhost.nl", event.getJDA().getSelfUser().getEffectiveAvatarUrl()).setDescription("Vul een message ID in").build()).queue();
             return;
         }
         event.getMessage().delete().queue();
 
-        Message chanMSG = event.getTextChannel().sendMessage(new EmbedBuilder().setDescription("Searching for message in text channels...").build()).complete();
+        Message chanMSG = event.getTextChannel().sendMessage(new EmbedBuilder().setDescription("Ik ben nu op zoek naar het bericht.. Een moment geduld A.U.B.").setColor(Color.BLUE).build()).complete();
 
         List<Message> msg = new ArrayList<>();
         event.getGuild().getTextChannels().forEach(c -> {
@@ -42,7 +42,7 @@ public class Quote  implements Command {
 
         if (msg.size() < 1) {
             chanMSG.editMessage(MSGS.error().setDescription(
-                    "There is no message in any chat on this guild with the ID `" + args[0] + "`."
+                    "Er is geen bericht in welke kanaal dan ook op deze server met de ID: '%id%' .".replace("%id%", args[0])
             ).build()).queue();
             return;
         }
@@ -58,7 +58,7 @@ public class Quote  implements Command {
                                 msg.get(0).getCreationTime().getMinute() + ":" +
                                 msg.get(0).getCreationTime().getSecond() +
                                 " in kanaal #" + msg.get(0).getTextChannel().getName(),
-                        null)
+                        null).setColor(Color.GREEN)
                 .build()
         ).queue();
 

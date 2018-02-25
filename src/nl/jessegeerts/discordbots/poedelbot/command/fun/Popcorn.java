@@ -3,7 +3,7 @@ package nl.jessegeerts.discordbots.poedelbot.command.fun;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import nl.jessegeerts.discordbots.poedelbot.command.Command;
 
-public class Pikvis implements Command {
+public class Popcorn implements Command {
     @Override
     public boolean called(String[] args, MessageReceivedEvent event) {
         return false;
@@ -12,9 +12,8 @@ public class Pikvis implements Command {
     @Override
     public void action(String[] args, MessageReceivedEvent event) {
 
-        event.getChannel().sendMessage("https://giphy.com/gifs/scary-fish-smile-P0ynvBmHYpnW0").queue();
-        event.getChannel().sendMessage(":fish: Blub blub :fish:").queue();
-
+        event.getChannel().sendMessage("https://giphy.com/gifs/trump-michael-donald-UlqLDtI8Qc0j6").queue();
+        event.getChannel().sendMessage(":popcorn: :popcorn: **GRABS POPCORN** :popcorn: :popcorn: ").queue();
     }
 
     @Override

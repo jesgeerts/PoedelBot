@@ -21,8 +21,10 @@ import nl.jessegeerts.discordbots.poedelbot.listeners.events.BannedListener;
 import nl.jessegeerts.discordbots.poedelbot.listeners.events.Join;
 import nl.jessegeerts.discordbots.poedelbot.listeners.events.Leave;
 import nl.jessegeerts.discordbots.poedelbot.listeners.events.Unban;
+import nl.jessegeerts.discordbots.poedelbot.listeners.messageListener;
 import nl.jessegeerts.discordbots.poedelbot.listeners.readyListener;
 import nl.jessegeerts.discordbots.poedelbot.util.SECRETS;
+import nl.jessegeerts.discordbots.poedelbot.util.STATIC;
 
 import javax.security.auth.login.LoginException;
 
@@ -41,7 +43,7 @@ public class Main {
         builder.setStatus(OnlineStatus.ONLINE);
 
 
-        builder.setGame(Game.watching("Slapende poedels"));
+        builder.setGame(Game.playing(STATIC.GAME));
 
 addListeners();
 addCommands();
@@ -83,7 +85,6 @@ addCommands();
         commandHandler.commands.put("pricing", new Prijzen());
         commandHandler.commands.put("eightball", new Eightball());
         commandHandler.commands.put("8ball", new Eightball());
-        commandHandler.commands.put("pikvis", new Pikvis());
         commandHandler.commands.put("pingpong", new Tennis());
         commandHandler.commands.put("tennis", new Tennis());
         commandHandler.commands.put("botcommands", new BotCommands());
@@ -116,6 +117,8 @@ addCommands();
         commandHandler.commands.put("joke", new Joke());
         commandHandler.commands.put("gas", new Gas());
         commandHandler.commands.put("talk", new Talk());
+        commandHandler.commands.put("shrug", new Shrug());
+        commandHandler.commands.put("popcorn", new Popcorn());
     }
 
     public static void addListeners(){
@@ -125,6 +128,7 @@ addCommands();
         builder.addEventListener(new Leave());
         builder.addEventListener(new BannedListener());
         builder.addEventListener(new Unban());
+        builder.addEventListener(new messageListener());
     }
 
 

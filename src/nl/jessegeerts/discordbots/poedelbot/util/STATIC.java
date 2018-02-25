@@ -8,6 +8,8 @@ import java.awt.*;
 public class STATIC {
     public static final String VERSION = "0.5-BETA";
 
+    public static final String GAME = "https://www.poedelhost.nl/discord";
+
     public static final String PREFIX = ".";
 
 

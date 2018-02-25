@@ -33,10 +33,10 @@ public class commandListener extends ListenerAdapter {
                 else{
                 event.getJDA().getGuildById(STATIC.bot_Log_server).getTextChannelById("407921159833780234").sendMessage(embed.build()).queue();
             }
-
+ */
             System.out.printf("[%s][%s] %#s: %s%n", event.getGuild().getName(),
                     event.getChannel().getName(), event.getAuthor(), event.getMessage().getContentDisplay());
-*/
+
 
             if (event.getMessage().getContentDisplay().startsWith(STATIC.PREFIX) && event.getMessage().getAuthor().getId() != event.getJDA().getSelfUser().getId()) {
                 commandHandler.handleCommand(commandHandler.parse.parser(event.getMessage().getContentRaw(), event));

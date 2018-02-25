@@ -38,7 +38,7 @@ public class PBSay implements Command {
             }
             channel.sendMessage(msg).queue();
         }else{
-            Message msg = channel.sendMessage(event.getAuthor().getAsMention() +" NEE HOER").complete();
+            Message msg = channel.sendMessage(event.getAuthor().getAsMention() +" NEE").complete();
             new Timer().schedule(new TimerTask() {
                 @Override
                 public void run() {

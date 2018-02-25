@@ -25,7 +25,7 @@ public class Join extends ListenerAdapter {
 
             String user = event.getUser().getName();
             String joined = event.getUser().getAsMention();
-            EmbedBuilder kek = new EmbedBuilder().setColor(Color.GREEN).setDescription("De poedel %user% is erbij gekomen.".replace("%user%", joined)).setTitle("**WELKOM**").setAuthor(user, event.getUser().getEffectiveAvatarUrl());
+            EmbedBuilder kek = new EmbedBuilder().setColor(Color.GREEN).setAuthor(event.getUser().getName(), null, event.getUser().getEffectiveAvatarUrl()).setDescription("De poedel %user% is erbij gekomen.".replace("%user%", joined)).setTitle("**WELKOM %user%**".replace("%user%", event.getUser().getName())).setAuthor(user, event.getUser().getEffectiveAvatarUrl());
             event.getJDA().getGuildById(STATIC.DISCORD_SERVER_ID).getTextChannelById(STATIC.CHANNEL_JOIN_LOG_ID).sendMessage(kek.build()).queue();
 
             GuildController guildController = event.getGuild().getController();

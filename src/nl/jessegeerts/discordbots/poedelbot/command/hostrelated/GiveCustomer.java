@@ -17,7 +17,7 @@ public class GiveCustomer implements Command {
 
     @Override
     public void action(String[] args, MessageReceivedEvent event) {
-
+event.getMessage().delete().queue();
         MessageChannel channel = event.getChannel();
 
 String tagsender = event.getAuthor().getAsMention();

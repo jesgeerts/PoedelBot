@@ -12,8 +12,8 @@ public class Poedel implements Command {
     @Override
     public void action(String[] args, MessageReceivedEvent event) {
 
-        event.getChannel().sendMessage("https://giphy.com/gifs/dog-weird-exercising-fhQDRJCRCgOwU").queue();
-        event.getChannel().sendMessage(":poodle: GROTE POEDELS :open_mouth: :poodle:").queue();
+        event.getChannel().sendMessage("https://giphy.com/gifs/poodle-dog-vWRugRbaVg1c4 ").queue();
+        event.getChannel().sendMessage(":poodle: WAT SCHATTIG :open_mouth: :poodle:").queue();
     }
 
     @Override

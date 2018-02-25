@@ -39,7 +39,7 @@ Member selfMember = event.getGuild().getSelfMember();
 MessageChannel channel = event.getChannel();
 Member member3 =event.getMember();
 
-
+event.getMessage().delete().queue();
 
         if(member3.hasPermission(Permission.ADMINISTRATOR) || member3.hasPermission(Permission.MESSAGE_MANAGE)){
             if (args.length == 0) {

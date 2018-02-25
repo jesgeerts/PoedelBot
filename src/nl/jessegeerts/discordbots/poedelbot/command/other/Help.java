@@ -9,6 +9,7 @@ import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import nl.jessegeerts.discordbots.poedelbot.command.Command;
 import nl.jessegeerts.discordbots.poedelbot.util.STATIC;
 
+import java.awt.*;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -25,9 +26,9 @@ public class Help implements Command {
         MessageChannel channel = event.getChannel();
 
         if (args.length == 0) {
-            channel.sendMessage(new EmbedBuilder().setTitle("Help").setDescription("**Leuke en gezellige commands**\n%pref%dog\n%pref%dora\n%pref%eightball\n%pref%micdrop\n%pref%pikvis\n%pref%roll\n%pref%shrek\n%pref%tennis\n%pref%vis\n%pref%wat\n%pref%gas".replace("%pref%", STATIC.PREFIX)).build()).queue();
+            channel.sendMessage(new EmbedBuilder().setTitle("Help").setDescription("**Leuke en gezellige commands**\n%pref%dog\n%pref%dora\n%pref%eightball\n%pref%micdrop\n%pref%popcorn\n%pref%roll\n%pref%shrek\n%pref%tennis\n%pref%vis\n%pref%wat\n%pref%gas".replace("%pref%", STATIC.PREFIX)).setColor(Color.ORANGE).build()).queue();
                 if(event.getGuild().getName().equalsIgnoreCase("Poedel Host")){
-                channel.sendMessage("//Even iets minder serieus Deze bot is voor PoedelHost(ing) gemaakt. Mede mogelijk gemaakt door onze poedel 1e klas: %jesse% en de dikste poedel: %jordy%".replace("%jesse%", event.getGuild().getMemberById(STATIC.JESSE_DISCORD_TOKEN).getAsMention()).replace("%jordy%", event.getGuild().getMemberById(STATIC.JORDY_DISCORD_TOKEN).getAsMention())).queue();
+                channel.sendMessage(new EmbedBuilder().setDescription("//Even iets minder serieus Deze bot is voor PoedelHost(ing) gemaakt. Mede mogelijk gemaakt door onze poedel 1e klas: %jesse% en de dikste poedel: %jordy%".replace("%jesse%", event.getGuild().getMemberById(STATIC.JESSE_DISCORD_TOKEN).getAsMention()).replace("%jordy%", event.getGuild().getMemberById(STATIC.JORDY_DISCORD_TOKEN).getAsMention())).build()).queue();
                 return;
             }else{
                 return;
@@ -53,7 +54,7 @@ public class Help implements Command {
             new Timer().schedule(new TimerTask() {
                 @Override
                 public void run() {
-                    event.getJDA().getPresence().setPresence(OnlineStatus.ONLINE, Game.watching("Slapende poedels"));
+                    event.getJDA().getPresence().setPresence(OnlineStatus.ONLINE, Game.watching(STATIC.GAME));
 
                 }
             }, 1500);
@@ -84,7 +85,7 @@ public class Help implements Command {
             new Timer().schedule(new TimerTask() {
                 @Override
                 public void run() {
-                    channel.sendMessage("Mijn ping met de discord server: "+String.valueOf(event.getJDA().getPing() + "ms")).queue();
+                    channel.sendMessage("Mijn ping met de discord '%server%' server: ".replace("%server%" ,event.getGuild().getName())+String.valueOf(event.getJDA().getPing() + "ms")).queue();
                 }
             }, 2000);
         }
