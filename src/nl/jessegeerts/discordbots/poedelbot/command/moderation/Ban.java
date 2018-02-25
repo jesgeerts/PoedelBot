@@ -47,7 +47,7 @@ if(member3.hasPermission(Permission.ADMINISTRATOR) || member3.hasPermission(Perm
                     msg.delete().queue();
                     msg2.delete().queue();
                 }
-            }, 1000);
+            }, 2000);
         } else {
             Guild guild = event.getGuild();
             Member selfMember = guild.getSelfMember();  //This is the currently logged in account's Member object.
