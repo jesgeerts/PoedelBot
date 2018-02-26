@@ -19,7 +19,7 @@ public class DeDikkePoedel implements Command {
         new Timer().schedule(new TimerTask() {
             @Override
             public void run() {
-                event.getChannel().sendMessage(event.getGuild().getMemberById(STATIC.JORDY_DISCORD_TOKEN).getAsMention() + " is de **DIKSTE POEDEL** van deze discord server.").queue();
+                event.getChannel().sendMessage(event.getGuild().getMemberById(STATIC.JORDY_DISCORD_TOKEN    ).getAsMention() + " is de **DIKSTE POEDEL** van deze discord server.").queue();
             }
         }, 1500);
     }

@@ -14,11 +14,12 @@ public class Gas implements Command {
     public void action(String[] args, MessageReceivedEvent event) {
         try {
             event.getMessage().delete().queue();
-        }catch (PermissionException e){
+        } catch (PermissionException e) {
 
         }
         event.getChannel().sendMessage("POM POM GAS EROP GAS EROP").queue();
         event.getChannel().sendMessage("https://i.jessegeerts.nl/27337378_2414178001928924_5296215652512064458_n.jpg").queue();
+        event.getChannel().sendMessage("https://open.spotify.com/track/1wXXU2JZyt4UagDOd1zS1m?si=FXeCqMz1SaujZq6WawDI8Q").queue();
     }
 
     @Override

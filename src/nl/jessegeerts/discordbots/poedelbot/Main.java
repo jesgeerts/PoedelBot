@@ -10,11 +10,12 @@ import nl.jessegeerts.discordbots.poedelbot.command.fun.poedels.DeDikkePoedel;
 import nl.jessegeerts.discordbots.poedelbot.command.fun.poedels.PoedelEersteKlas;
 import nl.jessegeerts.discordbots.poedelbot.command.hostrelated.*;
 import nl.jessegeerts.discordbots.poedelbot.command.hostrelated.movechat.BotCommands;
+import nl.jessegeerts.discordbots.poedelbot.command.hostrelated.movechat.Minecraft;
 import nl.jessegeerts.discordbots.poedelbot.command.hostrelated.movechat.Offtopic;
-import nl.jessegeerts.discordbots.poedelbot.command.moderation.Ban;
-import nl.jessegeerts.discordbots.poedelbot.command.moderation.Clear;
-import nl.jessegeerts.discordbots.poedelbot.command.moderation.Kick;
+import nl.jessegeerts.discordbots.poedelbot.command.moderation.*;
 import nl.jessegeerts.discordbots.poedelbot.command.other.*;
+import nl.jessegeerts.discordbots.poedelbot.command.other.brb.Back;
+import nl.jessegeerts.discordbots.poedelbot.command.other.brb.Brb;
 import nl.jessegeerts.discordbots.poedelbot.core.commandHandler;
 import nl.jessegeerts.discordbots.poedelbot.listeners.commandListener;
 import nl.jessegeerts.discordbots.poedelbot.listeners.events.BannedListener;
@@ -119,6 +120,13 @@ addCommands();
         commandHandler.commands.put("talk", new Talk());
         commandHandler.commands.put("shrug", new Shrug());
         commandHandler.commands.put("popcorn", new Popcorn());
+        commandHandler.commands.put("pin", new Pin());
+        commandHandler.commands.put("unpin",new Unpin());
+        commandHandler.commands.put("brb", new Brb());
+        commandHandler.commands.put("back", new Back());
+        commandHandler.commands.put("koekoek", new Koekoek());
+        commandHandler.commands.put("jonge", new Koekoek());
+        commandHandler.commands.put("minecraft", new Minecraft());
     }
 
     public static void addListeners(){

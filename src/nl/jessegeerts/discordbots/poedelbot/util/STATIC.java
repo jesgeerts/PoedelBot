@@ -28,6 +28,7 @@ public static final String RULES = "1. Spammen is verboden\n2. Schelden is niet 
     public static final String CHANNEL_OFFTOPIC_ID = "398419813577261060";
     public static final String CHANNEL_BOTCOMMANDS_ID = "398421115925561354";
     public static final String CHANNEL_PRICES_ID = "399880740680237067";
+    public static final String CHANNEL_MINECRAFT_SUPPORT_ID = "398419699341197322";
 
     public static final String ROLE_CEO_ID = "398405360190488577";
     public static final String ROLE_SUPPORT_ID = "398411061436481538";
