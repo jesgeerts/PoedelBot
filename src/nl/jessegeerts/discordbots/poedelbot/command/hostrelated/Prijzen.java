@@ -87,7 +87,7 @@ public class Prijzen implements Command {
                 ).build()).queue();
 
                 channel.sendMessage(new EmbedBuilder().setColor(Color.orange).setTitle("Bot Hosting").setDescription("**LET OP** Je discord bot moet de programmeertaal Java hebben!" +
-                        "\n1GB RAM, 10Gbps internet » 1/mo").build()).queue();
+                        "\n1GB RAM, 10Gbps internet » €1/mo").build()).queue();
                 channel.sendMessage("Voor een PaysafeCard transactie vragen wij transactiekosten voor (8% en 5,50 en we moeten dan een hele paysafe code van je overnemen dus zorg ervoor dat je deze niet hebt geclaimed).\nVoor iDEAL vragen wij €0,50 transactiekosten\n**ALGEMENE VOORWAARDEN** Hier is onze algemene voorwaarden: Als je betaald ga je automatisch akkoord met onze algemene voorwaarden die je hier kunt vinden: https://poedelhost.nl/Algemene%20Voorwaarden.php Je gaat er automatisch mee akkoord als je hebt betaald.").queue();
 
             }
