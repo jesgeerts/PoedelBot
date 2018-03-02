@@ -18,10 +18,7 @@ import nl.jessegeerts.discordbots.poedelbot.command.other.brb.Back;
 import nl.jessegeerts.discordbots.poedelbot.command.other.brb.Brb;
 import nl.jessegeerts.discordbots.poedelbot.core.commandHandler;
 import nl.jessegeerts.discordbots.poedelbot.listeners.commandListener;
-import nl.jessegeerts.discordbots.poedelbot.listeners.events.BannedListener;
-import nl.jessegeerts.discordbots.poedelbot.listeners.events.Join;
-import nl.jessegeerts.discordbots.poedelbot.listeners.events.Leave;
-import nl.jessegeerts.discordbots.poedelbot.listeners.events.Unban;
+import nl.jessegeerts.discordbots.poedelbot.listeners.events.*;
 import nl.jessegeerts.discordbots.poedelbot.listeners.messageListener;
 import nl.jessegeerts.discordbots.poedelbot.listeners.readyListener;
 import nl.jessegeerts.discordbots.poedelbot.util.SECRETS;
@@ -127,6 +124,8 @@ addCommands();
         commandHandler.commands.put("koekoek", new Koekoek());
         commandHandler.commands.put("jonge", new Koekoek());
         commandHandler.commands.put("minecraft", new Minecraft());
+        commandHandler.commands.put("botspam", new BotCommands());
+        commandHandler.commands.put("mc", new Minecraft());
     }
 
     public static void addListeners(){

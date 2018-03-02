@@ -6,6 +6,7 @@ import net.dv8tion.jda.core.entities.*;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.core.exceptions.PermissionException;
 import nl.jessegeerts.discordbots.poedelbot.command.Command;
+import nl.jessegeerts.discordbots.poedelbot.util.LeMojis;
 import nl.jessegeerts.discordbots.poedelbot.util.STATIC;
 
 import java.awt.*;
@@ -21,15 +22,15 @@ public class Kick implements Command {
 
     @Override
     public void action(String[] args, MessageReceivedEvent event) {
-        User user2 = event.getAuthor();
+
         Message message = event.getMessage();
         MessageChannel channel = event.getChannel();
         event.getMessage().delete().queue();
         Member member3 = event.getMember();
+        event.getMessage().delete().queue();
 
 
             if(member3.hasPermission(Permission.ADMINISTRATOR) || member3.hasPermission(Permission.KICK_MEMBERS)){
-                if (message.isFromType(ChannelType.TEXT)) {
                     //If no users are provided, we can't kick anyone!
                     if (message.getMentionedUsers().isEmpty()) {
                             Message msg = channel.sendMessage(event.getAuthor().getAsMention()).complete();
@@ -98,20 +99,19 @@ public class Kick implements Command {
                                     });
                         }
                     }
-                } else {
-                    channel.sendMessage("This is a Guild-Only command!").queue();
-                }
+
             }else{
-                event.getMessage().delete().queue();
-                if(!event.getAuthor().hasPrivateChannel()){
-                    event.getAuthor().openPrivateChannel().queue();
-
-                }
-
-                event.getAuthor().openPrivateChannel().queue((privateChannel) ->
-                {
-                    privateChannel.sendMessage(new EmbedBuilder().setColor(Color.RED).setTitle("Geen permissie").setDescription("**TOEGANG GEWEIGERD**\nJe toegang tot dit command is geweigerd.\n\nHet commando wat je deed was: %msg%\nIn de discord server: %server%".replace("%msg%", event.getMessage().getContentDisplay()).replace("%server%",event.getGuild().getName())).build()).queue();
-                });
+                Message tag = channel.sendMessage(event.getAuthor().getAsMention()).complete();
+                Message embed = channel.sendMessage(new EmbedBuilder().setTitle("**ERROR 403**").setAuthor(event.getGuild().getOwner().getEffectiveName(), null, event.getGuild().getOwner().getUser().getEffectiveAvatarUrl()).setDescription("%lol% Je hebt hier geen permissie voor %lol%\nJe actie is bijgehouden.".replace("%lol%", LeMojis.lol)).build()).complete();
+                event.getGuild().getTextChannelById(STATIC.CHANNEL_NO_PERMISSON_LOG_ID).sendMessage(new EmbedBuilder().setColor(Color.RED)
+                        .setAuthor(event.getJDA().getSelfUser().getName(), null, event.getJDA().getSelfUser().getEffectiveAvatarUrl()).setDescription("%author% heeft het volgende gebruikt waar hij/zij geen toegang voor heeft: ``` %msg%```".replace("%author%", event.getAuthor().getAsMention()).replace("%msg%", event.getMessage().getContentDisplay())).build()).queue();
+                new Timer().schedule(new TimerTask() {
+                    @Override
+                    public void run() {
+                        tag.delete().queue();
+                        embed.delete().queue();
+                    }
+                }, 5000);
             }
         }
 

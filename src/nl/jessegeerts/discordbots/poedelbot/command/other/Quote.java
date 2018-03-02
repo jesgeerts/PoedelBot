@@ -57,7 +57,7 @@ public class Quote  implements Command {
                                 " om " + msg.get(0).getCreationTime().getHour() + ":" +
                                 msg.get(0).getCreationTime().getMinute() + ":" +
                                 msg.get(0).getCreationTime().getSecond() +
-                                " in kanaal " + msg.get(0).getTextChannel().getAsMention(),
+                                " in kanaal #" + msg.get(0).getTextChannel().getName(),
                         null).setColor(Color.GREEN)
                 .build()
         ).queue();

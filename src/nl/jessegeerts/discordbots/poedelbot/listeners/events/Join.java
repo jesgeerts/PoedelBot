@@ -25,8 +25,11 @@ public class Join extends ListenerAdapter {
 
             String user = event.getUser().getName();
             String joined = event.getUser().getAsMention();
-            EmbedBuilder kek = new EmbedBuilder().setColor(Color.GREEN).setAuthor(event.getUser().getName(), null, event.getUser().getEffectiveAvatarUrl()).setDescription("De poedel %user% is erbij gekomen.".replace("%user%", joined)).setTitle("**WELKOM %user%**".replace("%user%", event.getUser().getName())).setAuthor(user, event.getUser().getEffectiveAvatarUrl());
-            event.getJDA().getGuildById(STATIC.DISCORD_SERVER_ID).getTextChannelById(STATIC.CHANNEL_JOIN_LOG_ID).sendMessage(kek.build()).queue();
+            EmbedBuilder kek = new EmbedBuilder().setColor(Color.GREEN)
+                    .setAuthor(event.getUser().getName(), null, event.getUser().getEffectiveAvatarUrl())
+                    .setDescription("De poedel %user% is erbij gekomen.".replace("%user%", joined)).setTitle("**WELKOM %user%**".replace("%user%", user));
+
+            channel.sendMessage(kek.build()).queue();
 
             GuildController guildController = event.getGuild().getController();
             guildController.addSingleRoleToMember(event.getMember(), event.getGuild().getRoleById(STATIC.ROLE_MEMBER_ID)).queue(
@@ -39,9 +42,9 @@ public class Join extends ListenerAdapter {
                             Permission missingPermission = pe.getPermission();  //If you want to know exactly what permission is missing, this is how.
                             //Note: some PermissionExceptions have no permission provided, only an error message!
 
-                            channel.sendMessage("PermissionError giving permisson [")
-                                    .append(event.getMember().getEffectiveName()).append("]: ")
-                                    .append(error.getMessage()).queue();
+
+                            event.getGuild().getOwner().getUser().openPrivateChannel().queue((privateChannel -> privateChannel.sendMessage("PermissionError giving permisson [").append(event.getMember().getEffectiveName()).append("]: ")
+                                    .append(error.getMessage())));
                         } else {
                             channel.sendMessage("Unknown error while rolling [")
                                     .append(event.getMember().getEffectiveName())

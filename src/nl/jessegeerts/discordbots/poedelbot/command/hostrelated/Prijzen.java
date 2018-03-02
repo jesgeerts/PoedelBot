@@ -67,7 +67,7 @@ public class Prijzen implements Command {
                                 "\n50GB RAM, 100% SSD, **GEEN** DDoS bescherming » 27,50" +
                                 "\n\n" +
                                 "***Je krijgt een eigen panel waarbij je dus je eigen GB's kunt opdelen en beheren. Aldus je kunt dan ook je eigen servers aanmaken :smile:*** *Wil je graag een eigen panel link onder je eigen domeinnaam? Vermeld dit tijdens het bestellen en zorg ervoor dat je een domein al in bezit hebt!*" +
-                                "\nDit is wellicht ook wel leuk om te weten: Je krijgt bij de 16GB RAM en de 32GB RAM: SSH toegang! Vraag naar de voorwaarden bij %jesse%".replace("%jesse%", event.getGuild().getMemberById(STATIC.JESSE_DISCORD_TOKEN).getAsMention())
+                                "\nDit is wellicht ook wel leuk om te weten: Je krijgt bij de 16GB RAM en de 32GB RAM: SSH toegang! Vraag naar de voorwaarden bij %jesse% (Jesse).".replace("%jesse%", event.getGuild().getMemberById(STATIC.JESSE_DISCORD_TOKEN).getAsMention())
                 ).build()).queue();
 
                 channel.sendMessage(overig.setTitle("Overige pakketten").setDescription(
@@ -86,9 +86,22 @@ public class Prijzen implements Command {
 
                 ).build()).queue();
 
+
+
+                channel.sendMessage(new EmbedBuilder().setTitle("**WEB HOSTING**")
+                        .setDescription("Forum: 1GB, 100GB Bandbreedte » 0,50/mo" +
+                                "\nStarter: 2GB, 200GB bandbreedte » 2/mo" +
+                                "\nMedium: 4GB, 400GB bandbreedte » 4/mo" +
+                                "\nExpert: 8GB, 800GB bandbreedte » 8/mo" +
+                                "\nExtra Large: 25GB, 2500GB bandbreedte » 25/mo" +
+                                "\nExtra Extra Large: 50GB, 5TB bandbreedte » 35/mo" +
+                                "\n\nAlle webhosting pakketten bevatten onbeperkt MySQL databases, E-Mail adressen, Extra domeinen, subdomeinen, en FTP accounts. Ook hebben iedere webhosting pakketten 1GB RAM en 1 Processor kern.\nWebhosting maakt gebruik van enterprise SSD's wat dus je website lekker snel maakt!\n\nHeb je meer RAM of bandbreedte of processorkracht voor je website nodig? Neem dan contact met ons op met een gedetailleerde uitleg waarom je dat nodig hebt.").setColor(new Color(96, 170, 238)).build()).queue();
+
+
                 channel.sendMessage(new EmbedBuilder().setColor(Color.orange).setTitle("Bot Hosting").setDescription("**LET OP** Je discord bot moet de programmeertaal Java hebben!" +
                         "\n1GB RAM, 10Gbps internet » €1/mo").build()).queue();
-                channel.sendMessage("Voor een PaysafeCard transactie vragen wij transactiekosten voor (8% en 5,50 en we moeten dan een hele paysafe code van je overnemen dus zorg ervoor dat je deze niet hebt geclaimed).\nVoor iDEAL vragen wij €0,50 transactiekosten\n**ALGEMENE VOORWAARDEN** Hier is onze algemene voorwaarden: Als je betaald ga je automatisch akkoord met onze algemene voorwaarden die je hier kunt vinden: https://poedelhost.nl/Algemene%20Voorwaarden.php Je gaat er automatisch mee akkoord als je hebt betaald.").queue();
+
+                channel.sendMessage(new EmbedBuilder().setTitle("**Betalingen, Transactiekosten en Algemene voorwaarden**").setDescription("**BETAALMETHODES**\nWij accepteren het volgende: PayPal, iDEAL, bankoverschrijving en PaySafeCard\n\n**TRANSACTIEKOSTEN**\nVoor een PaySafeCard transactie kunnen de transactiekosten varieren.\nVoor een iDEAL transactie vragen wij 50 cent transactiekosten.\nVoor bankoverschrijving en PayPal vragen wij geen transactiekosten.\n\n**ALGEMENE VOORWAARDEN**\nDoor een bestelling te plaatsen + betalen ga je automatisch akkoord met onze Algemene voorwaarden. Je kunt deze hier vinden: https://poedelhost.nl/Algemene%20Voorwaarden.php").build()).queue();
 
             }
         }

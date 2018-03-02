@@ -16,8 +16,13 @@ public class Sponsor implements Command {
     @Override
     public void action(String[] args, MessageReceivedEvent event) {
         event.getMessage().delete().queue();
-        event.getChannel().sendMessage(new EmbedBuilder().setColor(Color.BLUE).setTitle("Sponsoring").setDescription("Het is mogelijk om een server gesponserd te krijgen.\nVoor YouTubers hebben we de volgende eisen:\nMinstens 2 videos per dag en 1 stream per week" +
-                "\nMinstens 300 views per video\n400 Abonnees\nVoor overige sponsor aanvragen kan je bij: " + event.getJDA().getGuildById(STATIC.DISCORD_SERVER_ID).getMemberById(STATIC.JESSE_DISCORD_TOKEN).getAsMention() + " terecht").build()).queue();
+        event.getChannel().sendMessage(new EmbedBuilder().setColor(Color.BLUE).setTitle("Sponsoring")
+                .setDescription("Het is mogelijk om een server gesponserd te krijgen." +
+                        "\nVoor YouTubers hebben we de volgende eisen:" +
+                        "\nMinstens 6 video per week of 3 lange streams per week" +
+                "\nMeer dan 300 views per video" +
+                        "\n400+ Abonnees" +
+                        "\nVoor overige sponsor aanvragen kan je bij: " + event.getGuild().getMemberById(STATIC.JESSE_DISCORD_TOKEN).getAsMention() + " terecht").build()).queue();
 
     }
 

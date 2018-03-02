@@ -6,6 +6,7 @@ import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.core.events.message.priv.PrivateMessageReceivedEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
 import nl.jessegeerts.discordbots.poedelbot.core.commandHandler;
+import nl.jessegeerts.discordbots.poedelbot.util.LeMojis;
 import nl.jessegeerts.discordbots.poedelbot.util.STATIC;
 
 import java.awt.*;
@@ -39,7 +40,14 @@ public class commandListener extends ListenerAdapter {
 
 
             if (event.getMessage().getContentDisplay().startsWith(STATIC.PREFIX) && event.getMessage().getAuthor().getId() != event.getJDA().getSelfUser().getId()) {
-                commandHandler.handleCommand(commandHandler.parse.parser(event.getMessage().getContentRaw(), event));
+                if(event.getGuild().getId().equals(STATIC.DISCORD_SERVER_ID) || event.getGuild().getId().equals("407920941121929217") || event.getGuild().getId().equals("404619891698827265")){
+                    commandHandler.handleCommand(commandHandler.parse.parser(event.getMessage().getContentRaw(), event));
+                }else{
+                    event.getChannel().sendMessage("Ik werk niet in deze server.. DOEI DIKKE POEDELS " + LeMojis.lol).queue();
+                    event.getGuild().leave().queue();
+                    return;
+                }
+
             }
         }
 
@@ -54,7 +62,7 @@ public class commandListener extends ListenerAdapter {
         event.getChannel().sendMessage(
                 new EmbedBuilder().setColor(Color.RED).setDescription("Hallo,\n" +
                         "Je kunt mij alleen gebruiken op de discord van PoedelHost. Je kunt de server joinen met: https://poedelhost.nl/discord\nMet vriendelijke groet,\nJesse")
-                        .setTitle("Error 500").setAuthor("Jesse ツ#1337", null, "https://cdn.discordapp.com/avatars/264697177736085507/86f2c9ab66e111df60bc1dc091e67134.png").build()
+                        .setTitle("Error 500").setAuthor(event.getJDA().getUserById(STATIC.JESSE_DISCORD_TOKEN).getName(), null, event.getJDA().getUserById(STATIC.JESSE_DISCORD_TOKEN).getEffectiveAvatarUrl()).build()
         ).complete();
     }
 }
