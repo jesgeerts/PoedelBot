@@ -1,4 +1,4 @@
-package nl.jessegeerts.discordbots.poedelbot.command.hostrelated;
+package nl.jessegeerts.discordbots.poedelbot.command.moderation;
 
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.Permission;
@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class GiveCustomer implements Command {
+public class UnMute  implements Command {
     @Override
     public boolean called(String[] args, MessageReceivedEvent event) {
         return false;
@@ -22,27 +22,29 @@ public class GiveCustomer implements Command {
 
     @Override
     public void action(String[] args, MessageReceivedEvent event) {
-event.getMessage().delete().queue();
+
         MessageChannel channel = event.getChannel();
 
-String tagsender = event.getAuthor().getAsMention();
-Message message = event.getMessage();
+        String tagsender = event.getAuthor().getAsMention();
+        Message message = event.getMessage();
+        Member member3 = event.getMember();
 
-Member member3 = event.getMember();
+        event.getMessage().delete().queue();
+
+        if(member3.hasPermission(Permission.MANAGE_ROLES) || member3.hasPermission(Permission.MANAGE_PERMISSIONS) || member3.hasPermission(Permission.ADMINISTRATOR)) {
 
 
-
-            if(member3.hasPermission(Permission.MANAGE_ROLES) || member3.hasPermission(Permission.MANAGE_PERMISSIONS) || member3.hasPermission(Permission.ADMINISTRATOR)){
-
-
+            if (message.isFromType(ChannelType.TEXT)) {
                 if (message.getMentionedUsers().isEmpty()) {
-                    channel.sendMessage(tagsender + " :poodle: Je moet een of meerdere leden taggen om de klanten rank te kunnen geven :poodle:").queue();
+                    channel.sendMessage(tagsender + " :poodle: Je moet een of meerdere leden taggen om te unmuten.").queue();
                 } else {
                     Guild guild = event.getGuild();
                     Member selfMember = guild.getSelfMember();
-                    if (!selfMember.hasPermission(Permission.MANAGE_ROLES)  || !selfMember.hasPermission(Permission.MANAGE_PERMISSIONS) || !selfMember.hasPermission(Permission.ADMINISTRATOR)) {
+
+                    //Now, we the the logged in account doesn't have permission to kick members.. well.. we can't kick!
+                    if (!selfMember.hasPermission(Permission.MANAGE_ROLES) || !selfMember.hasPermission(Permission.MANAGE_PERMISSIONS) || !selfMember.hasPermission(Permission.ADMINISTRATOR)) {
                         channel.sendMessage(tagsender + " HE POEDEL! IK HEB GEEN TOESTEMMING OM POEDELS TE RANKS UIT TE GEVEN").queue();
-                        return;
+                        return; //We jump out of the method instead of using cascading if/else
                     }
 
                     //Loop over all mentioned users, kicking them one at a time. Mwauahahah!
@@ -62,8 +64,8 @@ Member member3 = event.getMember();
                         }
 
 
-                        guild.getController().addSingleRoleToMember(member, event.getGuild().getRoleById(STATIC.ROLE_CUSTOMER_ID)).queue(
-                                success -> channel.sendMessage(tagsender + " , ").append(member.getAsMention()).append(" heeft zijn/haar klanten rank gekregen").queue(),
+                        guild.getController().removeRolesFromMember(member, event.getGuild().getRoleById(STATIC.ROLE_MUTED_ROLE)).queue(
+                                success -> channel.sendMessage(tagsender + " , ").append(member.getAsMention()).append(" is niet langer gemuted").queue(),
                                 error ->
                                 {
                                     //The failure consumer provides a throwable. In this case we want to check for a PermissionException.
@@ -84,24 +86,22 @@ Member member3 = event.getMember();
                                 });
                     }
                 }
+            }
+        }else{
 
-
-    }else{
-                Message tag = channel.sendMessage(event.getAuthor().getAsMention()).complete();
-                Message embed = channel.sendMessage(new EmbedBuilder().setTitle("**ERROR 403**").setAuthor(event.getGuild().getOwner().getEffectiveName(), null, event.getGuild().getOwner().getUser().getEffectiveAvatarUrl()).setDescription("%lol% Je hebt hier geen permissie voor %lol%\nJe actie is bijgehouden.".replace("%lol%", LeMojis.lol)).build()).complete();
-                event.getGuild().getTextChannelById(STATIC.CHANNEL_NO_PERMISSON_LOG_ID).sendMessage(new EmbedBuilder().setColor(Color.RED)
-                        .setAuthor(event.getJDA().getSelfUser().getName(), null, event.getJDA().getSelfUser().getEffectiveAvatarUrl()).setDescription("%author% heeft het volgende gebruikt waar hij/zij geen toegang voor heeft: ``` %msg%```".replace("%author%", event.getAuthor().getAsMention()).replace("%msg%", event.getMessage().getContentDisplay())).build()).queue();
-                new Timer().schedule(new TimerTask() {
-                    @Override
-                    public void run() {
+            event.getMessage().delete().queue();
+            Message tag = channel.sendMessage(event.getAuthor().getAsMention()).complete();
+            Message embed = channel.sendMessage(new EmbedBuilder().setTitle("**ERROR 403**").setAuthor(event.getGuild().getOwner().getEffectiveName(), null, event.getGuild().getOwner().getUser().getEffectiveAvatarUrl()).setDescription("%lol% Je hebt hier geen permissie voor %lol%\nJe actie is bijgehouden.".replace("%lol%", LeMojis.lol)).build()).complete();
+            event.getGuild().getTextChannelById(STATIC.CHANNEL_NO_PERMISSON_LOG_ID).sendMessage(new EmbedBuilder().setColor(Color.RED)
+                    .setAuthor(event.getJDA().getSelfUser().getName(), null, event.getJDA().getSelfUser().getEffectiveAvatarUrl()).setDescription("%author% heeft het volgende gebruikt waar hij/zij geen toegang voor heeft: ``` %msg%```".replace("%author%", event.getAuthor().getAsMention()).replace("%msg%", event.getMessage().getContentDisplay())).build()).queue();
+            new Timer().schedule(new TimerTask() {
+                @Override
+                public void run() {
                     tag.delete().queue();
                     embed.delete().queue();
-                    }
-                }, 5000);
-
-
-
-            }
+                }
+            }, 5000);
+        }
     }
 
     @Override

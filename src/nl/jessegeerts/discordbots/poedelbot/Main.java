@@ -112,7 +112,6 @@ addCommands();
         commandHandler.commands.put("broadcast", new Broadcast());
         commandHandler.commands.put("bottalk", new Talk());
         commandHandler.commands.put("quote", new Quote());
-        commandHandler.commands.put("joke", new Joke());
         commandHandler.commands.put("gas", new Gas());
         commandHandler.commands.put("talk", new Talk());
         commandHandler.commands.put("shrug", new Shrug());
@@ -126,6 +125,15 @@ addCommands();
         commandHandler.commands.put("minecraft", new Minecraft());
         commandHandler.commands.put("botspam", new BotCommands());
         commandHandler.commands.put("mc", new Minecraft());
+        commandHandler.commands.put("vroom", new Vroom());
+        commandHandler.commands.put("famkelouise", new Vroom());
+        commandHandler.commands.put("famke", new Vroom());
+        commandHandler.commands.put("panelmove", new panelmove());
+        commandHandler.commands.put("panel", new panelmove());
+        commandHandler.commands.put("movepanel", new panelmove());
+        commandHandler.commands.put("move", new panelmove());
+        commandHandler.commands.put("mute", new Mute());
+        commandHandler.commands.put("unmute", new UnMute());
     }
 
     public static void addListeners(){

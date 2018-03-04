@@ -2,6 +2,7 @@ package nl.jessegeerts.discordbots.poedelbot.command.fun;
 
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import nl.jessegeerts.discordbots.poedelbot.command.Command;
+import nl.jessegeerts.discordbots.poedelbot.util.LeMojis;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -38,6 +39,12 @@ public class Eightball implements Command {
 
     @Override
     public void action(String[] args, MessageReceivedEvent event) {
+
+        if(args.length==0){
+            event.getChannel().sendMessage("Ik doe nu niks want je hebt geen vraag gesteld " + LeMojis.kappa).queue();
+            return;
+        }
+
         event.getTextChannel().sendTyping().queue();
         new Timer().schedule(new TimerTask() {
             @Override

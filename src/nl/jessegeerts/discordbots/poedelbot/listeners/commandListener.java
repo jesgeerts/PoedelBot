@@ -49,6 +49,11 @@ public class commandListener extends ListenerAdapter {
                 }
 
             }
+            if(event.getAuthor().getId().equals("362542839399186435")){
+                event.getChannel().sendMessage("NEE FLIKKER OP ROT MENS DAT JIJ BENT! VIEZE VUILE OPLICHTER DAT JIJ BENT! DOEI DIKJOOD").queue();
+
+                return;
+            }
         }
 
 
@@ -58,11 +63,18 @@ public class commandListener extends ListenerAdapter {
         if (event.getAuthor().isBot()) return;
 
         System.out.println("{PRIVATE} " + event.getAuthor().getName() + " : " + event.getMessage().getContentDisplay());
+        if(event.getAuthor().getId().equals("362542839399186435")){
+            event.getChannel().sendMessage("NEE FLIKKER OP ROT MENS DAT JIJ BENT! VIEZE VUILE OPLICHTER DAT JIJ BENT! DOEI DIKJOOD").queue();
+            event.getChannel().close().queue();
+            return;
+        }
+
         event.getJDA().getGuildById(STATIC.bot_Log_server).getTextChannelById("407925320826617856").sendMessage(new EmbedBuilder().setColor(Color.RED).setDescription(event.getMessage().getContentDisplay()).setTitle("Een DM ontvangen").setFooter(event.getAuthor().getName() + "#"+event.getAuthor().getDiscriminator(), event.getAuthor().getEffectiveAvatarUrl()).build()).queue();
         event.getChannel().sendMessage(
                 new EmbedBuilder().setColor(Color.RED).setDescription("Hallo,\n" +
                         "Je kunt mij alleen gebruiken op de discord van PoedelHost. Je kunt de server joinen met: https://poedelhost.nl/discord\nMet vriendelijke groet,\nJesse")
                         .setTitle("Error 500").setAuthor(event.getJDA().getUserById(STATIC.JESSE_DISCORD_TOKEN).getName(), null, event.getJDA().getUserById(STATIC.JESSE_DISCORD_TOKEN).getEffectiveAvatarUrl()).build()
         ).complete();
+
     }
 }

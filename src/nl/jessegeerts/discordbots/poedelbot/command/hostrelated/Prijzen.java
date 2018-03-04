@@ -30,33 +30,38 @@ public class Prijzen implements Command {
 
             if (args[0].equalsIgnoreCase("lijst")) {
                 channel.sendMessage(intro.setTitle("Leuk dat je kijkt!").setDescription("Hey! Leuk dat je kijkt naar onze prijzen. Mocht je nog eventueel vragen hebben dan kan je bij de juiste support kanalen terecht. Zoek je naar een pakket die er hier niet tussen staat? Neem dan contact op met een van de %ceo%.".replace("%ceo%", event.getJDA().getRoleById(STATIC.ROLE_CEO_ID).getAsMention())).build()).queue();
+
                 channel.sendMessage(minecraft.setDescription(
-                        "1GB RAM, SSD only: €0,90/mo" +
-                                "\n3GB RAM, SSD only: €2,00/mo" +
-                                "\n4GB RAM, SSD only: €2,75/mo" +
-                                "\n6GB RAM, SSD only: €4,00/mo" +
-                                "\n8GB RAM, SSD only: €6,00/mo" +
-                                "\n10GB RAM, SSD only: €7,50/mo\n" +
-                                "768MB RAM BungeeCord: €0,40/mo (Wil je meer RAM? Dan dien je helaas een normale server hiervoor te bestellen)\n" +
+                        "1GB RAM, SSD only: €0,79/mo" +
+                                "\n3GB RAM, SSD only: €2,30/mo" +
+                                "\n4GB RAM, SSD only: €3,10/mo" +
+                                "\n6GB RAM, SSD only: €4,70/mo" +
+                                "\n8GB RAM, SSD only: €6,30/mo" +
+                                "\n10GB RAM, SSD only: €7,56/mo\n" +
+                                "768MB RAM BungeeCord: €0,50/mo (Wil je meer RAM? Dan dien je helaas een normale server hiervoor te bestellen)\n" +
                                 "\n\n" +
                                 "***Alle pakketten vanaf 6GB zijn opdeelbaar in meerdere servers. Geef dit aan bij het bestellen. Je kunt dit ook later aan laten passen***")
-                        .setTitle("Minecraft Shared **MULTICRAFT** Hosting").build()).queue();
+                        .setTitle("Minecraft Shared **Pterodactyl** Hosting").build()).queue();
+
+
                 channel.sendMessage(minecraft.setDescription(
-                        "1GB RAM, SSD only: €0,75/mo\n" +
-                                "3GB RAM, SSD only: €1,75/mo\n" +
-                                "4GB RAM, SSD only: €2,25/mo\n" +
-                                "6GB RAM, SSD only: €3,50/mo\n" +
-                                "8GB RAM, SSD only: €5,50/mo\n" +
-                                "10GB RAM, SSD only: €6,50/mo\n" +
-                                "768MB RAM BungeeCord: €0,40/mo (Wil je meer RAM? Dan dien je helaas een normale server hiervoor te bestellen)\n" +
+                        "1GB RAM, SSD only: €0,76/mo\n" +
+                                "3GB RAM, SSD only: €2,26/mo\n" +
+                                "4GB RAM, SSD only: €3,00/mo\n" +
+                                "6GB RAM, SSD only: €4,55/mo\n" +
+                                "8GB RAM, SSD only: €6,05/mo\n" +
+                                "10GB RAM, SSD only: €7,55/mo\n" +
+                                "768MB RAM BungeeCord: €0,45/mo (Wil je meer RAM? Dan dien je helaas een normale server hiervoor te bestellen)\n" +
                                 "\n\n" +
                                 "***Alle pakketten vanaf 6GB zijn opdeelbaar in meerdere servers. Geef dit aan bij het bestellen. Je kunt dit ook later aan laten passen***")
-                        .setTitle("Minecraft Shared **PTERODACTYL** Hosting").build()).queue();
+                        .setTitle("Minecraft Shared **Multicraft** Hosting").build()).queue();
+
+
                 channel.sendMessage(minecraft.setTitle("Minecraft Netwerk").setDescription(
-                        "2x 3GB - 2x 1GB - 1x BungeeCord 512MB » 5\n" +
-                                "2x 4GB - 3x 1GB - 1x BungeeCord 512MB » 8\n" +
-                                "1x 6GB - 3x 3GB - 1x 1GB - 1x BungeeCord 768MB » 9,90" +
-                                "\n***Je netwerk komt dan op een Pterodactyl panel te staan en je hebt geen eigen panel en je kunt je GB's zelf niet opdelen.*** *Wil je Multicraft als panel? Dan komt er een toeslag van €4,50 per maand extra! (Geef dit aan tijdens het bestellen!)*".replace("%ceo%", event.getGuild().getRoleById(STATIC.ROLE_CEO_ID).getAsMention())).build()).queue();
+                        "2x 3GB - 2x 1GB - 1x BungeeCord 512MB » 8\n" +
+                                "2x 4GB - 3x 1GB - 1x BungeeCord 512MB » 10\n" +
+                                "1x 6GB - 3x 3GB - 1x 1GB - 1x BungeeCord 768MB » 13" +
+                                "\n***Je netwerk komt dan op een Multicraft panel te staan en je hebt geen eigen panel en je kunt je GB's zelf niet opdelen.*** *Wil je graag Pterodactyl? Dat is dan €1/pm extra! (Geef dit aan tijdens het bestellen)*".replace("%ceo%", event.getGuild().getRoleById(STATIC.ROLE_CEO_ID).getAsMention())).build()).queue();
 
                 channel.sendMessage(minecraft.setTitle("Overige Minecraft Pakketten").setDescription(
                         "8GB RAM, 80GB NVME SSD, DDoS Bescherming » €11" +
@@ -67,7 +72,7 @@ public class Prijzen implements Command {
                                 "\n50GB RAM, 100% SSD, **GEEN** DDoS bescherming » 27,50" +
                                 "\n\n" +
                                 "***Je krijgt een eigen panel waarbij je dus je eigen GB's kunt opdelen en beheren. Aldus je kunt dan ook je eigen servers aanmaken :smile:*** *Wil je graag een eigen panel link onder je eigen domeinnaam? Vermeld dit tijdens het bestellen en zorg ervoor dat je een domein al in bezit hebt!*" +
-                                "\nDit is wellicht ook wel leuk om te weten: Je krijgt bij de 16GB RAM en de 32GB RAM: SSH toegang! Vraag naar de voorwaarden bij %jesse% (Jesse).".replace("%jesse%", event.getGuild().getMemberById(STATIC.JESSE_DISCORD_TOKEN).getAsMention())
+                                "\nDit is wellicht ook wel leuk om te weten: Je krijgt bij de 16GB RAM en de 32GB RAM: SSH toegang! Vraag naar de voorwaarden bij %jesse% (Jesse).\n\nAls je pterodactyl of pufferpanel kiest dan is de installatie hiervan inbegrepen. Dus dat kost je niks extra!".replace("%jesse%", event.getGuild().getMemberById(STATIC.JESSE_DISCORD_TOKEN).getAsMention())
                 ).build()).queue();
 
                 channel.sendMessage(overig.setTitle("Overige pakketten").setDescription(
@@ -80,9 +85,7 @@ public class Prijzen implements Command {
                                 "\nXYZ DOMEIN » 12,20" +
                                 "\n" +
                                 "\n**OVERIG**" +
-                                "\nTeamspeak (32 slots) » 0,60" +
-                                "\nPanel Installatie (Pterodactyl) » 3" +
-                                "\nPanel Installatie (Multicraft) » 3,50"
+                                "\nTeamspeak (32 slots) » 0,60"
 
                 ).build()).queue();
 

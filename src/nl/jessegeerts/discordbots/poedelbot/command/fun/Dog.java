@@ -14,11 +14,11 @@ public class Dog implements Command {
 
     @Override
     public void action(String[] args, MessageReceivedEvent event) {
-        event.getTextChannel().sendTyping().queue();
+        event.getChannel().sendTyping().queue();
         new Timer().schedule(new TimerTask() {
             @Override
             public void run() {
-                event.getTextChannel().sendMessage("┈┈╱▏┈┈┈┈┈╱▔▔▔▔╲┈ \n" +
+                event.getChannel().sendMessage("┈┈╱▏┈┈┈┈┈╱▔▔▔▔╲┈ \n" +
                         "┈┈▏▏┈┈┈┈┈▏╲▕▋▕▋▏\n" +
                         "┈┈╲╲┈┈┈┈┈▏┈▏┈▔▔▔▆ ------- BORF!\n" +
                         "┈┈┈╲▔▔▔▔▔╲╱┈╰┳┳┳╯ \n" +

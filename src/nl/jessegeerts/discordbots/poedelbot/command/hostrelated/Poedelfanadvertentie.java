@@ -29,7 +29,7 @@ public class Poedelfanadvertentie implements Command{
                     "\n" +
                     "Kleine sneakpeak van onze prijslijst:\n" +
                     "```Shared MC hosting: 6GB voor €3,50 per maand\n" +
-                    "Netwerk Hosting 24GB RAM: €15,50 per maand\n" +
+                    "Netwerk Hosting 24GB RAM: €15,20 per maand\n" +
                     "```\n" +
                     "\n" +
                     "Ben je al voor de rest benieuwd? Join dan onze discord server!\n" +
