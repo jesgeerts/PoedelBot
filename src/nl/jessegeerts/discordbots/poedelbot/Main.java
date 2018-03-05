@@ -134,6 +134,7 @@ addCommands();
         commandHandler.commands.put("move", new panelmove());
         commandHandler.commands.put("mute", new Mute());
         commandHandler.commands.put("unmute", new UnMute());
+        commandHandler.commands.put("serverinfo", new ServerInfo());
     }
 
     public static void addListeners(){
