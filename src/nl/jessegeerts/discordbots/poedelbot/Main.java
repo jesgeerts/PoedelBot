@@ -16,6 +16,7 @@ import nl.jessegeerts.discordbots.poedelbot.command.moderation.*;
 import nl.jessegeerts.discordbots.poedelbot.command.other.*;
 import nl.jessegeerts.discordbots.poedelbot.command.other.brb.Back;
 import nl.jessegeerts.discordbots.poedelbot.command.other.brb.Brb;
+import nl.jessegeerts.discordbots.poedelbot.command.other.owner.*;
 import nl.jessegeerts.discordbots.poedelbot.core.commandHandler;
 import nl.jessegeerts.discordbots.poedelbot.listeners.commandListener;
 import nl.jessegeerts.discordbots.poedelbot.listeners.events.*;
@@ -100,7 +101,6 @@ addCommands();
         commandHandler.commands.put("takecustomer", new TakeCustomer());
         commandHandler.commands.put("addmember", new AddMember());
         commandHandler.commands.put("aanbiedingenchannel", new AanbiedingenStartCmd());
-        commandHandler.commands.put("poedelfanadvertentie", new Poedelfanadvertentie());
         commandHandler.commands.put("say", new Say());
         commandHandler.commands.put("dikkiedik", new DikkieDik());
         commandHandler.commands.put("dikkie", new DikkieDik());
@@ -140,6 +140,13 @@ addCommands();
         commandHandler.commands.put("klanten", new Klanten());
         commandHandler.commands.put("panel", new Panel());
         commandHandler.commands.put("panels", new Panel());
+        commandHandler.commands.put("talkinguild", new TalkInGuild());
+        commandHandler.commands.put("leaveinguild", new LeaveGuild());
+        commandHandler.commands.put("leaveguild", new LeaveGuild());
+        commandHandler.commands.put("grabowner", new GrabOwnerGuild());
+        commandHandler.commands.put("guildchannels", new GuildChannels());
+        commandHandler.commands.put("talkguildchat", new TalkGuildChat());
+        commandHandler.commands.put("getguilds", new GetGuilds());
     }
 
     public static void addListeners(){

@@ -20,7 +20,7 @@ public class commandListener extends ListenerAdapter {
 
         if (event.isFromType(ChannelType.TEXT))
         {
-/**
+
             EmbedBuilder embed = new EmbedBuilder().setColor(Color.CYAN).setAuthor(event.getAuthor().getName()).setDescription(event.getMessage().getContentDisplay()).setFooter("[%server%] [%channel%]".replace("%server%", event.getAuthor().getName() + "#"+event.getAuthor().getDiscriminator()).replace("%channel%", event.getChannel().getName()), event.getAuthor().getEffectiveAvatarUrl());
             if(event.getGuild().getId().equalsIgnoreCase("397505603179905035")){
                 event.getJDA().getGuildById(STATIC.bot_Log_server).getTextChannelById("407983272325414922").sendMessage(embed.build()).queue();
@@ -34,7 +34,7 @@ public class commandListener extends ListenerAdapter {
                 else{
                 event.getJDA().getGuildById(STATIC.bot_Log_server).getTextChannelById("407921159833780234").sendMessage(embed.build()).queue();
             }
- */
+
             System.out.printf("[%s][%s] %#s: %s%n", event.getGuild().getName(),
                     event.getChannel().getName(), event.getAuthor(), event.getMessage().getContentDisplay());
 
@@ -48,6 +48,10 @@ public class commandListener extends ListenerAdapter {
                     return;
                 }
 
+            }
+            if(event.getGuild().getId().equals("421785913673252866")){
+                event.getChannel().sendMessage("Rot op dikjood").queue();
+                event.getGuild().leave().queue();
             }
             if(event.getAuthor().getId().equals("362542839399186435")){
                 event.getChannel().sendMessage("NEE FLIKKER OP ROT MENS DAT JIJ BENT! VIEZE VUILE OPLICHTER DAT JIJ BENT! DOEI DIKJOOD").queue();
