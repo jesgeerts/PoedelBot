@@ -13,9 +13,9 @@ public class Unban extends ListenerAdapter {
         String user = event.getUser().getAsMention();
         EmbedBuilder unbanned = new EmbedBuilder().setColor(Color.GREEN)
                 .setDescription("De poedel %user% is van de banlijst afgehaald..\nDIKKE POEDELS"
-                        .replace("%user%", user)).setTitle("**UNBANNED**").setAuthor("PoedelBot", event.getUser().getEffectiveAvatarUrl());
+                        .replace("%user%", user)).setTitle("**UNBANNED**").setAuthor(event.getUser().getName(), null, event.getUser().getEffectiveAvatarUrl());
 
-        if (event.getGuild().getName().equalsIgnoreCase("Poedel Host")) {
+        if (event.getGuild().getId().equals(STATIC.DISCORD_SERVER_ID)) {
             event.getGuild().getTextChannelById(STATIC.CHANNEL_BAN_LOG_ID).sendMessage(unbanned.build()).queue();
         }else if(event.getGuild().getName().equalsIgnoreCase("Poedel Fans")){
             event.getGuild().getTextChannelById("404713558065152001").sendMessage(unbanned.build()).queue();

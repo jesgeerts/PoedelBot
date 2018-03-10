@@ -31,37 +31,24 @@ public class Prijzen implements Command {
             if (args[0].equalsIgnoreCase("lijst")) {
                 channel.sendMessage(intro.setTitle("Leuk dat je kijkt!").setDescription("Hey! Leuk dat je kijkt naar onze prijzen. Mocht je nog eventueel vragen hebben dan kan je bij de juiste support kanalen terecht. Zoek je naar een pakket die er hier niet tussen staat? Neem dan contact op met een van de %ceo%.".replace("%ceo%", event.getJDA().getRoleById(STATIC.ROLE_CEO_ID).getAsMention())).build()).queue();
 
+
                 channel.sendMessage(minecraft.setDescription(
-                        "1GB RAM, NVME SSD: €0,79/mo" +
-                                "\n3GB RAM, NVME SSD: €2,30/mo" +
-                                "\n4GB RAM, NVME SSD: €3,10/mo" +
-                                "\n6GB RAM, NVME SSD: €4,70/mo" +
-                                "\n8GB RAM, NVME SSD: €6,30/mo" +
-                                "\n10GB RAM, NVME SSD: €7,56/mo\n" +
-                                "768MB RAM BungeeCord: €0,50/mo (Wil je meer RAM? Dan dien je helaas een normale server hiervoor te bestellen)\n" +
-                                "\n\n" +
-                                "***Alle pakketten vanaf 6GB zijn opdeelbaar in meerdere servers. Geef dit aan bij het bestellen. Je kunt dit ook later aan laten passen***")
+                        "1GB RAM, NVME SSD: €1,10/mo\n" +
+                                "2GB RAM, NVME SSD, €2,20/mo\n" +
+                                "3GB RAM, NVME SSD: €3,30/mo\n" +
+                                "4GB RAM, NVME SSD: €4,40/mo\n" +
+                                "5GB RAM, NVME SSD: €5,50/mo\n" +
+                                "6GB RAM, NVME SSD: €6,60/mo\n" +
+                                "7GB RAM, NVME SSD: €7,70/mo\n" +
+                                "8GB RAM, NVME SSD: €8,80/mo\n" +
+                                "9GB RAM, NVME SSD: €9,90/mo\n" +
+                                "10GB RAM, NVME SSD: €10,99/mo\n" +
+                                "768MB RAM BungeeCord: €0,90/mo (Wil je meer RAM? Dan dien je helaas een normale server hiervoor te bestellen)\n\n***Het opsplitsen is niet mogelijk in verband met onze administratie. Heb je al een splitsing? Dit blijft dan staan tot je server verloopt***")
                         .setTitle("Minecraft Shared **Pterodactyl** Hosting").build()).queue();
 
 
-                channel.sendMessage(minecraft.setDescription(
-                        "1GB RAM, NVME SSD: €0,76/mo\n" +
-                                "3GB RAM, NVME SSD: €2,26/mo\n" +
-                                "4GB RAM, NVME SSD: €3,00/mo\n" +
-                                "6GB RAM, NVME SSD: €4,55/mo\n" +
-                                "8GB RAM, NVME SSD: €6,05/mo\n" +
-                                "10GB RAM, NVME SSD: €7,55/mo\n" +
-                                "768MB RAM BungeeCord: €0,45/mo (Wil je meer RAM? Dan dien je helaas een normale server hiervoor te bestellen)\n" +
-                                "\n\n" +
-                                "***Alle pakketten vanaf 6GB zijn opdeelbaar in meerdere servers. Geef dit aan bij het bestellen. Je kunt dit ook later aan laten passen***")
-                        .setTitle("Minecraft Shared **Multicraft** Hosting").build()).queue();
-
-
                 channel.sendMessage(minecraft.setTitle("Minecraft Netwerk").setDescription(
-                        "2x 3GB - 2x 1GB - 1x BungeeCord 512MB » 6,99\n" +
-                                "2x 4GB - 3x 1GB - 1x BungeeCord 512MB » 8\n" +
-                                "1x 6GB - 3x 3GB - 1x 1GB - 1x BungeeCord 768MB » 13" +
-                                "\n***Je netwerk komt dan op een Multicraft panel te staan en je hebt geen eigen panel en je kunt je GB's zelf niet opdelen.*** *Wil je graag Pterodactyl? Dat is dan €1/pm extra! (Geef dit aan tijdens het bestellen)*".replace("%ceo%", event.getGuild().getRoleById(STATIC.ROLE_CEO_ID).getAsMention())).build()).queue();
+                        "De netwerk pakketten zijn helaas geschrapt i.v.m. ons nieuwe administratie. Heb je al een netwerk pakket? Dan behoud je dit nog tot je het annuleert of het verloopt.".replace("%ceo%", event.getGuild().getRoleById(STATIC.ROLE_CEO_ID).getAsMention())).build()).queue();
 
                 channel.sendMessage(minecraft.setTitle("Overige Minecraft Pakketten").setDescription(
                         "8GB RAM, 80GB NVME SSD, DDoS Bescherming » €11" +
@@ -78,21 +65,14 @@ public class Prijzen implements Command {
                 channel.sendMessage(overig.setTitle("Overige pakketten").setDescription(
 
                         "**Domeinen**" +
-                                "\nNL DOMEIN » 4,85" +
-                                "\nEU DOMEIN » 5,80" +
-                                "\nCOM DOMEIN » 8,46" +
-                                "\nBE DOMEIN » 6,05" +
-                                "\nXYZ DOMEIN » 12,20" +
-                                "\n" +
-                                "\n**OVERIG**" +
-                                "\nTeamspeak (32 slots) » 0,60"
+                                "\nWordt nog aangepast"
 
                 ).build()).queue();
 
 
 
                 channel.sendMessage(new EmbedBuilder().setTitle("**WEB HOSTING**")
-                        .setDescription("Forum: 1GB, 100GB Bandbreedte » 0,50/mo" +
+                        .setDescription("Forum: 1GB, 100GB Bandbreedte » 1,0/mo" +
                                 "\nStarter: 2GB, 200GB bandbreedte » 2/mo" +
                                 "\nMedium: 4GB, 400GB bandbreedte » 4/mo" +
                                 "\nExpert: 8GB, 800GB bandbreedte » 8/mo" +
@@ -100,7 +80,6 @@ public class Prijzen implements Command {
                                 "\nExtra Extra Large: 50GB, 5TB bandbreedte » 35/mo" +
                                 "\n\nAlle webhosting pakketten bevatten onbeperkt MySQL databases, E-Mail adressen, Extra domeinen, subdomeinen, en FTP accounts. Ook hebben iedere webhosting pakketten 1GB RAM en 1 Processor kern.\nWebhosting maakt gebruik van enterprise SSD's wat dus je website lekker snel maakt!\n\nHeb je meer RAM of bandbreedte of processorkracht voor je website nodig? Neem dan contact met ons op met een gedetailleerde uitleg waarom je dat nodig hebt.").setColor(new Color(96, 170, 238)).build()).queue();
 
-                channel.sendMessage(new EmbedBuilder().build()).queue();
 
 
                 channel.sendMessage(new EmbedBuilder().setColor(Color.orange).setTitle("Bot Hosting").setDescription("**LET OP** Je discord bot moet de programmeertaal Java hebben!" +

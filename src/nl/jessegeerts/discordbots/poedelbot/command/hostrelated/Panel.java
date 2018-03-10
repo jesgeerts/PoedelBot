@@ -3,10 +3,7 @@ package nl.jessegeerts.discordbots.poedelbot.command.hostrelated;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import nl.jessegeerts.discordbots.poedelbot.command.Command;
 
-import java.util.Timer;
-import java.util.TimerTask;
-
-public class Website implements Command {
+public class Panel implements Command {
     @Override
     public boolean called(String[] args, MessageReceivedEvent event) {
         return false;
@@ -16,12 +13,10 @@ public class Website implements Command {
     public void action(String[] args, MessageReceivedEvent event) {
         event.getMessage().delete().queue();
 
-        new Timer().schedule(new TimerTask() {
-            @Override
-            public void run() {
-                event.getChannel().sendMessage(event.getAuthor().getAsMention() + " https://poedelhost.nl").queue();
-            }
-        },1500);
+
+                event.getChannel().sendMessage(event.getAuthor().getAsMention() + "\nMulticraft: https://mc.phdns.nl\nPterodactyl: https://ptero.phdns.nl\ncPanel: https://cpanel.phdns.nl").queue();
+
+
 
     }
 

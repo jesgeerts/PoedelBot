@@ -10,6 +10,8 @@ import net.dv8tion.jda.core.managers.GuildController;
 import nl.jessegeerts.discordbots.poedelbot.util.STATIC;
 
 import java.awt.*;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class Join extends ListenerAdapter {
 
@@ -17,7 +19,24 @@ public class Join extends ListenerAdapter {
     public void onGuildMemberJoin(GuildMemberJoinEvent event) {
 
         if (event.getGuild().getId().equals(STATIC.DISCORD_SERVER_ID)) {
-            MessageChannel channel = event.getGuild().getTextChannelById(STATIC.CHANNEL_JOIN_LOG_ID);
+
+
+            if(event.getUser().getId().equals("134762702122909696") || event.getUser().getId().equals("277458924238667776") || event.getUser().getId().equals("272292524432031746")){
+
+                event.getUser().openPrivateChannel().queue((privateChannel -> privateChannel.sendMessage("Je bent niet welkom bij Poedel Host discord. Fijne dag verder")));
+                new Timer().schedule(new TimerTask() {
+                    @Override
+                    public void run() {
+                        event.getGuild().getController().ban(event.getMember(), 1, "We houden niet zo erg van je").queue();
+                    }
+                }, 1500);
+                System.out.println("Een dikke tyfus jood is gejoined");
+                return;
+            }
+
+
+
+            MessageChannel channel = event.getGuild().getTextChannelById("420535152926785538");
             int currentMembers = event.getGuild().getMembers().size();
             if (currentMembers % 100 == 0) {
                 event.getJDA().getGuildById(STATIC.DISCORD_SERVER_ID).getTextChannelById(STATIC.CHANNEL_NIEUWS_ID).sendMessage("DE SERVER HEEFT NU %count% LEDEN BEREIKT! Waarschuw de staff voor een giveaway!!".replace("%count%", String.valueOf(currentMembers))).queue();

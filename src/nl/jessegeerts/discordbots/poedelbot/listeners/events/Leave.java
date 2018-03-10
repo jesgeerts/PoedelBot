@@ -19,7 +19,7 @@ public class Leave extends ListenerAdapter {
 
 
 
-            event.getJDA().getGuildById(STATIC.DISCORD_SERVER_ID).getTextChannelById(STATIC.CHANNEL_LEAVE_LOG_ID).sendMessage(kek.build()).queue();
+            event.getGuild().getTextChannelById("420535152926785538").sendMessage(kek.build()).queue();
 
         } else {
             return;

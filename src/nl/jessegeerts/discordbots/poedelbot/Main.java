@@ -135,6 +135,11 @@ addCommands();
         commandHandler.commands.put("mute", new Mute());
         commandHandler.commands.put("unmute", new UnMute());
         commandHandler.commands.put("serverinfo", new ServerInfo());
+        commandHandler.commands.put("hatsikidee", new Hatsikidee());
+        commandHandler.commands.put("normaal", new Normaal());
+        commandHandler.commands.put("klanten", new Klanten());
+        commandHandler.commands.put("panel", new Panel());
+        commandHandler.commands.put("panels", new Panel());
     }
 
     public static void addListeners(){
