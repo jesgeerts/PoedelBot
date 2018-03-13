@@ -147,6 +147,7 @@ addCommands();
         commandHandler.commands.put("no", new No());
         commandHandler.commands.put("banid", new BanID());
         commandHandler.commands.put("unbanid", new UnbanID());
+        commandHandler.commands.put("kickid", new KickID());
     }
 
     public static void addListeners(){

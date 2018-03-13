@@ -15,7 +15,7 @@ import java.awt.*;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class BanID implements Command {
+public class KickID implements Command {
 
 
     @Override
@@ -34,7 +34,7 @@ public class BanID implements Command {
         String tagsender = event.getAuthor().getAsMention();
         Member member3 = event.getMember();
 
-        if (member3.hasPermission(Permission.ADMINISTRATOR) || member3.hasPermission(Permission.BAN_MEMBERS)) {
+        if (member3.hasPermission(Permission.ADMINISTRATOR) || member3.hasPermission(Permission.KICK_MEMBERS)) {
 
             if (args.length == 0) {
                 Message msg = channel.sendMessage(event.getAuthor().getAsMention()).complete();
@@ -54,14 +54,14 @@ public class BanID implements Command {
             // Very similar to JDA#getSelfUser()!
 
             //Now, we the the logged in account doesn't have permission to kick members.. well.. we can't kick!
-            if (!selfMember.hasPermission(Permission.BAN_MEMBERS) || !selfMember.hasPermission(Permission.ADMINISTRATOR)) {
+            if (!selfMember.hasPermission(Permission.KICK_MEMBERS) || !selfMember.hasPermission(Permission.ADMINISTRATOR)) {
                 channel.sendMessage(tagsender + " HE POEDEL! IK HEB GEEN TOESTEMMING OM POEDELS TE BANNEN").queue();
                 return; //We jump out of the method instead of using cascading if/else
             }
 
-            guild.getController().ban(args[0], 0).queue(
+            guild.getController().kick(args[0]).queue(
 
-                    success -> channel.sendMessage("De gebruikersID ``").append(args[0]).append("`` Is verbannen van %server%".replace("%server%", event.getGuild().getName())).queue()
+                    success -> channel.sendMessage("De gebruikersID ``").append(args[0]).append("`` is verwijderd uit %server%".replace("%server%", event.getGuild().getName())).queue()
 
 
             );

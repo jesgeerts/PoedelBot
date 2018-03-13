@@ -29,9 +29,15 @@ event.getMessage().delete().queue();
             for (Guild g : event.getJDA().getGuilds() ) {
                 out += g.getName() + " (" + g.getId() + ") \n";
             }
-            channel.sendMessage(out).queue();
+            Message msg = channel.sendMessage(out).complete();
+            new Timer().schedule(new TimerTask() {
+                @Override
+                public void run() {
+                  msg.delete().queue();
+                }
+            },1500);
         }else{
-            Message msg = channel.sendMessage(event.getAuthor().getAsMention() +" NEE " + LeMojis.lol).complete();
+            Message msg = channel.sendMessage(event.getAuthor().getAsMention() +" Je bent hier niet voor gemachtigd.. Noob " + LeMojis.lol).complete();
             new Timer().schedule(new TimerTask() {
                 @Override
                 public void run() {
