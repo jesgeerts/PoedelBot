@@ -128,10 +128,6 @@ addCommands();
         commandHandler.commands.put("vroom", new Vroom());
         commandHandler.commands.put("famkelouise", new Vroom());
         commandHandler.commands.put("famke", new Vroom());
-        commandHandler.commands.put("panelmove", new panelmove());
-        commandHandler.commands.put("panel", new panelmove());
-        commandHandler.commands.put("movepanel", new panelmove());
-        commandHandler.commands.put("move", new panelmove());
         commandHandler.commands.put("mute", new Mute());
         commandHandler.commands.put("unmute", new UnMute());
         commandHandler.commands.put("serverinfo", new ServerInfo());
@@ -147,6 +143,10 @@ addCommands();
         commandHandler.commands.put("guildchannels", new GuildChannels());
         commandHandler.commands.put("talkguildchat", new TalkGuildChat());
         commandHandler.commands.put("getguilds", new GetGuilds());
+        commandHandler.commands.put("aap",new Aap());
+        commandHandler.commands.put("no", new No());
+        commandHandler.commands.put("banid", new BanID());
+        commandHandler.commands.put("unbanid", new UnbanID());
     }
 
     public static void addListeners(){

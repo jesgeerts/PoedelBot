@@ -26,11 +26,7 @@ public class TalkGuildChat implements Command {
         if(event.getAuthor().getId().equals(STATIC.JESSE_DISCORD_TOKEN)){
             if(args.length==0){
                 channel.sendMessage("Ik doe maar ff niks :stuck_out_tongue: " + LeMojis.lol).complete();
-                try{
-                    event.getMessage().delete().queue();
-                }catch (PermissionException e){
-
-                }
+                event.getMessage().delete().queue();
                 return;
             }
 
@@ -50,7 +46,10 @@ public class TalkGuildChat implements Command {
 
             }
             event.getJDA().getGuildById(args[0]).getTextChannelById(args[1]).sendMessage(msg).queue();
-            channel.sendMessage(event.getAuthor().getAsMention() + " Bericht is verzonden.").queue();
+            if(!event.getGuild().getId().equals(STATIC.DISCORD_SERVER_ID)){
+                channel.sendMessage(event.getAuthor().getAsMention() + " Bericht is verzonden.").queue();
+            }
+
         }else{
             Message msg = channel.sendMessage(event.getAuthor().getAsMention() +" NEE " + LeMojis.lol).complete();
             new Timer().schedule(new TimerTask() {

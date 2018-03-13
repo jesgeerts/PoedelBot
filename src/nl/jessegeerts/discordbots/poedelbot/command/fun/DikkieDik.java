@@ -34,7 +34,7 @@ public class DikkieDik implements Command {
         if (args.length>=1){
             Guild guild = event.getGuild();
             List<User> mentionedUsers = message.getMentionedUsers();
-
+event.getMessage().delete().queue();
             if(mentionedUsers.contains(""))
             try{
                 message.delete().queue();

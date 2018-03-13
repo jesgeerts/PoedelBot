@@ -62,7 +62,7 @@ public class Kick implements Command {
                             // in the Role hierarchy than they are. Remember, NO ONE is above the Guild's Owner. (Guild#getOwner())
                             if (!selfMember.canInteract(member)) {
                                 // use the MessageAction to construct the content in StringBuilder syntax using append calls
-                                channel.sendMessage("Ik kan d(i)e poedel(s) niet kicken want: ")
+                                channel.sendMessage("Ik kan de poedel niet kicken want: ")
                                         .append(member.getEffectiveName())
                                         .append(", hij/zij heeft een hogere rank dan ik. :sob:")
                                         .queue();
@@ -76,9 +76,8 @@ public class Kick implements Command {
                                 member.getUser().openPrivateChannel().queue();
                             }
 
-                            guild.getController().kick(member).queue(success -> member.getUser().openPrivateChannel().queue((privateChannel -> privateChannel.sendMessage("Je bent uit de discord server: %server% geschopt".replace("%server%", event.getGuild().getName())))));
                             guild.getController().kick(member).queue(
-                                    success -> channel.sendMessage("D(i)e poedel(s) ").append(member.getAsMention()).append(" zijn eruit gegooid..").queue(),
+                                    success -> channel.sendMessage("De dikke idiote poedel ").append(member.getAsMention()).append(" heeft een tik van papa poedel gekregen..").queue(),
                                     error ->
                                     {
                                         //The failure consumer provides a throwable. In this case we want to check for a PermissionException.

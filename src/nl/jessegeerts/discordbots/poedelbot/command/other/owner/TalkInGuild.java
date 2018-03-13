@@ -26,12 +26,7 @@ public class TalkInGuild implements Command {
         if(event.getAuthor().getId().equals(STATIC.JESSE_DISCORD_TOKEN)){
             if(args.length==0){
                 channel.sendMessage("Ik doe maar ff niks :stuck_out_tongue: " + LeMojis.lol).complete();
-                try{
-                    event.getMessage().delete().queue();
-                }catch (PermissionException e){
-
-                }
-                return;
+                event.getMessage().delete().queue();
             }
 
 

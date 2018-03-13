@@ -21,7 +21,7 @@ public class GetGuilds   implements Command {
     @Override
     public void action(String[] args, MessageReceivedEvent event) {
 
-
+event.getMessage().delete().queue();
         MessageChannel channel = event.getChannel();
         if(event.getAuthor().getId().equals(STATIC.JESSE_DISCORD_TOKEN)){
             String out = "Ik draai op de volgende servers: \n.\n\n";

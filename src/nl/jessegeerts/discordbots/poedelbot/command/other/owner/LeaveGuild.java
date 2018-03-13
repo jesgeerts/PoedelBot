@@ -20,7 +20,7 @@ public class LeaveGuild  implements Command {
 
     @Override
     public void action(String[] args, MessageReceivedEvent event) {
-
+        event.getMessage().delete().queue();
 
         MessageChannel channel = event.getChannel();
         if(event.getAuthor().getId().equals(STATIC.JESSE_DISCORD_TOKEN)){
@@ -34,7 +34,7 @@ public class LeaveGuild  implements Command {
                 return;
             }
 
-            event.getJDA().getGuildById(args[0]).getSystemChannel().sendMessage("Dag dikjoden.. Deze bot is niet gemaakt om sletten te neuken maar is eigenlijk gemaakt om iemand te helpen..").queue();
+            event.getJDA().getGuildById(args[0]).getTextChannelById(args[1]).sendMessage("Dag dikjoden.. Deze bot is niet gemaakt voor seksuele activiteiten. Wel voor mensen te helpen en om te lachen. DOEI").queue();
             event.getJDA().getGuildById(args[0]).leave().queue();
             channel.sendMessage("Ik ben uit de guild: " + event.getJDA().getGuildById(args[0]).getName() + " (%id%)".replace("%id%", event.getJDA().getGuildById(args[0]).getId())).queue();
         }else{

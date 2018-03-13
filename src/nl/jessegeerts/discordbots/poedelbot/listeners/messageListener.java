@@ -12,9 +12,10 @@ public class messageListener extends ListenerAdapter {
         Message msg = event.getMessage();
         if (event.getAuthor().isBot()) return;
 
-        if(msg.getContentDisplay().startsWith("Welkom") || msg.getContentDisplay().startsWith("welkom") || msg.getContentDisplay().startsWith("Welkom!") || msg.getContentDisplay().startsWith("welkom!")){
+        if (msg.getContentDisplay().startsWith("Welkom") || msg.getContentDisplay().startsWith("welkom") || msg.getContentDisplay().startsWith("Welkom!") || msg.getContentDisplay().startsWith("welkom!")) {
             channel.sendMessage(":star: :star: Welkom bij Poedel Host! :star: :star: ").queue();
         }
+
 
     }
 }

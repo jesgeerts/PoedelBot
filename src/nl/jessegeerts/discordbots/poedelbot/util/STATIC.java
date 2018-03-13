@@ -52,4 +52,5 @@ public static final String RULES = "1. Spammen is verboden\n2. Schelden is niet 
 
 
 public static EmbedBuilder shit = new EmbedBuilder().setTitle("FOUT").setColor(Color.RED).setDescription("%lol% Tag een of meerdere personen om deze actie uit te voeren %lol%".replace("%lol%", LeMojis.lol).replace("%happy%", LeMojis.happy));
+    public static EmbedBuilder id = new EmbedBuilder().setTitle("FOUT").setColor(Color.RED).setDescription("%lol% Tag een ID in om deze actie uit te voeren %lol%".replace("%lol%", LeMojis.lol).replace("%happy%", LeMojis.happy));
 }
