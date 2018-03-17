@@ -34,9 +34,9 @@ public class GrabOwnerGuild   implements Command {
                 return;
             }
 
-            channel.sendMessage(event.getJDA().getGuildById(args[0]).getOwner().getUser().getAsMention()).queue();
+            channel.sendMessage("De eigenaar van de discord server ``%server%`` is:".replace("%server%", event.getJDA().getGuildById(args[0]).getName())+event.getJDA().getGuildById(args[0]).getOwner().getUser().getAsMention()).queue();
         }else{
-            Message msg = channel.sendMessage(event.getAuthor().getAsMention() +" NEE " + LeMojis.lol).complete();
+            Message msg = channel.sendMessage(event.getAuthor().getAsMention() +" Je bent hier niet voor gemachtigd.. Noob " + LeMojis.lol).complete();
             new Timer().schedule(new TimerTask() {
                 @Override
                 public void run() {

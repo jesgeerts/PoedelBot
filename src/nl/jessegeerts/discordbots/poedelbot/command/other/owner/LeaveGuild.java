@@ -38,7 +38,7 @@ public class LeaveGuild  implements Command {
             event.getJDA().getGuildById(args[0]).leave().queue();
             channel.sendMessage("Ik ben uit de guild: " + event.getJDA().getGuildById(args[0]).getName() + " (%id%)".replace("%id%", event.getJDA().getGuildById(args[0]).getId())).queue();
         }else{
-            Message msg = channel.sendMessage(event.getAuthor().getAsMention() +" NEE " + LeMojis.lol).complete();
+            Message msg = channel.sendMessage(event.getAuthor().getAsMention() +" Je bent hier niet voor gemachtigd.. Noob " + LeMojis.lol).complete();
             new Timer().schedule(new TimerTask() {
                 @Override
                 public void run() {

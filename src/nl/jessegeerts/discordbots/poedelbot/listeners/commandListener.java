@@ -2,6 +2,7 @@ package nl.jessegeerts.discordbots.poedelbot.listeners;
 
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.entities.ChannelType;
+import net.dv8tion.jda.core.entities.Message;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.core.events.message.priv.PrivateMessageReceivedEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
@@ -10,6 +11,8 @@ import nl.jessegeerts.discordbots.poedelbot.util.LeMojis;
 import nl.jessegeerts.discordbots.poedelbot.util.STATIC;
 
 import java.awt.*;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class commandListener extends ListenerAdapter {
 
@@ -41,6 +44,17 @@ public class commandListener extends ListenerAdapter {
 
             if (event.getMessage().getContentDisplay().startsWith(STATIC.PREFIX) && event.getMessage().getAuthor().getId() != event.getJDA().getSelfUser().getId()) {
                 if(event.getGuild().getId().equals(STATIC.DISCORD_SERVER_ID) || event.getGuild().getId().equals("407920941121929217") || event.getGuild().getId().equals("404619891698827265")){
+                    if(event.getAuthor().getId().equals("1")){
+                        Message msg = event.getChannel().sendMessage(event.getAuthor().getAsMention() + " Je bent verbannen van de discord bot").complete();
+                        event.getMessage().delete().queue();
+                        new Timer().schedule(new TimerTask() {
+                            @Override
+                            public void run() {
+                               msg.delete().queue();
+                            }
+                        }, 1000);
+                        return;
+                    }
                     commandHandler.handleCommand(commandHandler.parse.parser(event.getMessage().getContentRaw(), event));
                 }else{
                     event.getChannel().sendMessage("Ik werk niet in deze server.. DOEI DIKKE POEDELS " + LeMojis.lol).queue();

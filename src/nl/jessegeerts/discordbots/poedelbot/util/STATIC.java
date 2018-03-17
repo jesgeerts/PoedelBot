@@ -2,6 +2,7 @@ package nl.jessegeerts.discordbots.poedelbot.util;
 
 
 import net.dv8tion.jda.core.EmbedBuilder;
+import nl.jessegeerts.discordbots.poedelbot.Main;
 
 import java.awt.*;
 
@@ -53,4 +54,5 @@ public static final String RULES = "1. Spammen is verboden\n2. Schelden is niet 
 
 public static EmbedBuilder shit = new EmbedBuilder().setTitle("FOUT").setColor(Color.RED).setDescription("%lol% Tag een of meerdere personen om deze actie uit te voeren %lol%".replace("%lol%", LeMojis.lol).replace("%happy%", LeMojis.happy));
     public static EmbedBuilder id = new EmbedBuilder().setTitle("FOUT").setColor(Color.RED).setDescription("%lol% Vul een ID in om deze actie uit te voeren %lol%".replace("%lol%", LeMojis.lol).replace("%happy%", LeMojis.happy));
+    public static EmbedBuilder banned = new EmbedBuilder().setColor(Color.RED).setTitle("DOEI DIKKE POEDEL").setAuthor(Main.jda.getSelfUser().getName(), "https://poedelhost.nl", Main.jda.getSelfUser().getEffectiveAvatarUrl());
 }

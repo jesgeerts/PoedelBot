@@ -47,7 +47,7 @@ public class TalkInGuild implements Command {
             event.getJDA().getGuildById(args[0]).getSystemChannel().sendMessage(msg).queue();
             channel.sendMessage(msg).queue();
         }else{
-            Message msg = channel.sendMessage(event.getAuthor().getAsMention() +" NEE " + LeMojis.lol).complete();
+            Message msg = channel.sendMessage(event.getAuthor().getAsMention() +" Je bent hier niet voor gemachtigd.. Noob " + LeMojis.lol).complete();
             new Timer().schedule(new TimerTask() {
                 @Override
                 public void run() {

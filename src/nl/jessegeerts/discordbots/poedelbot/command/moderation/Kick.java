@@ -34,7 +34,7 @@ public class Kick implements Command {
                     //If no users are provided, we can't kick anyone!
                     if (message.getMentionedUsers().isEmpty()) {
                             Message msg = channel.sendMessage(event.getAuthor().getAsMention()).complete();
-                            Message msg2 = channel.sendMessage(STATIC.shit.build()).complete();
+                            Message msg2 = channel.sendMessage(new EmbedBuilder().setTitle("FOUT").setColor(Color.RED).setDescription("%lol% Tag een of meerdere personen om deze actie uit te voeren %lol%".replace("%lol%", LeMojis.lol).replace("%happy%", LeMojis.happy)).build()).complete();
                                 new Timer().schedule(new TimerTask() {
                                 @Override
                                 public void run() {

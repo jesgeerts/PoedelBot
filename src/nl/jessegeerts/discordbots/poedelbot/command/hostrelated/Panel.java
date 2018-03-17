@@ -14,7 +14,7 @@ public class Panel implements Command {
         event.getMessage().delete().queue();
 
 
-                event.getChannel().sendMessage(event.getAuthor().getAsMention() + "\nMulticraft: https://mc.phdns.nl\nPterodactyl: https://ptero.phdns.nl\ncPanel: https://cpanel.phdns.nl").queue();
+                event.getChannel().sendMessage(event.getAuthor().getAsMention() + "\nPterodactyl: https://panel.poedelhost.nl\ncPanel: https://cpanel.phdns.nl\nSource Games: https://games.poedelhost.nl").queue();
 
 
 

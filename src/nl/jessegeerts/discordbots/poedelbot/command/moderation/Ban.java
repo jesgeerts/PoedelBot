@@ -39,7 +39,7 @@ Member member3 = event.getMember();
 if(member3.hasPermission(Permission.ADMINISTRATOR) || member3.hasPermission(Permission.BAN_MEMBERS)) {
     if (message.getMentionedUsers().isEmpty()) {
         Message msg = channel.sendMessage(event.getAuthor().getAsMention()).complete();
-        Message msg2 = channel.sendMessage(STATIC.shit.build()).complete();
+        Message msg2 = channel.sendMessage(new EmbedBuilder().setTitle("FOUT").setColor(Color.RED).setDescription("%lol% Tag een of meerdere personen om deze actie uit te voeren %lol%".replace("%lol%", LeMojis.lol).replace("%happy%", LeMojis.happy)).build()).complete();
         new Timer().schedule(new TimerTask() {
             @Override
             public void run() {
@@ -74,9 +74,20 @@ if(member3.hasPermission(Permission.ADMINISTRATOR) || member3.hasPermission(Perm
                 continue;   //Continue to the next mentioned user to be kicked.
             }
 
+
+
+
+            String msg = "";
+            String[] arrayOfString;
+            int j = (arrayOfString = args).length;
+            for (int i = 1; i < j; i++) {
+                String a = arrayOfString[i];
+                msg = msg + " " + a;
+            }
             guild.getController().ban(member, 7).queue(
 
-                    success -> channel.sendMessage("De gebruiker ").append(member.getEffectiveName()).append(" Is verbannen van Poedel Host discord.").queue(),
+                    success -> channel.sendMessage(STATIC.banned.setDescription("Diegene krijgt geen cadeautjes van Sinterklaas\n\nUitvoerder: %sender%%dc%\nDoelwit: %target%\nDuur: Permanent\nCredits 2 Jordy voor dit"
+                    .replace("%sender%", event.getAuthor().getName()).replace("%dc%", event.getAuthor().getDiscriminator()).replace("%target%", args[0])).build()).queue(),
 
                     error ->
                     {

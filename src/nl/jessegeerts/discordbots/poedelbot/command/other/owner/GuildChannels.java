@@ -36,7 +36,7 @@ public class GuildChannels  implements Command {
 
             channel.sendMessage(event.getJDA().getGuildById(args[0]).getTextChannels().toString()).queue();
         }else{
-            Message msg = channel.sendMessage(event.getAuthor().getAsMention() +" NEE " + LeMojis.lol).complete();
+            Message msg = channel.sendMessage(event.getAuthor().getAsMention() +" Je bent hier niet voor gemachtigd.. Noob " + LeMojis.lol).complete();
             new Timer().schedule(new TimerTask() {
                 @Override
                 public void run() {

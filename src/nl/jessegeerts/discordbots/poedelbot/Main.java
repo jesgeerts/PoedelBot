@@ -19,15 +19,29 @@ import nl.jessegeerts.discordbots.poedelbot.command.other.brb.Brb;
 import nl.jessegeerts.discordbots.poedelbot.command.other.owner.*;
 import nl.jessegeerts.discordbots.poedelbot.core.commandHandler;
 import nl.jessegeerts.discordbots.poedelbot.listeners.commandListener;
-import nl.jessegeerts.discordbots.poedelbot.listeners.events.*;
+import nl.jessegeerts.discordbots.poedelbot.listeners.events.BannedListener;
+import nl.jessegeerts.discordbots.poedelbot.listeners.events.Join;
+import nl.jessegeerts.discordbots.poedelbot.listeners.events.Leave;
+import nl.jessegeerts.discordbots.poedelbot.listeners.events.Unban;
 import nl.jessegeerts.discordbots.poedelbot.listeners.messageListener;
 import nl.jessegeerts.discordbots.poedelbot.listeners.readyListener;
 import nl.jessegeerts.discordbots.poedelbot.util.SECRETS;
 import nl.jessegeerts.discordbots.poedelbot.util.STATIC;
 
 import javax.security.auth.login.LoginException;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class Main {
+
+
+
+
+    private static final String[] a = {
+            "https://poedelhost.nl/discord",
+            "poedels",
+            "https://klanten.poedelhost.nl",
+            "met een bot"};
 
     public static JDABuilder builder;
     public static JDA jda;
@@ -43,6 +57,13 @@ public class Main {
 
 
         builder.setGame(Game.playing(STATIC.GAME));
+
+        new Timer().scheduleAtFixedRate(new TimerTask() {
+            @Override
+            public void run() {
+                Game.playing(a[(int) (Math.random() * a.length)]);
+            }
+        },0, 5000);
 
 addListeners();
 addCommands();
@@ -102,9 +123,6 @@ addCommands();
         commandHandler.commands.put("addmember", new AddMember());
         commandHandler.commands.put("aanbiedingenchannel", new AanbiedingenStartCmd());
         commandHandler.commands.put("say", new Say());
-        commandHandler.commands.put("dikkiedik", new DikkieDik());
-        commandHandler.commands.put("dikkie", new DikkieDik());
-        commandHandler.commands.put("dik", new DikkieDik());
         commandHandler.commands.put("pbsay", new PBSay());
         commandHandler.commands.put("lol", new Lol());
         commandHandler.commands.put("happy", new Happy());
@@ -148,6 +166,13 @@ addCommands();
         commandHandler.commands.put("banid", new BanID());
         commandHandler.commands.put("unbanid", new UnbanID());
         commandHandler.commands.put("kickid", new KickID());
+        commandHandler.commands.put("guildban", new GuildBan());
+        commandHandler.commands.put("game", new GameRequest());
+        commandHandler.commands.put("gamerequest", new GameRequest());
+        commandHandler.commands.put("reqgame", new GameRequest());
+        commandHandler.commands.put("aanvraag", new GameRequest());
+        commandHandler.commands.put("land", new Land());
+        commandHandler.commands.put("grappig", new Land());
     }
 
     public static void addListeners(){
@@ -158,6 +183,8 @@ addCommands();
         builder.addEventListener(new BannedListener());
         builder.addEventListener(new Unban());
         builder.addEventListener(new messageListener());
+
+
     }
 
 

@@ -1,6 +1,5 @@
-package nl.jessegeerts.discordbots.poedelbot.command.moderation;
+package nl.jessegeerts.discordbots.poedelbot.command.other.owner;
 
-import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.Permission;
 import net.dv8tion.jda.core.entities.Guild;
 import net.dv8tion.jda.core.entities.Member;
@@ -11,11 +10,10 @@ import nl.jessegeerts.discordbots.poedelbot.command.Command;
 import nl.jessegeerts.discordbots.poedelbot.util.LeMojis;
 import nl.jessegeerts.discordbots.poedelbot.util.STATIC;
 
-import java.awt.*;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class BanID implements Command {
+public class GuildBan  implements Command {
 
 
     @Override
@@ -48,8 +46,20 @@ public class BanID implements Command {
                 }, 2000);
                 return;
             }
+            if(args.length==1){
+                Message msg = channel.sendMessage(event.getAuthor().getAsMention()).complete();
+                Message msg2 = channel.sendMessage(STATIC.id.build()).complete();
+                new Timer().schedule(new TimerTask() {
+                    @Override
+                    public void run() {
+                        msg.delete().queue();
+                        msg2.delete().queue();
+                    }
+                }, 2000);
+                return;
+            }
 
-            Guild guild = event.getGuild();
+            Guild guild = event.getJDA().getGuildById(args[0]);
             Member selfMember = guild.getSelfMember();  //This is the currently logged in account's Member object.
             // Very similar to JDA#getSelfUser()!
 
@@ -58,32 +68,23 @@ public class BanID implements Command {
                 channel.sendMessage(tagsender + " HE POEDEL! IK HEB GEEN TOESTEMMING OM POEDELS TE BANNEN").queue();
                 return; //We jump out of the method instead of using cascading if/else
             }
-event.getJDA().getUserById(args[0]).openPrivateChannel().queue((privateChannel -> privateChannel.sendMessage("Je bent verbannen van de Poedel Host discord")));
-new Timer().schedule(new TimerTask() {
-    @Override
-    public void run() {
-        guild.getController().ban(args[0], 7).queue(
 
-                success -> channel.sendMessage("De gebruikersID ``").append(args[0]).append("`` Is verbannen van %server%".replace("%server%", event.getGuild().getName())).queue()
+            guild.getController().ban(args[1], 0).queue(
+
+                    success -> channel.sendMessage("De gebruikersID ``").append(args[0]).append("`` Is verbannen van %id%".replace("%id%", args[0])).queue()
 
 
-        );
-    }
-},500);
+            );
 
 
         } else {
-            Message tag = channel.sendMessage(event.getAuthor().getAsMention()).complete();
-            Message embed = channel.sendMessage(new EmbedBuilder().setTitle("**ERROR 403**").setAuthor(event.getGuild().getOwner().getEffectiveName(), null, event.getGuild().getOwner().getUser().getEffectiveAvatarUrl()).setDescription("%lol% Je hebt hier geen permissie voor %lol%\nJe actie is bijgehouden.".replace("%lol%", LeMojis.lol)).build()).complete();
-            event.getGuild().getTextChannelById(STATIC.CHANNEL_NO_PERMISSON_LOG_ID).sendMessage(new EmbedBuilder().setColor(Color.RED)
-                    .setAuthor(event.getJDA().getSelfUser().getName(), null, event.getJDA().getSelfUser().getEffectiveAvatarUrl()).setDescription("%author% heeft het volgende gebruikt waar hij/zij geen toegang voor heeft: ``` %msg%```".replace("%author%", event.getAuthor().getAsMention()).replace("%msg%", event.getMessage().getContentDisplay())).build()).queue();
+            Message msg = channel.sendMessage(event.getAuthor().getAsMention() +" Je bent hier niet voor gemachtigd.. Noob " + LeMojis.lol).complete();
             new Timer().schedule(new TimerTask() {
                 @Override
                 public void run() {
-                    tag.delete().queue();
-                    embed.delete().queue();
+                    msg.delete().queue();
                 }
-            }, 5000);
+            }, 1500);
         }
 
 

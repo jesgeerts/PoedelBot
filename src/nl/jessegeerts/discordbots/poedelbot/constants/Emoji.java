@@ -138,7 +138,7 @@ public class Emoji {
     public final static String STOP = EmojiParser.parseToUnicode(":black_square_for_stop:");
 
     /* Fun */
-    /* Game */
+    /* GameRequest */
     public final static String GAME = EmojiParser.parseToUnicode(":video_game:");
     public final static String HANGED_FACE = EmojiParser.parseToUnicode(":confounded:");
     public final static String EIGHT_BALL = EmojiParser.parseToUnicode(":8ball:");
