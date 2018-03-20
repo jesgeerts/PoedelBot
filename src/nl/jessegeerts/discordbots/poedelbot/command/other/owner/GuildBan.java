@@ -1,5 +1,6 @@
 package nl.jessegeerts.discordbots.poedelbot.command.other.owner;
 
+import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.Permission;
 import net.dv8tion.jda.core.entities.Guild;
 import net.dv8tion.jda.core.entities.Member;
@@ -8,8 +9,8 @@ import net.dv8tion.jda.core.entities.MessageChannel;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import nl.jessegeerts.discordbots.poedelbot.command.Command;
 import nl.jessegeerts.discordbots.poedelbot.util.LeMojis;
-import nl.jessegeerts.discordbots.poedelbot.util.STATIC;
 
+import java.awt.*;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -36,7 +37,7 @@ public class GuildBan  implements Command {
 
             if (args.length == 0) {
                 Message msg = channel.sendMessage(event.getAuthor().getAsMention()).complete();
-                Message msg2 = channel.sendMessage(STATIC.id.build()).complete();
+                Message msg2 = channel.sendMessage(new EmbedBuilder().setTitle("FOUT").setColor(Color.RED).setDescription("%lol% Vul een ID in om deze actie uit te voeren %lol%".replace("%lol%", LeMojis.lol).replace("%happy%", LeMojis.happy)).build()).complete();
                 new Timer().schedule(new TimerTask() {
                     @Override
                     public void run() {
@@ -48,7 +49,7 @@ public class GuildBan  implements Command {
             }
             if(args.length==1){
                 Message msg = channel.sendMessage(event.getAuthor().getAsMention()).complete();
-                Message msg2 = channel.sendMessage(STATIC.id.build()).complete();
+                Message msg2 = channel.sendMessage(new EmbedBuilder().setTitle("FOUT").setColor(Color.RED).setDescription("%lol% Vul een ID in om deze actie uit te voeren %lol%".replace("%lol%", LeMojis.lol).replace("%happy%", LeMojis.happy)).build()).complete();
                 new Timer().schedule(new TimerTask() {
                     @Override
                     public void run() {

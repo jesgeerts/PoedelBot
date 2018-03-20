@@ -17,7 +17,6 @@ import nl.jessegeerts.discordbots.poedelbot.command.other.*;
 import nl.jessegeerts.discordbots.poedelbot.command.other.brb.Back;
 import nl.jessegeerts.discordbots.poedelbot.command.other.brb.Brb;
 import nl.jessegeerts.discordbots.poedelbot.command.other.owner.*;
-import nl.jessegeerts.discordbots.poedelbot.core.commandHandler;
 import nl.jessegeerts.discordbots.poedelbot.listeners.commandListener;
 import nl.jessegeerts.discordbots.poedelbot.listeners.events.BannedListener;
 import nl.jessegeerts.discordbots.poedelbot.listeners.events.Join;
@@ -29,19 +28,12 @@ import nl.jessegeerts.discordbots.poedelbot.util.SECRETS;
 import nl.jessegeerts.discordbots.poedelbot.util.STATIC;
 
 import javax.security.auth.login.LoginException;
-import java.util.Timer;
-import java.util.TimerTask;
+
+import static nl.jessegeerts.discordbots.poedelbot.core.commandHandler.commands;
 
 public class Main {
 
 
-
-
-    private static final String[] a = {
-            "https://poedelhost.nl/discord",
-            "poedels",
-            "https://klanten.poedelhost.nl",
-            "met een bot"};
 
     public static JDABuilder builder;
     public static JDA jda;
@@ -56,14 +48,7 @@ public class Main {
         builder.setStatus(OnlineStatus.ONLINE);
 
 
-        builder.setGame(Game.playing(STATIC.GAME));
-
-        new Timer().scheduleAtFixedRate(new TimerTask() {
-            @Override
-            public void run() {
-                Game.playing(a[(int) (Math.random() * a.length)]);
-            }
-        },0, 5000);
+builder.setGame(Game.playing(STATIC.GAME));
 
 addListeners();
 addCommands();
@@ -77,102 +62,105 @@ addCommands();
     }
 
     public static void addCommands(){
-        commandHandler.commands.put("clear", new Clear());
-        commandHandler.commands.put("help", new Help());
-        commandHandler.commands.put("done", new ImDone());
-        commandHandler.commands.put("lenny", new Lenny());
-        commandHandler.commands.put("len", new Lenny());
-        commandHandler.commands.put("dog", new Dog());
-        commandHandler.commands.put("dogs", new Dog());
-        commandHandler.commands.put("doge", new Dog());
-        commandHandler.commands.put("tut", new Tutorial());
-        commandHandler.commands.put("tutorial", new Tutorial());
-        commandHandler.commands.put("poedel", new Poedel());
-        commandHandler.commands.put("poedels", new Poedel());
-        commandHandler.commands.put("vis", new Vis());
-        commandHandler.commands.put("gfy", new GFY());
-        commandHandler.commands.put("gofuckyourself", new GFY());
-        commandHandler.commands.put("wat", new Wat());
-        commandHandler.commands.put("website", new Website());
-        commandHandler.commands.put("offtopic", new Offtopic());
-        commandHandler.commands.put("roll", new Roll());
-        commandHandler.commands.put("rol", new Roll());
-        commandHandler.commands.put("kick", new Kick());
-        commandHandler.commands.put("schop", new Kick());
-        commandHandler.commands.put("ban", new Ban());
-        commandHandler.commands.put("banhamer", new Ban());
-        commandHandler.commands.put("prijzen", new Prijzen());
-        commandHandler.commands.put("pricing", new Prijzen());
-        commandHandler.commands.put("eightball", new Eightball());
-        commandHandler.commands.put("8ball", new Eightball());
-        commandHandler.commands.put("pingpong", new Tennis());
-        commandHandler.commands.put("tennis", new Tennis());
-        commandHandler.commands.put("botcommands", new BotCommands());
-        commandHandler.commands.put("shrek", new Shrek());
-        commandHandler.commands.put("shrekt", new Shrek());
-        commandHandler.commands.put("dedikkepoedel", new DeDikkePoedel());
-        commandHandler.commands.put("dedikkstepoedel", new DeDikkePoedel());
-        commandHandler.commands.put("poedeleersteklas", new PoedelEersteKlas());
-        commandHandler.commands.put("poedel1eklas", new PoedelEersteKlas());
-        commandHandler.commands.put("micdrop", new MicDrop());
-        commandHandler.commands.put("sponsor", new Sponsor());
-        commandHandler.commands.put("dora", new Dora());
-        commandHandler.commands.put("welkomchannelcommand", new Welkomchannelcommand());
-        commandHandler.commands.put("givecustomer", new GiveCustomer());
-        commandHandler.commands.put("takecustomer", new TakeCustomer());
-        commandHandler.commands.put("addmember", new AddMember());
-        commandHandler.commands.put("aanbiedingenchannel", new AanbiedingenStartCmd());
-        commandHandler.commands.put("say", new Say());
-        commandHandler.commands.put("pbsay", new PBSay());
-        commandHandler.commands.put("lol", new Lol());
-        commandHandler.commands.put("happy", new Happy());
-        commandHandler.commands.put("dikname", new Dikname());
-        commandHandler.commands.put("broadcast", new Broadcast());
-        commandHandler.commands.put("bottalk", new Talk());
-        commandHandler.commands.put("quote", new Quote());
-        commandHandler.commands.put("gas", new Gas());
-        commandHandler.commands.put("talk", new Talk());
-        commandHandler.commands.put("shrug", new Shrug());
-        commandHandler.commands.put("popcorn", new Popcorn());
-        commandHandler.commands.put("pin", new Pin());
-        commandHandler.commands.put("unpin",new Unpin());
-        commandHandler.commands.put("brb", new Brb());
-        commandHandler.commands.put("back", new Back());
-        commandHandler.commands.put("koekoek", new Koekoek());
-        commandHandler.commands.put("jonge", new Koekoek());
-        commandHandler.commands.put("minecraft", new Minecraft());
-        commandHandler.commands.put("botspam", new BotCommands());
-        commandHandler.commands.put("mc", new Minecraft());
-        commandHandler.commands.put("vroom", new Vroom());
-        commandHandler.commands.put("famkelouise", new Vroom());
-        commandHandler.commands.put("famke", new Vroom());
-        commandHandler.commands.put("mute", new Mute());
-        commandHandler.commands.put("unmute", new UnMute());
-        commandHandler.commands.put("serverinfo", new ServerInfo());
-        commandHandler.commands.put("hatsikidee", new Hatsikidee());
-        commandHandler.commands.put("normaal", new Normaal());
-        commandHandler.commands.put("klanten", new Klanten());
-        commandHandler.commands.put("panel", new Panel());
-        commandHandler.commands.put("panels", new Panel());
-        commandHandler.commands.put("talkinguild", new TalkInGuild());
-        commandHandler.commands.put("leaveinguild", new LeaveGuild());
-        commandHandler.commands.put("leaveguild", new LeaveGuild());
-        commandHandler.commands.put("grabowner", new GrabOwnerGuild());
-        commandHandler.commands.put("guildchannels", new GuildChannels());
-        commandHandler.commands.put("talkguildchat", new TalkGuildChat());
-        commandHandler.commands.put("getguilds", new GetGuilds());
-        commandHandler.commands.put("aap",new Aap());
-        commandHandler.commands.put("no", new No());
-        commandHandler.commands.put("banid", new BanID());
-        commandHandler.commands.put("unbanid", new UnbanID());
-        commandHandler.commands.put("kickid", new KickID());
-        commandHandler.commands.put("guildban", new GuildBan());
-        commandHandler.commands.put("game", new GameRequest());
-        commandHandler.commands.put("gamerequest", new GameRequest());
-        commandHandler.commands.put("reqgame", new GameRequest());
-        commandHandler.commands.put("aanvraag", new GameRequest());
-        commandHandler.commands.put("land", new Land());
-        commandHandler.commands.put("grappig", new Land());
+        commands.put("clear", new Clear());
+        commands.put("help", new Help());
+        commands.put("done", new ImDone());
+        commands.put("lenny", new Lenny());
+        commands.put("len", new Lenny());
+        commands.put("dog", new Dog());
+        commands.put("dogs", new Dog());
+        commands.put("doge", new Dog());
+        commands.put("tut", new Tutorial());
+        commands.put("tutorial", new Tutorial());
+        commands.put("poedel", new Poedel());
+        commands.put("poedels", new Poedel());
+        commands.put("vis", new Vis());
+        commands.put("gfy", new GFY());
+        commands.put("gofuckyourself", new GFY());
+        commands.put("wat", new Wat());
+        commands.put("offtopic", new Offtopic());
+        commands.put("roll", new Roll());
+        commands.put("rol", new Roll());
+        commands.put("kick", new Kick());
+        commands.put("schop", new Kick());
+        commands.put("ban", new Ban());
+        commands.put("banhamer", new Ban());
+        commands.put("prijzen", new Prijzen());
+        commands.put("pricing", new Prijzen());
+        commands.put("eightball", new Eightball());
+        commands.put("8ball", new Eightball());
+        commands.put("pingpong", new Tennis());
+        commands.put("tennis", new Tennis());
+        commands.put("botcommands", new BotCommands());
+        commands.put("shrek", new Shrek());
+        commands.put("shrekt", new Shrek());
+        commands.put("dedikkepoedel", new DeDikkePoedel());
+        commands.put("dedikkstepoedel", new DeDikkePoedel());
+        commands.put("poedeleersteklas", new PoedelEersteKlas());
+        commands.put("poedel1eklas", new PoedelEersteKlas());
+        commands.put("micdrop", new MicDrop());
+        commands.put("dora", new Dora());
+        commands.put("welkomchannelcommand", new Welkomchannelcommand());
+        commands.put("givecustomer", new GiveCustomer());
+        commands.put("takecustomer", new TakeCustomer());
+        commands.put("addmember", new AddMember());
+        commands.put("aanbiedingenchannel", new AanbiedingenStartCmd());
+        commands.put("say", new Say());
+        commands.put("pbsay", new PBSay());
+        commands.put("lol", new Lol());
+        commands.put("happy", new Happy());
+        commands.put("dikname", new Dikname());
+        commands.put("broadcast", new Broadcast());
+        commands.put("bottalk", new Talk());
+        commands.put("quote", new Quote());
+        commands.put("gas", new Gas());
+        commands.put("talk", new Talk());
+        commands.put("shrug", new Shrug());
+        commands.put("popcorn", new Popcorn());
+        commands.put("pin", new Pin());
+        commands.put("unpin",new Unpin());
+        commands.put("brb", new Brb());
+        commands.put("back", new Back());
+        commands.put("koekoek", new Koekoek());
+        commands.put("jonge", new Koekoek());
+        commands.put("minecraft", new Minecraft());
+        commands.put("botspam", new BotCommands());
+        commands.put("mc", new Minecraft());
+        commands.put("vroom", new Vroom());
+        commands.put("famkelouise", new Vroom());
+        commands.put("famke", new Vroom());
+        commands.put("mute", new Mute());
+        commands.put("unmute", new UnMute());
+        commands.put("serverinfo", new ServerInfo());
+        commands.put("hatsikidee", new Hatsikidee());
+        commands.put("normaal", new Normaal());
+        commands.put("talkinguild", new TalkInGuild());
+        commands.put("leaveinguild", new LeaveGuild());
+        commands.put("leaveguild", new LeaveGuild());
+        commands.put("grabowner", new GrabOwnerGuild());
+        commands.put("guildchannels", new GuildChannels());
+        commands.put("talkguildchat", new TalkGuildChat());
+        commands.put("getguilds", new GetGuilds());
+        commands.put("aap",new Aap());
+        commands.put("no", new No());
+        commands.put("banid", new BanID());
+        commands.put("unbanid", new UnbanID());
+        commands.put("kickid", new KickID());
+        commands.put("guildban", new GuildBan());
+        commands.put("game", new GameRequest());
+        commands.put("gamerequest", new GameRequest());
+        commands.put("reqgame", new GameRequest());
+        commands.put("aanvraag", new GameRequest());
+        commands.put("land", new Land());
+        commands.put("grappig", new Land());
+
+        commands.put("panel", new Links());
+        commands.put("links", new Links());
+        commands.put("link", new Links());
+        commands.put("klanten", new Links());
+        commands.put("website", new Links());
+        commands.put("cpanel", new Links());
+        commands.put("idee", new Idee());
     }
 
     public static void addListeners(){

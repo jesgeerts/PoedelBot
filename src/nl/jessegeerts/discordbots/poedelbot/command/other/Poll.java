@@ -1,12 +1,12 @@
-package nl.jessegeerts.discordbots.poedelbot.command.hostrelated;
+package nl.jessegeerts.discordbots.poedelbot.command.other;
 
+
+import net.dv8tion.jda.core.entities.MessageChannel;
+import net.dv8tion.jda.core.entities.User;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import nl.jessegeerts.discordbots.poedelbot.command.Command;
 
-import java.util.Timer;
-import java.util.TimerTask;
-
-public class Website implements Command {
+public class Poll implements Command {
     @Override
     public boolean called(String[] args, MessageReceivedEvent event) {
         return false;
@@ -14,14 +14,14 @@ public class Website implements Command {
 
     @Override
     public void action(String[] args, MessageReceivedEvent event) {
-        event.getMessage().delete().queue();
+        User author = event.getAuthor();
+        MessageChannel channel = event.getChannel();
+        if (args.length == 0) {
 
-        new Timer().schedule(new TimerTask() {
-            @Override
-            public void run() {
-                event.getChannel().sendMessage(event.getAuthor().getAsMention() + " https://poedelhost.nl").queue();
-            }
-        },1500);
+
+            return;
+
+        }
 
     }
 

@@ -1,6 +1,5 @@
 package nl.jessegeerts.discordbots.poedelbot.command.other;
 
-import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.Permission;
 import net.dv8tion.jda.core.entities.Message;
 import net.dv8tion.jda.core.entities.MessageChannel;
@@ -8,7 +7,6 @@ import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import nl.jessegeerts.discordbots.poedelbot.command.Command;
 import nl.jessegeerts.discordbots.poedelbot.util.LeMojis;
 
-import java.awt.*;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -20,8 +18,9 @@ public boolean called(String[] args, MessageReceivedEvent event) {
 
         @Override
         public void action(String[] args, MessageReceivedEvent event) {
+            Message message = event.getMessage();
+            message.delete().queue();
 
-            event.getMessage().delete().queue();
             MessageChannel channel = event.getChannel();
             if(event.getGuild().getMember(event.getAuthor()).hasPermission(Permission.ADMINISTRATOR) || event.getGuild().getMember(event.getAuthor()).hasPermission(Permission.MESSAGE_MANAGE)){
                 if(args.length==0){
@@ -38,8 +37,9 @@ public boolean called(String[] args, MessageReceivedEvent event) {
                     msg = msg + " " + a;
                 }
                 channel.sendMessage("@everyone").queue();
-                channel.sendMessage(new EmbedBuilder().setColor(Color.GREEN).setAuthor(event.getAuthor().getName(), null, event.getAuthor().getEffectiveAvatarUrl())
-                        .setDescription(msg).build()).queue();
+                channel.sendMessage(event.getAuthor().getAsMention() + " Heeft het volgende verteld:\n" + msg + "\n\n```Creatie data van aankondiging/bericht: %dag% %maand% %jaar% om %uur%:%min%:%sec%```"
+                .replace("%dag%", String.valueOf(message.getCreationTime().getDayOfMonth())).replace("%maand%", String.valueOf(message.getCreationTime().getMonth())).replace("%jaar%", String.valueOf(message.getCreationTime().getYear()))
+                .replace("%uur%", String.valueOf(message.getCreationTime().getHour())).replace("%min%", String.valueOf(message.getCreationTime().getMinute())).replace("%sec%", String.valueOf(message.getCreationTime().getSecond()))).queue();
             }else{
                 Message msg = channel.sendMessage(event.getAuthor().getAsMention() +" NEE " + LeMojis.happy).complete();
                 new Timer().schedule(new TimerTask() {

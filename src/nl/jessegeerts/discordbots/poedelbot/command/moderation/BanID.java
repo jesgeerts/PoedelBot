@@ -38,7 +38,7 @@ public class BanID implements Command {
 
             if (args.length == 0) {
                 Message msg = channel.sendMessage(event.getAuthor().getAsMention()).complete();
-                Message msg2 = channel.sendMessage(STATIC.id.build()).complete();
+                Message msg2 = channel.sendMessage(new EmbedBuilder().setTitle("FOUT").setColor(Color.RED).setDescription("%lol% Vul een ID in om deze actie uit te voeren %lol%".replace("%lol%", LeMojis.lol).replace("%happy%", LeMojis.happy)).build()).complete();
                 new Timer().schedule(new TimerTask() {
                     @Override
                     public void run() {

@@ -1,9 +1,9 @@
-package nl.jessegeerts.discordbots.poedelbot.command.hostrelated;
+package nl.jessegeerts.discordbots.poedelbot.command.fun;
 
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import nl.jessegeerts.discordbots.poedelbot.command.Command;
 
-public class Klanten implements Command {
+public class DikkieDik implements Command {
     @Override
     public boolean called(String[] args, MessageReceivedEvent event) {
         return false;
@@ -11,10 +11,8 @@ public class Klanten implements Command {
 
     @Override
     public void action(String[] args, MessageReceivedEvent event) {
-        event.getMessage().delete().queue();
-
-        event.getChannel().sendMessage(event.getAuthor().getAsMention() + " https://klanten.poedelhost.nl").queue();
-
+event.getChannel().sendMessage("Command is verwijderd").queue();
+event.getMessage().delete().queue();
     }
 
     @Override

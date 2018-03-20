@@ -5,6 +5,7 @@ import net.dv8tion.jda.core.Permission;
 import net.dv8tion.jda.core.entities.*;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.core.exceptions.PermissionException;
+import nl.jessegeerts.discordbots.poedelbot.Main;
 import nl.jessegeerts.discordbots.poedelbot.command.Command;
 import nl.jessegeerts.discordbots.poedelbot.util.LeMojis;
 import nl.jessegeerts.discordbots.poedelbot.util.STATIC;
@@ -86,8 +87,8 @@ if(member3.hasPermission(Permission.ADMINISTRATOR) || member3.hasPermission(Perm
             }
             guild.getController().ban(member, 7).queue(
 
-                    success -> channel.sendMessage(STATIC.banned.setDescription("Diegene krijgt geen cadeautjes van Sinterklaas\n\nUitvoerder: %sender%%dc%\nDoelwit: %target%\nDuur: Permanent\nCredits 2 Jordy voor dit"
-                    .replace("%sender%", event.getAuthor().getName()).replace("%dc%", event.getAuthor().getDiscriminator()).replace("%target%", args[0])).build()).queue(),
+                    success -> channel.sendMessage(new EmbedBuilder().setColor(Color.RED).setTitle("DOEI DIKKE POEDEL").setAuthor(Main.jda.getSelfUser().getName(), "https://poedelhost.nl", Main.jda.getSelfUser().getEffectiveAvatarUrl()).setDescription("Diegene krijgt geen cadeautjes van Sinterklaas\n\nUitvoerder: %sender%%dc%\nDoelwit: %target%\nDuur: Permanent\nCredits 2 Jordy voor dit"
+                    .replace("%sender%", event.getAuthor().getName()).replace("%dc%", event.getAuthor().getDiscriminator()).replace("%target%", member.getEffectiveName())).build()).queue(),
 
                     error ->
                     {

@@ -36,7 +36,7 @@ public class Join extends ListenerAdapter {
 
 
 
-            MessageChannel channel = event.getGuild().getTextChannelById("420535152926785538");
+            MessageChannel channel = event.getGuild().getTextChannelById(STATIC.CHANNEL_MEMBER_LOG_ID);
             int currentMembers = event.getGuild().getMembers().size();
             if (currentMembers % 100 == 0) {
                 event.getJDA().getGuildById(STATIC.DISCORD_SERVER_ID).getTextChannelById(STATIC.CHANNEL_NIEUWS_ID).sendMessage("DE SERVER HEEFT NU %count% LEDEN BEREIKT! Waarschuw de staff voor een giveaway!!".replace("%count%", String.valueOf(currentMembers))).queue();

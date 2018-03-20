@@ -3,7 +3,7 @@ package nl.jessegeerts.discordbots.poedelbot.command.hostrelated;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import nl.jessegeerts.discordbots.poedelbot.command.Command;
 
-public class Panel implements Command {
+public class Links  implements Command {
     @Override
     public boolean called(String[] args, MessageReceivedEvent event) {
         return false;
@@ -13,9 +13,7 @@ public class Panel implements Command {
     public void action(String[] args, MessageReceivedEvent event) {
         event.getMessage().delete().queue();
 
-
-                event.getChannel().sendMessage(event.getAuthor().getAsMention() + "\nPterodactyl: https://panel.poedelhost.nl\ncPanel: https://cpanel.phdns.nl\nSource Games: https://games.poedelhost.nl").queue();
-
+        event.getChannel().sendMessage(event.getAuthor().getAsMention() + "Kijk hier: " + event.getGuild().getTextChannelById("425035118688862218").getAsMention()).queue();
 
 
     }

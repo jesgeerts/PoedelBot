@@ -1,15 +1,10 @@
 package nl.jessegeerts.discordbots.poedelbot.util;
 
 
-import net.dv8tion.jda.core.EmbedBuilder;
-import nl.jessegeerts.discordbots.poedelbot.Main;
-
-import java.awt.*;
-
 public class STATIC {
     public static final String VERSION = "0.5-BETA";
 
-    public static final String GAME = "https://www.poedelhost.nl/discord";
+    public static final String GAME = "met een bot";
 
     public static final String PREFIX = ".";
 
@@ -24,8 +19,7 @@ public static final String RULES = "1. Spammen is verboden\n2. Schelden is niet 
 
     public static final String CHANNEL_BAN_LOG_ID = "398448517653463041";
     public static final String CHANNEL_NIEUWS_ID = "398442005451112449";
-    public static final String CHANNEL_JOIN_LOG_ID = "398468381373628416";
-    public static final String CHANNEL_LEAVE_LOG_ID = "398468392127954944";
+    public static final String CHANNEL_MEMBER_LOG_ID = "420535152926785538";
     public static final String CHANNEL_OFFTOPIC_ID = "398419813577261060";
     public static final String CHANNEL_BOTCOMMANDS_ID = "398421115925561354";
     public static final String CHANNEL_PRICES_ID = "399880740680237067";
@@ -48,11 +42,4 @@ public static final String RULES = "1. Spammen is verboden\n2. Schelden is niet 
     public static final String sorry_maar = "Sorry maar dit commando werkt niet in deze discord server. Dit commando werkt wel in de Discord van PoedelHost: <https://poedelhost.nl/discord>";
 
     public static final String bot_Log_server = "407920941121929217";
-
-
-
-
-public static EmbedBuilder shit = new EmbedBuilder().setTitle("FOUT").setColor(Color.RED).setDescription("%lol% Tag een of meerdere personen om deze actie uit te voeren %lol%".replace("%lol%", LeMojis.lol).replace("%happy%", LeMojis.happy));
-    public static EmbedBuilder id = new EmbedBuilder().setTitle("FOUT").setColor(Color.RED).setDescription("%lol% Vul een ID in om deze actie uit te voeren %lol%".replace("%lol%", LeMojis.lol).replace("%happy%", LeMojis.happy));
-    public static EmbedBuilder banned = new EmbedBuilder().setColor(Color.RED).setTitle("DOEI DIKKE POEDEL").setAuthor(Main.jda.getSelfUser().getName(), "https://poedelhost.nl", Main.jda.getSelfUser().getEffectiveAvatarUrl());
 }
