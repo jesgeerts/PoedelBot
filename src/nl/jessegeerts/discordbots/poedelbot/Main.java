@@ -111,10 +111,10 @@ addCommands();
         commands.put("happy", new Happy());
         commands.put("dikname", new Dikname());
         commands.put("broadcast", new Broadcast());
-        commands.put("bottalk", new Talk());
+        commands.put("bottalk", new PBSay());
         commands.put("quote", new Quote());
         commands.put("gas", new Gas());
-        commands.put("talk", new Talk());
+        commands.put("talk", new PBSay());
         commands.put("shrug", new Shrug());
         commands.put("popcorn", new Popcorn());
         commands.put("pin", new Pin());
@@ -161,6 +161,7 @@ addCommands();
         commands.put("website", new Links());
         commands.put("cpanel", new Links());
         commands.put("idee", new Idee());
+        commands.put("warn", new Warn());
     }
 
     public static void addListeners(){

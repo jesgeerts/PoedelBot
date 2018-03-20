@@ -1,12 +1,15 @@
 package nl.jessegeerts.discordbots.poedelbot.command.other;
 
+import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.Permission;
 import net.dv8tion.jda.core.entities.Message;
 import net.dv8tion.jda.core.entities.MessageChannel;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import nl.jessegeerts.discordbots.poedelbot.command.Command;
 import nl.jessegeerts.discordbots.poedelbot.util.LeMojis;
+import nl.jessegeerts.discordbots.poedelbot.util.STATIC;
 
+import java.awt.*;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -37,17 +40,24 @@ public boolean called(String[] args, MessageReceivedEvent event) {
                     msg = msg + " " + a;
                 }
                 channel.sendMessage("@everyone").queue();
-                channel.sendMessage(event.getAuthor().getAsMention() + " Heeft het volgende verteld:\n" + msg + "\n\n```Creatie data van aankondiging/bericht: %dag% %maand% %jaar% om %uur%:%min%:%sec%```"
-                .replace("%dag%", String.valueOf(message.getCreationTime().getDayOfMonth())).replace("%maand%", String.valueOf(message.getCreationTime().getMonth())).replace("%jaar%", String.valueOf(message.getCreationTime().getYear()))
-                .replace("%uur%", String.valueOf(message.getCreationTime().getHour())).replace("%min%", String.valueOf(message.getCreationTime().getMinute())).replace("%sec%", String.valueOf(message.getCreationTime().getSecond()))).queue();
+                channel.sendMessage(event.getAuthor().getAsMention() + " Heeft het volgende verteld:\n" + msg + "\n\n```Bericht is verzonden op: %dag% %maand% %jaar% om %uur%:%min%:%sec%```"
+                        .replace("%dag%", String.valueOf(message.getCreationTime().getDayOfMonth())).replace("%maand%", String.valueOf(message.getCreationTime().getMonth())).replace("%jaar%", String.valueOf(message.getCreationTime().getYear()))
+                        .replace("%uur%", String.valueOf(message.getCreationTime().getHour())).replace("%min%", String.valueOf(message.getCreationTime().getMinute())).replace("%sec%", String.valueOf(message.getCreationTime().getSecond()))).queue();
             }else{
-                Message msg = channel.sendMessage(event.getAuthor().getAsMention() +" NEE " + LeMojis.happy).complete();
+                Message tag = channel.sendMessage(event.getAuthor().getAsMention()).complete();
+                Message embed = channel.sendMessage(new EmbedBuilder().setTitle("**ERROR 403**").setAuthor(event.getGuild().getOwner().getEffectiveName(), null, event.getGuild().getOwner().getUser().getEffectiveAvatarUrl()).setDescription("%lol% Je hebt hier geen permissie voor %lol%\nJe actie is bijgehouden.".replace("%lol%", LeMojis.lol)).build()).complete();
+                event.getGuild().getTextChannelById(STATIC.CHANNEL_NO_PERMISSON_LOG_ID).sendMessage(new EmbedBuilder().setColor(Color.RED)
+                        .setAuthor(event.getJDA().getSelfUser().getName(), null, event.getJDA().getSelfUser().getEffectiveAvatarUrl()).setDescription("%author% heeft het volgende gebruikt waar deze persoon geen toegang voor heeft: ``` %msg%```".replace("%author%", event.getAuthor().getAsMention()).replace("%msg%", event.getMessage().getContentDisplay())).build()).queue();
                 new Timer().schedule(new TimerTask() {
                     @Override
                     public void run() {
-                        msg.delete().queue();
+                        tag.delete().queue();
+                        embed.delete().queue();
                     }
-                }, 1500);
+                }, 5000);
+
+
+
             }
         }
 

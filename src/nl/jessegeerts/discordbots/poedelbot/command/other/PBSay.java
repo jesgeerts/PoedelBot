@@ -1,12 +1,16 @@
 package nl.jessegeerts.discordbots.poedelbot.command.other;
 
+import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.Permission;
 import net.dv8tion.jda.core.entities.Message;
 import net.dv8tion.jda.core.entities.MessageChannel;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import nl.jessegeerts.discordbots.poedelbot.command.Command;
 import nl.jessegeerts.discordbots.poedelbot.constants.Emoji;
+import nl.jessegeerts.discordbots.poedelbot.util.LeMojis;
+import nl.jessegeerts.discordbots.poedelbot.util.STATIC;
 
+import java.awt.*;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -38,13 +42,20 @@ public class PBSay implements Command {
             }
             channel.sendMessage(msg).queue();
         }else{
-            Message msg = channel.sendMessage(event.getAuthor().getAsMention() +" NEE").complete();
+            Message tag = channel.sendMessage(event.getAuthor().getAsMention()).complete();
+            Message embed = channel.sendMessage(new EmbedBuilder().setTitle("**ERROR 403**").setAuthor(event.getGuild().getOwner().getEffectiveName(), null, event.getGuild().getOwner().getUser().getEffectiveAvatarUrl()).setDescription("%lol% Je hebt hier geen permissie voor %lol%\nJe actie is bijgehouden.".replace("%lol%", LeMojis.lol)).build()).complete();
+            event.getGuild().getTextChannelById(STATIC.CHANNEL_NO_PERMISSON_LOG_ID).sendMessage(new EmbedBuilder().setColor(Color.RED)
+                    .setAuthor(event.getJDA().getSelfUser().getName(), null, event.getJDA().getSelfUser().getEffectiveAvatarUrl()).setDescription("%author% heeft het volgende gebruikt waar deze persoon geen toegang voor heeft: ``` %msg%```".replace("%author%", event.getAuthor().getAsMention()).replace("%msg%", event.getMessage().getContentDisplay())).build()).queue();
             new Timer().schedule(new TimerTask() {
                 @Override
                 public void run() {
-                    msg.delete().queue();
+                    tag.delete().queue();
+                    embed.delete().queue();
                 }
-            }, 1500);
+            }, 5000);
+
+
+
         }
     }
 
