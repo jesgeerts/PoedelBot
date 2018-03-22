@@ -65,7 +65,9 @@ public class Prijzen implements Command {
                     channel.sendMessage(overig.setTitle("Overige pakketten").setDescription(
 
                             "**Domeinen**" +
-                                    "\nWordt nog aangepast"
+                                    "\nWordt nog aangepast" +
+                                    "\n**Bundels**" +
+                                    "\n"
 
                     ).build()).queue();
 

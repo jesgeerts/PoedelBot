@@ -63,7 +63,7 @@ public class Warn implements Command {
 
 
 
-            channel.sendMessage(new EmbedBuilder().setTitle("Er is iemand stout geweest..").setDescription("Deze persoon krijgt eventjes geen cadeautjes van papa poedel..\n\nOvertreder: %target%\nVerstuurder: %sender%\nReden: %reden%\nDatum en tijd van insturing: %dag% %maand% %jaar% om %uur%:%min%:%sec%\n\nMet dank aan %jordy% voor het cadeautjes idee."
+            channel.sendMessage(new EmbedBuilder().setTitle("Er is iemand stout geweest..").setDescription("Deze persoon krijgt eventjes geen cadeautjes van papa poedel..\n\nOvertreder: %target%\nVerstuurder: %sender%\nType: WAARSCHUWING\nReden: %reden%\nDatum en tijd van insturing: %dag% %maand% %jaar% om %uur%:%min%:%sec%\n\nMet dank aan %jordy% voor het cadeautjes idee."
             .replace("%target%", args[0]).replace("%sender%", event.getAuthor().getAsMention()).replace("%reden%", msg(args)).replace("%dag%", String.valueOf(message.getCreationTime().getDayOfMonth())).replace("%maand%", String.valueOf(message.getCreationTime().getMonth())).replace("%jaar%", String.valueOf(message.getCreationTime().getYear()))
                     .replace("%uur%", String.valueOf(message.getCreationTime().getHour())).replace("%min%", String.valueOf(message.getCreationTime().getMinute())).replace("%sec%", String.valueOf(message.getCreationTime().getSecond())).replace("%jordy%", event.getGuild().getMemberById(STATIC.JORDY_DISCORD_TOKEN).getAsMention())).setColor(Color.RED).build()).queue();
 
@@ -81,7 +81,6 @@ public class Warn implements Command {
 
 
 
-            event.getAuthor().openPrivateChannel().queue((privateChannel -> privateChannel.sendMessage("ok").queue()));
 
         }else{
             Message tag = channel.sendMessage(event.getAuthor().getAsMention()).complete();
