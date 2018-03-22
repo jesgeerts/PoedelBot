@@ -39,8 +39,7 @@ public boolean called(String[] args, MessageReceivedEvent event) {
                     String a = arrayOfString[i];
                     msg = msg + " " + a;
                 }
-                channel.sendMessage("@everyone").queue();
-                channel.sendMessage(event.getAuthor().getAsMention() + " Heeft het volgende verteld:\n" + msg + "\n\n```Bericht is verzonden op: %dag% %maand% %jaar% om %uur%:%min%:%sec%```"
+                channel.sendMessage("@everyone \n"+event.getAuthor().getAsMention() + " Heeft het volgende verteld:\n" + msg + "\n\n```Bericht is verzonden op: %dag% %maand% %jaar% om %uur%:%min%:%sec%```"
                         .replace("%dag%", String.valueOf(message.getCreationTime().getDayOfMonth())).replace("%maand%", String.valueOf(message.getCreationTime().getMonth())).replace("%jaar%", String.valueOf(message.getCreationTime().getYear()))
                         .replace("%uur%", String.valueOf(message.getCreationTime().getHour())).replace("%min%", String.valueOf(message.getCreationTime().getMinute())).replace("%sec%", String.valueOf(message.getCreationTime().getSecond()))).queue();
             }else{
