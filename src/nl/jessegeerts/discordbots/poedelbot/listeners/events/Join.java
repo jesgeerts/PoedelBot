@@ -49,7 +49,7 @@ public class Join extends ListenerAdapter {
                     .setDescription("De poedel %user% is erbij gekomen.".replace("%user%", joined)).setTitle("**WELKOM %user%**".replace("%user%", user));
 
             channel.sendMessage(kek.build()).queue();
-
+            event.getGuild().getController().addSingleRoleToMember(event.getMember(), event.getGuild().getRoleById(STATIC.ROLE_ALERTS_ID)).queue();
             GuildController guildController = event.getGuild().getController();
             guildController.addSingleRoleToMember(event.getMember(), event.getGuild().getRoleById(STATIC.ROLE_MEMBER_ID)).queue(
                     success -> event.getMember().getAsMention(),

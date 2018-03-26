@@ -12,7 +12,7 @@ public class No  implements Command {
     @Override
     public void action(String[] args, MessageReceivedEvent event) {
         event.getMessage().delete().queue();
-        event.getChannel().sendMessage("https://giphy.com/gifs/no-TfS8MAR9ucLHW ").queue();
+        event.getChannel().sendMessage("https://giphy.com/gifs/reaction-imgfave-RddAJiGxTPQFa").queue();
 
     }
 

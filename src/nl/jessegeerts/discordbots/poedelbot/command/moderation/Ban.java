@@ -78,7 +78,7 @@ public class Ban implements Command {
 
 
                 event.getGuild().getMember(message.getMentionedUsers().get(0)).getUser().openPrivateChannel().queue((privateChannel -> privateChannel.sendMessage(new EmbedBuilder()
-                        .setColor(Color.RED).setTitle("Je bent een domme poedel").setDescription("Je bent verbannen van de discord: '%discord%'.\nVerstuurder: %sender%\nReden: %reden%\nDatum en tijd van insturing: %dag% %maand% %jaar% om %uur%:%min%:%sec%"
+                        .setColor(Color.RED).setThumbnail("https://giphy.com/gifs/hammer-super-mario-8-bit-qPD4yGsrc0pdm").setTitle("Je bent een domme poedel").setDescription("Je bent verbannen van de discord: '%discord%'.\nVerstuurder: %sender%\nReden: %reden%\nDatum en tijd van insturing: %dag% %maand% %jaar% om %uur%:%min%:%sec%"
                                 .replace("%discord%", event.getGuild().getName())
                                 .replace("%sender%", event.getAuthor().getAsMention())
                                 .replace("%dag%", String.valueOf(message.getCreationTime().getDayOfMonth()))
@@ -90,7 +90,7 @@ public class Ban implements Command {
                                 .replace("%reden%", msg(args))).build()).queue()));
 
 
-                guild.getController().ban(member, 1).queue(success -> channel.sendMessage(new EmbedBuilder().setTitle("Er is iemand stout geweest..").setDescription("Papa Poedel is heel boos op %target%\n\nOvertreder: %target%\nVerstuurder: %sender%\nType: BAN\nReden: %reden%\nDatum en tijd van insturing: %dag% %maand% %jaar% om %uur%:%min%:%sec%\n\nMet dank aan %jordy% voor het cadeautjes idee."
+                guild.getController().ban(member, 1).queue(success -> channel.sendMessage(new EmbedBuilder().setTitle("Er is iemand stout geweest..").setThumbnail("https://giphy.com/gifs/hammer-super-mario-8-bit-qPD4yGsrc0pdm").setDescription("Papa Poedel is heel boos op %target%\n\nOvertreder: %target%\nVerstuurder: %sender%\nType: BAN\nReden: %reden%\nDatum en tijd van insturing: %dag% %maand% %jaar% om %uur%:%min%:%sec%\n\nMet dank aan %jordy% voor het cadeautjes idee."
                         .replace("%sender%", event.getAuthor().getAsMention()).replace("%reden%", msg(args)).replace("%dag%", String.valueOf(message.getCreationTime().getDayOfMonth())).replace("%maand%", String.valueOf(message.getCreationTime().getMonth())).replace("%jaar%", String.valueOf(message.getCreationTime().getYear()))
                         .replace("%uur%", String.valueOf(message.getCreationTime().getHour())).replace("%min%", String.valueOf(message.getCreationTime().getMinute())).replace("%sec%", String.valueOf(message.getCreationTime().getSecond())).replace("%jordy%", event.getGuild().getMemberById(STATIC.JORDY_DISCORD_TOKEN).getAsMention())
                         .replace("%target%", member.getEffectiveName())).setColor(Color.RED).build()).queue());

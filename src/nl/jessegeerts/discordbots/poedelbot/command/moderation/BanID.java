@@ -44,7 +44,7 @@ public class BanID implements Command {
         Member member3 = event.getMember();
 
         if(member3.hasPermission(Permission.ADMINISTRATOR) || member3.hasPermission(Permission.BAN_MEMBERS)) {
-            if (message.getMentionedUsers().isEmpty()) {
+            if (args.length==0) {
                 Message msg = channel.sendMessage(event.getAuthor().getAsMention()).complete();
                 Message msg2 = channel.sendMessage(new EmbedBuilder().setTitle("FOUT").setColor(Color.RED).setDescription("%lol% Vul een ID in om deze actie uit te voeren %lol%".replace("%lol%", LeMojis.lol).replace("%happy%", LeMojis.happy)).build()).complete();
                 new Timer().schedule(new TimerTask() {
@@ -84,7 +84,7 @@ public class BanID implements Command {
 
 
                event.getJDA().getUserById(args[0]).openPrivateChannel().queue((privateChannel -> privateChannel.sendMessage(new EmbedBuilder()
-                        .setColor(Color.RED).setTitle("Je hebt een waarschuwing").setDescription("Je bent verbannen van de discord: '%discord%'.\nVerstuurder: %sender%\nReden: %reden%\nDatum en tijd van insturing: %dag% %maand% %jaar% om %uur%:%min%:%sec%"
+                        .setColor(Color.RED).setTitle("Je hebt een waarschuwing").setThumbnail("https://giphy.com/gifs/hammer-super-mario-8-bit-qPD4yGsrc0pdm").setDescription("Je bent verbannen van de discord: '%discord%'.\nVerstuurder: %sender%\nReden: %reden%\nDatum en tijd van insturing: %dag% %maand% %jaar% om %uur%:%min%:%sec%"
                                 .replace("%discord%", event.getGuild().getName())
                                 .replace("%sender%", event.getAuthor().getAsMention())
                                 .replace("%dag%", String.valueOf(message.getCreationTime().getDayOfMonth()))
@@ -96,7 +96,7 @@ public class BanID implements Command {
                                 .replace("%reden%", msg(args))).build()).queue()));
 
 
-                guild.getController().ban(args[0], 1).queue( success -> channel.sendMessage(new EmbedBuilder().setTitle("Er is iemand stout geweest..").setDescription("Papa Poedel is heel boos op %target%\n\nOvertreder: %target%\nVerstuurder: %sender%\nType: BAN\nReden: %reden%\nDatum en tijd van insturing: %dag% %maand% %jaar% om %uur%:%min%:%sec%\n\nMet dank aan %jordy% voor het cadeautjes idee."
+                guild.getController().ban(args[0], 1).queue( success -> channel.sendMessage(new EmbedBuilder().setTitle("Zo.. Die is verbannen").setThumbnail("https://giphy.com/gifs/hammer-super-mario-8-bit-qPD4yGsrc0pdm").setTitle("Er is iemand stout geweest..").setDescription("Papa Poedel is heel boos op %target%\n\nOvertreder: %target%\nVerstuurder: %sender%\nType: BAN\nReden: %reden%\nDatum en tijd van insturing: %dag% %maand% %jaar% om %uur%:%min%:%sec%\n\nMet dank aan %jordy% voor het cadeautjes idee."
                         .replace("%target%", event.getJDA().getUserById(args[0]).getAsMention()).replace("%sender%", event.getAuthor().getAsMention()).replace("%reden%", msg(args)).replace("%dag%", String.valueOf(message.getCreationTime().getDayOfMonth())).replace("%maand%", String.valueOf(message.getCreationTime().getMonth())).replace("%jaar%", String.valueOf(message.getCreationTime().getYear()))
                         .replace("%uur%", String.valueOf(message.getCreationTime().getHour())).replace("%min%", String.valueOf(message.getCreationTime().getMinute())).replace("%sec%", String.valueOf(message.getCreationTime().getSecond())).replace("%jordy%", event.getGuild().getMemberById(STATIC.JORDY_DISCORD_TOKEN).getAsMention())
                         .replace("%target%", member.getEffectiveName())).setColor(Color.RED).build()).queue());

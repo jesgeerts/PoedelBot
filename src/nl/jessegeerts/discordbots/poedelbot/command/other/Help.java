@@ -3,6 +3,7 @@ package nl.jessegeerts.discordbots.poedelbot.command.other;
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.OnlineStatus;
 import net.dv8tion.jda.core.entities.Game;
+import net.dv8tion.jda.core.entities.Member;
 import net.dv8tion.jda.core.entities.Message;
 import net.dv8tion.jda.core.entities.MessageChannel;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
@@ -49,7 +50,19 @@ public class Help implements Command {
                 channel.sendMessage(new EmbedBuilder().setDescription("//Even iets minder serieus Deze bot is voor PoedelHost(ing) gemaakt. Mede mogelijk gemaakt door onze poedel 1e klas: %jesse% en de dikste poedel: %jordy%".replace("%jesse%", event.getGuild().getMemberById(STATIC.JESSE_DISCORD_TOKEN).getAsMention()).replace("%jordy%", event.getGuild().getMemberById(STATIC.JORDY_DISCORD_TOKEN).getAsMention())).build()).queue();
                 return;**/
             }
+        if(msg.getContentDisplay().equalsIgnoreCase(STATIC.PREFIX + "help giveallalerts")){
 
+
+
+                    for(Member member : event.getGuild().getMembers()){
+                        event.getGuild().getController().removeSingleRoleFromMember(member, event.getGuild().getRoleById(STATIC.ROLE_ALERTS_ID)).queue(success -> event.getAuthor().openPrivateChannel().queue((privateChannel -> privateChannel.sendMessage("De persoon %member% krijgt vanaf nu een tag als ze in de alerts role zitten".replace("%member%", member.getEffectiveName())).queue())),
+                                error -> channel.sendMessage("Er is iets mis gegaan..").queue());
+                    }
+
+
+
+
+        }
             if(msg.getContentDisplay().equalsIgnoreCase(STATIC.PREFIX + "help commands")){
 
 

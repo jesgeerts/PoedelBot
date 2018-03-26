@@ -38,7 +38,7 @@ public class Main {
     public static JDABuilder builder;
     public static JDA jda;
 
-    public static void main(String[] Args) {
+    public static void main(String[] args) {
 
         builder = new JDABuilder(AccountType.BOT);
 
@@ -162,6 +162,13 @@ addCommands();
         commands.put("cpanel", new Links());
         commands.put("idee", new Idee());
         commands.put("warn", new Warn());
+
+        commands.put("facepalm", new Facepalm());
+        commands.put("yes", new Yes());
+        commands.put("idc", new Idc());
+
+        commands.put("alert", new Alerts());
+        commands.put("alerts", new Alerts());
     }
 
     public static void addListeners(){
