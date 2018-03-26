@@ -57,9 +57,9 @@ public boolean called(String[] args, MessageReceivedEvent event) {
                 new Timer().schedule(new TimerTask() {
                     @Override
                     public void run() {
-                        channel.sendMessage("%alert%\n".replace("%alert%", event.getGuild().getRoleById(STATIC.ROLE_ALERTS_ID).getAsMention())+event.getAuthor().getAsMention() + " **Heeft het volgende verteld:**\n\n" + regular(args) + "\n\n```Bericht is verzonden op: %dag% %maand% %jaar% om %uur%:%min%:%sec%```"
+                        channel.sendMessage("%alert%\n".replace("%alert%", event.getGuild().getRoleById(STATIC.ROLE_ALERTS_ID).getAsMention())+event.getAuthor().getAsMention() + " **Heeft het volgende verteld:**\n\n" + regular(args) + "\n\n```Bericht is verzonden op: %dag% %maand% %jaar% om %uur%:%min%:%sec%```\n\nWil je niet langer worden getagt? Doe dan: ``.alerts off`` in %botspam%"
                                 .replace("%dag%", String.valueOf(message.getCreationTime().getDayOfMonth())).replace("%maand%", String.valueOf(message.getCreationTime().getMonth())).replace("%jaar%", String.valueOf(message.getCreationTime().getYear()))
-                                .replace("%uur%", String.valueOf(message.getCreationTime().getHour())).replace("%min%", String.valueOf(message.getCreationTime().getMinute())).replace("%sec%", String.valueOf(message.getCreationTime().getSecond()))).queue();
+                                .replace("%uur%", String.valueOf(message.getCreationTime().getHour())).replace("%min%", String.valueOf(message.getCreationTime().getMinute())).replace("%sec%", String.valueOf(message.getCreationTime().getSecond())).replace("%botspam%", event.getGuild().getTextChannelById(STATIC.CHANNEL_BOTCOMMANDS_ID).getAsMention())).queue();
                     }
                 }, 500);
                 new Timer().schedule(new TimerTask() {

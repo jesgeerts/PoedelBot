@@ -12,6 +12,8 @@ import nl.jessegeerts.discordbots.poedelbot.command.hostrelated.*;
 import nl.jessegeerts.discordbots.poedelbot.command.hostrelated.movechat.BotCommands;
 import nl.jessegeerts.discordbots.poedelbot.command.hostrelated.movechat.Minecraft;
 import nl.jessegeerts.discordbots.poedelbot.command.hostrelated.movechat.Offtopic;
+import nl.jessegeerts.discordbots.poedelbot.command.hostrelated.support.KVK;
+import nl.jessegeerts.discordbots.poedelbot.command.hostrelated.support.WHNS;
 import nl.jessegeerts.discordbots.poedelbot.command.moderation.*;
 import nl.jessegeerts.discordbots.poedelbot.command.other.*;
 import nl.jessegeerts.discordbots.poedelbot.command.other.brb.Back;
@@ -100,7 +102,7 @@ addCommands();
         commands.put("poedel1eklas", new PoedelEersteKlas());
         commands.put("micdrop", new MicDrop());
         commands.put("dora", new Dora());
-        commands.put("welkomchannelcommand", new Welkomchannelcommand());
+        commands.put("welkomchannelcommand", new NEWWELCOMECHANNEL());
         commands.put("givecustomer", new GiveCustomer());
         commands.put("takecustomer", new TakeCustomer());
         commands.put("addmember", new AddMember());
@@ -169,6 +171,9 @@ addCommands();
 
         commands.put("alert", new Alerts());
         commands.put("alerts", new Alerts());
+        commands.put("whns", new WHNS());
+        commands.put("kvk", new KVK());
+        commands.put("btw", new KVK());
     }
 
     public static void addListeners(){

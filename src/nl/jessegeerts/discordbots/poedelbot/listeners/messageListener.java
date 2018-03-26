@@ -23,6 +23,24 @@ public class messageListener extends ListenerAdapter {
         if(msg.getContentDisplay().contains("zullen we vrienden worden")||msg.getContentDisplay().contains("Zullen we vrienden worden") || msg.getContentDisplay().contains("Wil je vrienden zijn")|| msg.getContentDisplay().contains("wil je vrienden zijn")){
             channel.sendMessage("Mijn enigste vrienden zijn Poedel 1e klas Jesse, Papa poedel Jordy en mijn programmataal: Java " + LeMojis.happy).queue();
         }
+
+
+
+
+
+        if(msg.getContentDisplay().contains("Tot poedels") || msg.getContentDisplay().contains("tot poedels")){
+            channel.sendMessage("Tot poedels! Bij https://poedelhost.nl".replace("%poedelbot%", event.getJDA().getSelfUser().getAsMention())).queue();
+        }
+
+
+        if(msg.getContentDisplay().contains("Ik heb betaald") || msg.getContentDisplay().contains("ik heb betaald")){
+            channel.sendMessage("Hallo %user%,\nIk denk dat ik je met deze url je kan helpen: https://klanten.poedelhost.nl/knowledgebase/6/Ik-heb-betaald-maar-ik-heb-mijn-serverorwebhosting-nog-niet-ontvangen.html\nTot poedels!"
+                    .replace("%user%", event.getAuthor().getAsMention())).queue();
+        }
+
+
+
+
         if(msg.getContentDisplay().contains("rot op") || msg.getContentDisplay().contains("Rot op") || msg.getContentDisplay().contains("ROT OP")){
 
             if(event.getAuthor().getId().equals(STATIC.JORDY_DISCORD_TOKEN)){
