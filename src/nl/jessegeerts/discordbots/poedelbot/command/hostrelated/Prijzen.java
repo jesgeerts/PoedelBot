@@ -76,7 +76,7 @@ public class Prijzen implements Command {
                     channel.sendMessage(overig.setTitle("Overige pakketten").setDescription(
 
                             "**Domeinen**" +
-                                    "\n.nl » €2,95* (Regulier €12,85)" +
+                                    "\n.nl » €7,20" +
                                     "\n.com » €9,00" +
                                     "\n.net » €8,00" +
                                     "\n.eu » €5,50" +

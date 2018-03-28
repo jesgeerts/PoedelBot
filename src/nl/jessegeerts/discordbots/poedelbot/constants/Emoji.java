@@ -148,13 +148,6 @@ public class Emoji {
     public final static String SCISSORS = EmojiParser.parseToUnicode(":scissors:");
     public final static String TIE = EmojiParser.parseToUnicode(":necktie:");
 
-    /* Server Emotes */
-    public final static String GUILD_ONLINE = "<:online:313956277808005120>";
-    public final static String GUILD_IDLE = "<:away:313956277220802560>";
-    public final static String GUILD_DND = "<:dnd:313956276893646850>";
-    public final static String GUILD_OFFLINE = "<:offline:313956277237710868>";
-    public final static String GUILD_STREAMING = "<:streaming:313956277132853248>";
-
     public final static String CHECK = "<:check:314349398811475968>";
     public final static String UNCHECK = "<:xmark:314349398824058880>";
     public final static String NOCHECK = "<:empty:314349398723264512>";

@@ -53,7 +53,20 @@ public class Kick implements Command {
                         msg2.delete().queue();
                     }
                 }, 2000);
-            } else {
+            }
+                if(args.length==1){
+                    Message noarg1 = channel.sendMessage(event.getAuthor().getAsMention()).complete();
+                    Message noarg2 = channel.sendMessage(new EmbedBuilder().setTitle("FOUT").setColor(Color.RED).setDescription("%lol% Vul een reden in %lol%".replace("%lol%", LeMojis.lol).replace("%happy%", LeMojis.happy)).build()).complete();
+                    new Timer().schedule(new TimerTask() {
+                        @Override
+                        public void run() {
+                            noarg1.delete().queue();
+                            noarg2.delete().queue();
+                        }
+                    }, 2000);
+                    return;
+                }
+
                 Guild guild = event.getGuild();
                 Member selfMember = guild.getSelfMember();  //This is the currently logged in account's Member object.
                 // Very similar to JDA#getSelfUser()!
@@ -97,19 +110,18 @@ public class Kick implements Command {
 
 
             }
-        } else {
-            Message tag = channel.sendMessage(event.getAuthor().getAsMention()).complete();
-            Message embed = channel.sendMessage(new EmbedBuilder().setTitle("**ERROR 403**").setAuthor(event.getGuild().getOwner().getEffectiveName(), null, event.getGuild().getOwner().getUser().getEffectiveAvatarUrl()).setDescription("%lol% Je hebt hier geen permissie voor %lol%\nJe actie is bijgehouden.".replace("%lol%", LeMojis.lol)).build()).complete();
-            event.getGuild().getTextChannelById(STATIC.CHANNEL_NO_PERMISSON_LOG_ID).sendMessage(new EmbedBuilder().setColor(Color.RED)
-                    .setAuthor(event.getJDA().getSelfUser().getName(), null, event.getJDA().getSelfUser().getEffectiveAvatarUrl()).setDescription("%author% heeft het volgende gebruikt waar deze persoon geen toegang voor heeft: ``` %msg%```".replace("%author%", event.getAuthor().getAsMention()).replace("%msg%", event.getMessage().getContentDisplay())).build()).queue();
-            new Timer().schedule(new TimerTask() {
-                @Override
-                public void run() {
-                    tag.delete().queue();
-                    embed.delete().queue();
-                }
-            }, 5000);
-        }
+
+        Message tag = channel.sendMessage(event.getAuthor().getAsMention()).complete();
+        Message embed = channel.sendMessage(new EmbedBuilder().setTitle("**ERROR 403**").setAuthor(event.getGuild().getOwner().getEffectiveName(), null, event.getGuild().getOwner().getUser().getEffectiveAvatarUrl()).setDescription("%lol% Je hebt hier geen permissie voor %lol%\nJe actie is bijgehouden.".replace("%lol%", LeMojis.lol)).build()).complete();
+        event.getGuild().getTextChannelById(STATIC.CHANNEL_NO_PERMISSON_LOG_ID).sendMessage(new EmbedBuilder().setColor(Color.RED)
+                .setAuthor(event.getJDA().getSelfUser().getName(), null, event.getJDA().getSelfUser().getEffectiveAvatarUrl()).setDescription("%author% heeft het volgende gebruikt waar deze persoon geen toegang voor heeft: ``` %msg%```".replace("%author%", event.getAuthor().getAsMention()).replace("%msg%", event.getMessage().getContentDisplay())).build()).queue();
+        new Timer().schedule(new TimerTask() {
+            @Override
+            public void run() {
+                tag.delete().queue();
+                embed.delete().queue();
+            }
+        }, 5000);
     }
 
     @Override

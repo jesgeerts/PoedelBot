@@ -2,6 +2,7 @@ package nl.jessegeerts.discordbots.poedelbot.command.fun;
 
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import nl.jessegeerts.discordbots.poedelbot.command.Command;
+import nl.jessegeerts.discordbots.poedelbot.constants.Emoji;
 import nl.jessegeerts.discordbots.poedelbot.util.LeMojis;
 
 import java.util.Timer;
@@ -49,7 +50,7 @@ public class Eightball implements Command {
         new Timer().schedule(new TimerTask() {
             @Override
             public void run() {
-                event.getTextChannel().sendMessage(event.getAuthor().getAsMention() + " :crystal_ball: " + a[(int) (Math.random() * a.length)]).queue();
+                event.getTextChannel().sendMessage(event.getAuthor().getAsMention() + " " + Emoji.EIGHT_BALL + " " + a[(int) (Math.random() * a.length)]).queue();
             }
         }, 1000);
     }
