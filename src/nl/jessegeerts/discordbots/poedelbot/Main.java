@@ -102,7 +102,7 @@ addCommands();
         commands.put("poedel1eklas", new PoedelEersteKlas());
         commands.put("micdrop", new MicDrop());
         commands.put("dora", new Dora());
-        commands.put("welkomchannelcommand", new NEWWELCOMECHANNEL());
+        commands.put("welkomchannelcommand", new WelcomeChannelCommand());
         commands.put("givecustomer", new GiveCustomer());
         commands.put("takecustomer", new TakeCustomer());
         commands.put("addmember", new AddMember());
@@ -145,9 +145,7 @@ addCommands();
         commands.put("getguilds", new GetGuilds());
         commands.put("aap",new Aap());
         commands.put("no", new No());
-        commands.put("banid", new BanID());
         commands.put("unbanid", new UnbanID());
-        commands.put("kickid", new KickID());
         commands.put("guildban", new GuildBan());
         commands.put("game", new GameRequest());
         commands.put("gamerequest", new GameRequest());
@@ -174,6 +172,8 @@ addCommands();
         commands.put("whns", new WHNS());
         commands.put("kvk", new KVK());
         commands.put("btw", new KVK());
+        commands.put("happytrump",new HappyTrump());
+        commands.put("trumphappy",new HappyTrump());
     }
 
     public static void addListeners(){

@@ -5,7 +5,6 @@ import net.dv8tion.jda.core.entities.MessageChannel;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
 import nl.jessegeerts.discordbots.poedelbot.util.LeMojis;
-import nl.jessegeerts.discordbots.poedelbot.util.STATIC;
 
 public class messageListener extends ListenerAdapter {
 
@@ -38,16 +37,12 @@ public class messageListener extends ListenerAdapter {
                     .replace("%user%", event.getAuthor().getAsMention())).queue();
         }
 
-
+String emojisrotop = LeMojis.kappa + LeMojis.lol + LeMojis.happyTrump;
 
 
         if(msg.getContentDisplay().contains("rot op") || msg.getContentDisplay().contains("Rot op") || msg.getContentDisplay().contains("ROT OP")){
 
-            if(event.getAuthor().getId().equals(STATIC.JORDY_DISCORD_TOKEN)){
-                channel.sendMessage("Rot toch zelf op DIKKE JORDY! "+ LeMojis.kappa + LeMojis.lol).queue();
-                return;
-            }
-            channel.sendMessage("Rot toch zelf op! " + LeMojis.kappa + LeMojis.lol).queue();
+            channel.sendMessage("Dit is verwijderd. OK DOEI" + emojisrotop).queue();
         }
 
 

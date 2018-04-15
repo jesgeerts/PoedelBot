@@ -5,7 +5,7 @@ import net.dv8tion.jda.core.exceptions.PermissionException;
 import nl.jessegeerts.discordbots.poedelbot.command.Command;
 import nl.jessegeerts.discordbots.poedelbot.util.LeMojis;
 
-public class Happy implements Command {
+public class HappyTrump implements Command {
 
     @Override
     public boolean called(String[] args, MessageReceivedEvent event) {
@@ -17,11 +17,9 @@ public class Happy implements Command {
     public void action(String[] args, MessageReceivedEvent event) {
         try{
             event.getMessage().delete().queue();
-            event.getChannel().sendMessage(LeMojis.happy).queue();
             event.getChannel().sendMessage(LeMojis.happyTrump).queue();
         }catch (PermissionException e){
             event.getChannel().sendMessage("Ik kon het bericht van %author% niet verwijderen dus jammer.. Alsnog lol".replace("%author%", event.getAuthor().getAsMention())).queue();
-            event.getChannel().sendMessage(LeMojis.happy).queue();
             event.getChannel().sendMessage(LeMojis.happyTrump).queue();
         }
 

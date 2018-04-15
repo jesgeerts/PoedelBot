@@ -8,4 +8,5 @@ public class LeMojis {
     public static final String happy = "<:happy:409046115871358977>";
     public static final String dikkiedik = "<:dikkie_dik:409062586198523904>";
     public static final String kappa = "<:kappa:402196133025284098>";
+    public static final String happyTrump= "<:HappyTrump:431530554882785303>";
 }

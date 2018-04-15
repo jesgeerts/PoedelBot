@@ -5,6 +5,7 @@ import net.dv8tion.jda.core.entities.Message;
 import net.dv8tion.jda.core.entities.MessageChannel;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import nl.jessegeerts.discordbots.poedelbot.command.Command;
+import nl.jessegeerts.discordbots.poedelbot.util.Args;
 import nl.jessegeerts.discordbots.poedelbot.util.MSGS;
 
 import java.awt.*;
@@ -47,20 +48,46 @@ public class Quote  implements Command {
             return;
         }
 
-        chanMSG.editMessage(new EmbedBuilder()
-                .setAuthor(msg.get(0).getAuthor().getName(), null, msg.get(0).getAuthor().getAvatarUrl())
-                .setDescription(msg.get(0).getContentDisplay())
-                .setFooter(
-                        msg.get(0).getCreationTime().getDayOfMonth() + ". " +
-                                msg.get(0).getCreationTime().getMonth()  + " " +
-                                msg.get(0).getCreationTime().getYear() +
-                                " om " + msg.get(0).getCreationTime().getHour() + ":" +
-                                msg.get(0).getCreationTime().getMinute() + ":" +
-                                msg.get(0).getCreationTime().getSecond() +
-                                " in kanaal #" + msg.get(0).getTextChannel().getName(),
-                        null).setColor(Color.GREEN)
-                .build()
-        ).queue();
+
+
+
+
+
+
+        if(args.length==1){
+            chanMSG.editMessage(new EmbedBuilder()
+                    .setAuthor(msg.get(0).getAuthor().getName(), null, msg.get(0).getAuthor().getAvatarUrl())
+                    .setDescription(msg.get(0).getContentDisplay())
+                    .setFooter(
+                            msg.get(0).getCreationTime().getDayOfMonth() + ". " +
+                                    msg.get(0).getCreationTime().getMonth()  + " " +
+                                    msg.get(0).getCreationTime().getYear() +
+                                    " om " + msg.get(0).getCreationTime().getHour() + ":" +
+                                    msg.get(0).getCreationTime().getMinute() + ":" +
+                                    msg.get(0).getCreationTime().getSecond() +
+                                    " in kanaal #" + msg.get(0).getTextChannel().getName(),
+                            null).setColor(Color.GREEN)
+                    .build()
+            ).queue();
+        }
+
+        if(args.length>=2){
+            channel.sendMessage("%mention% 's antwoord: %msg%".replace("%mention%", event.getAuthor().getAsMention()).replace("%msg%", new Args().banandkick(args))).queue();
+            chanMSG.editMessage(new EmbedBuilder()
+                    .setAuthor(msg.get(0).getAuthor().getName(), null, msg.get(0).getAuthor().getAvatarUrl())
+                    .setDescription(msg.get(0).getContentDisplay())
+                    .setFooter(
+                            msg.get(0).getCreationTime().getDayOfMonth() + ". " +
+                                    msg.get(0).getCreationTime().getMonth()  + " " +
+                                    msg.get(0).getCreationTime().getYear() +
+                                    " om " + msg.get(0).getCreationTime().getHour() + ":" +
+                                    msg.get(0).getCreationTime().getMinute() + ":" +
+                                    msg.get(0).getCreationTime().getSecond() +
+                                    " in kanaal #" + msg.get(0).getTextChannel().getName(),
+                            null).setColor(Color.GREEN)
+                    .build()
+           ).queue();
+        }
 
     }
 

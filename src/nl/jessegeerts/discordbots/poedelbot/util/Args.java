@@ -2,7 +2,7 @@ package nl.jessegeerts.discordbots.poedelbot.util;
 
 public class Args {
 
-    private final String banandkick(String[] args){
+    public final String banandkick(String[] args){
         String msg = "";
         String[] arrayOfString;
         int j = (arrayOfString = args).length;
@@ -14,7 +14,7 @@ public class Args {
     }
 
 
-    private final String regular(String[] args){
+    public final String regular(String[] args){
         String msg = "";
         String[] arrayOfString;
         int j = (arrayOfString = args).length;

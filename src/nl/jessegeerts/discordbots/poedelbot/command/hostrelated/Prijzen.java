@@ -29,7 +29,7 @@ public class Prijzen implements Command {
         } else {
             if (args[0].equalsIgnoreCase("lijst")) {
                 if (channel.getId().equals("399880740680237067") || channel.getId().equals("426476229122588683")) {
-                    channel.sendMessage(intro.setTitle("Leuk dat je kijkt!").setDescription("Hey! Leuk dat je kijkt naar onze prijzen. Mocht je nog eventueel vragen hebben dan kan je bij de juiste support kanalen terecht. Zoek je naar een pakket die er hier niet tussen staat? Neem dan contact op met een van de %ceo%.".replace("%ceo%", event.getJDA().getRoleById(STATIC.ROLE_CEO_ID).getAsMention())).build()).queue();
+                   /** channel.sendMessage(intro.setTitle("Leuk dat je kijkt!").setDescription("Hey! Leuk dat je kijkt naar onze prijzen. Mocht je nog eventueel vragen hebben dan kan je bij de juiste support kanalen terecht. Zoek je naar een pakket die er hier niet tussen staat? Neem dan contact op met een van de %ceo%.".replace("%ceo%", event.getJDA().getRoleById(STATIC.ROLE_CEO_ID).getAsMention())).build()).queue();
 
 
                     channel.sendMessage(minecraft.setDescription(
@@ -98,6 +98,12 @@ public class Prijzen implements Command {
                     ).build()).queue();
 
 
+                    channel.sendMessage(new EmbedBuilder().setTitle("**Betalingen, Transactiekosten en Algemene voorwaarden**").setDescription("**BTW/Belasting**\nAlle genoemde prijzen zijn hier inclusief BTW (21%) tenzij anders vermeld.\n**BETAALMETHODES**\nWij accepteren het volgende: PayPal, iDEAL, bankoverschrijving en PaySafeCard\n\n**TRANSACTIEKOSTEN**\nVoor een PaySafeCard transactie kunnen de transactiekosten varieren.\nVoor een PayPal Transactie vragen wij €0,40 en 4,5% transactiekosten\nVoor een iDEAL transactie vragen wij 43 cent transactiekosten.\nVoor bankoverschrijving vragen wij geen transactiekosten.\n\n**ALGEMENE VOORWAARDEN**\nDoor een bestelling te plaatsen + betalen ga je automatisch akkoord met onze Algemene voorwaarden. Je kunt deze hier vinden: https://poedelhost.nl/Algemene%20Voorwaarden.php").build()).queue();
+
+                    */
+
+
+                   channel.sendMessage(new EmbedBuilder().setTitle("Prijstlijst").setDescription("**DOMEINNAMEN** » https://my.poedelhost.nl/cart.php?a=add&domain=register\n**WEB HOSTING** » https://my.poedelhost.nl/cart.php?gid=1\n**MINECRAFT** » https://my.poedelhost.nl/cart.php?gid=3\n**EIGEN NODE + PANEL** » https://my.poedelhost.nl/cart.php?gid=4").build()).queue();
                     channel.sendMessage(new EmbedBuilder().setTitle("**Betalingen, Transactiekosten en Algemene voorwaarden**").setDescription("**BTW/Belasting**\nAlle genoemde prijzen zijn hier inclusief BTW (21%) tenzij anders vermeld.\n**BETAALMETHODES**\nWij accepteren het volgende: PayPal, iDEAL, bankoverschrijving en PaySafeCard\n\n**TRANSACTIEKOSTEN**\nVoor een PaySafeCard transactie kunnen de transactiekosten varieren.\nVoor een PayPal Transactie vragen wij €0,40 en 4,5% transactiekosten\nVoor een iDEAL transactie vragen wij 43 cent transactiekosten.\nVoor bankoverschrijving vragen wij geen transactiekosten.\n\n**ALGEMENE VOORWAARDEN**\nDoor een bestelling te plaatsen + betalen ga je automatisch akkoord met onze Algemene voorwaarden. Je kunt deze hier vinden: https://poedelhost.nl/Algemene%20Voorwaarden.php").build()).queue();
                     return;
                 } else {
